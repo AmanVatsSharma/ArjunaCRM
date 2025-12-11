@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
+  // Enable static export for S3 deployment
+  output: 'export',
   images: {
+    unoptimized: true, // Required for static export
     remotePatterns: [
       {
         protocol: 'https',

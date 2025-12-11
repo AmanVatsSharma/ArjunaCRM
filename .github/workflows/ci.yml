@@ -25,10 +25,12 @@ jobs:
 
       - name: Run linting
         run: |
+          set -e
           npx nx run-many --target=lint --all --parallel=3
 
       - name: Run type checking
         run: |
+          set -e
           npx nx run-many --target=typecheck --all --parallel=3
 
   test:
@@ -49,6 +51,7 @@ jobs:
 
       - name: Run unit tests
         run: |
+          set -e
           npx nx run-many --target=test --all --parallel=3 --skip-nx-cache
 
       - name: Upload coverage
@@ -76,14 +79,17 @@ jobs:
 
       - name: Build all packages
         run: |
+          set -e
           npx nx run-many --target=build --all --parallel=3
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
+        if: success()
         with:
           name: build-artifacts
           path: |
             packages/*/dist
             packages/*/build
+            packages/*/.mintlify
           retention-days: 7
 

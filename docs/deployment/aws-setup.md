@@ -109,15 +109,38 @@ Create A records (or CNAME) pointing to:
 
 Configure the following secrets in your GitHub repository:
 
+### Required Secrets
+
 - `AWS_ACCESS_KEY_ID` - AWS access key
 - `AWS_SECRET_ACCESS_KEY` - AWS secret key
-- `DATABASE_URL` - PostgreSQL connection string
-- `REDIS_URL` - Redis connection string
-- `APP_SECRET` - Application secret key
+- `DATABASE_URL` - PostgreSQL connection string (production)
+- `REDIS_URL` - Redis connection string (production)
+- `APP_SECRET` - Application secret key (generate a random string)
 
-## Step 9: Deploy
+### ECS Deployment Secrets
 
-Once infrastructure is set up, deployments will happen automatically via GitHub Actions when you push to `main` branch or create a release tag.
+- `ECS_SUBNETS` - Comma-separated subnet IDs for ECS tasks (e.g., `subnet-abc123,subnet-def456`)
+- `ECS_SECURITY_GROUPS` - Comma-separated security group IDs (e.g., `sg-abc123,sg-def456`)
+
+**Note**: These are required for database migrations and ECS task execution. Get subnet IDs from your VPC and security group IDs from your ECS service configuration.
+
+## Step 9: Configure GitHub Secrets
+
+Before deploying, ensure all required secrets are configured in GitHub:
+
+1. Go to your repository → Settings → Secrets and variables → Actions
+2. Add all secrets listed in Step 8
+3. Verify ECS subnet and security group IDs match your infrastructure
+
+## Step 10: Deploy
+
+Once infrastructure is set up and secrets are configured, deployments will happen automatically via GitHub Actions when you push to `main` branch or create a release tag.
+
+**First Deployment:**
+- Push to `main` branch or manually trigger workflows
+- Monitor GitHub Actions for deployment status
+- Check CloudWatch logs for application startup
+- Verify all services are accessible via their domains
 
 ## Monitoring
 

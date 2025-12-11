@@ -52,7 +52,7 @@ Deploys the frontend application to S3 + CloudFront:
 
 Deploys documentation site to S3 + CloudFront:
 
-1. Builds Next.js documentation
+1. Builds Mintlify documentation (output: `.mintlify/`)
 2. Syncs to S3 bucket
 3. Invalidates CloudFront cache
 
@@ -103,6 +103,9 @@ Configure these secrets in your repository settings:
 - `ECR_REPOSITORY` - ECR repository name
 - `ECS_CLUSTER` - ECS cluster name
 - `ECS_SERVICE` - ECS service name
+- `ECS_TASK_DEFINITION` - ECS task definition name
+- `ECS_SUBNETS` - Comma-separated list of subnet IDs for ECS tasks (e.g., `subnet-xxx,subnet-yyy`)
+- `ECS_SECURITY_GROUPS` - Comma-separated list of security group IDs (e.g., `sg-xxx,sg-yyy`)
 - `S3_BUCKET_*` - S3 bucket names for each service
 - `CLOUDFRONT_DISTRIBUTION_ID_*` - CloudFront distribution IDs
 
@@ -181,4 +184,15 @@ Configure these secrets in your repository settings:
 - Check database connection string
 - Verify database user has migration permissions
 - Check migration logs in CloudWatch
+- Verify `ECS_SUBNETS` and `ECS_SECURITY_GROUPS` secrets are configured correctly
+- Ensure ECS task has network access to RDS and Redis
+
+## Build Output Paths
+
+Each service has a specific build output directory:
+
+- **Frontend** (`arjuna-front`): `packages/arjuna-front/build/`
+- **Documentation** (`arjuna-docs`): `packages/arjuna-docs/.mintlify/` (Mintlify build output)
+- **Website** (`arjuna-website`): `packages/arjuna-website/.next/out/` (Next.js static export)
+- **Backend** (`arjuna-server`): Docker image built from `packages/arjuna-docker/arjuna/Dockerfile`
 

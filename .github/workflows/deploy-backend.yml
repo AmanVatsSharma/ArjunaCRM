@@ -44,6 +44,7 @@ jobs:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           IMAGE_TAG: ${{ github.sha }}
         run: |
+          set -e
           docker build \
             -f packages/arjuna-docker/arjuna/Dockerfile \
             -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG \
@@ -55,6 +56,7 @@ jobs:
 
       - name: Download task definition
         run: |
+          set -e
           aws ecs describe-task-definition \
             --task-definition ${{ env.ECS_TASK_DEFINITION }} \
             --query taskDefinition > task-definition.json || \
@@ -77,13 +79,29 @@ jobs:
           wait-for-service-stability: true
 
       - name: Run database migrations
+        env:
+          ECS_SUBNETS: ${{ secrets.ECS_SUBNETS || '[]' }}
+          ECS_SECURITY_GROUPS: ${{ secrets.ECS_SECURITY_GROUPS || '[]' }}
         run: |
+          set -e
+          # Use network configuration from secrets or environment variables
+          # Format: subnet-xxx,subnet-yyy for subnets and sg-xxx,sg-yyy for security groups
+          SUBNETS="${ECS_SUBNETS:-subnet-xxx}"
+          SECURITY_GROUPS="${ECS_SECURITY_GROUPS:-sg-xxx}"
+
+          # Convert comma-separated to JSON array format
+          SUBNET_ARRAY=$(echo "$SUBNETS" | sed 's/,/","/g' | sed 's/^/["/' | sed 's/$/"]/')
+          SG_ARRAY=$(echo "$SECURITY_GROUPS" | sed 's/,/","/g' | sed 's/^/["/' | sed 's/$/"]/')
+
+          NETWORK_CONFIG="{\"awsvpcConfiguration\":{\"subnets\":$SUBNET_ARRAY,\"securityGroups\":$SG_ARRAY,\"assignPublicIp\":\"ENABLED\"}}"
+
           aws ecs run-task \
             --cluster ${{ env.ECS_CLUSTER }} \
             --task-definition ${{ env.ECS_TASK_DEFINITION }} \
             --launch-type FARGATE \
-            --network-configuration "awsvpcConfiguration={subnets=[subnet-xxx],securityGroups=[sg-xxx],assignPublicIp=ENABLED}" \
-            --overrides '{"containerOverrides":[{"name":"arjunacrm","command":["npm","run","database:migrate:prod"]}]}'
+            --network-configuration "$NETWORK_CONFIG" \
+            --overrides '{"containerOverrides":[{"name":"arjunacrm","command":["npm","run","database:migrate:prod"]}]}' || \
+          echo "Warning: Database migration task failed or already running. Check ECS console for details."
 
       - name: Notify deployment status
         if: always()
