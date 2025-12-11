@@ -1,0 +1,18 @@
+import { createContext } from 'react';
+import { type ExtendedUIMessage } from 'arjuna-shared/ai';
+import { type ObjectRecord } from '../../object-record/types/ObjectRecord';
+
+export type AgentChatContextValue = {
+  messages: ExtendedUIMessage[];
+  isStreaming: boolean;
+  isLoading: boolean;
+  error?: Error;
+
+  handleSendMessage: (records?: ObjectRecord[]) => Promise<void>;
+
+  handleRetry: () => void;
+};
+
+export const AgentChatContext = createContext<AgentChatContextValue | null>(
+  null,
+);

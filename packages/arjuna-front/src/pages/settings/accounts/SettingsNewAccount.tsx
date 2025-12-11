@@ -1,0 +1,29 @@
+import { SettingsNewAccountSection } from '@/settings/accounts/components/SettingsNewAccountSection';
+import { SettingsPageContainer } from '@/settings/components/SettingsPageContainer';
+import { SubMenuTopBarContainer } from '@/ui/layout/page/components/SubMenuTopBarContainer';
+import { t } from '@lingui/core/macro';
+import { SettingsPath } from 'arjuna-shared/types';
+import { getSettingsPath } from 'arjuna-shared/utils';
+
+export const SettingsNewAccount = () => {
+  return (
+    <SubMenuTopBarContainer
+      title={t`New Account`}
+      links={[
+        {
+          children: 'User',
+          href: getSettingsPath(SettingsPath.ProfilePage),
+        },
+        {
+          children: 'Accounts',
+          href: getSettingsPath(SettingsPath.Accounts),
+        },
+        { children: `New` },
+      ]}
+    >
+      <SettingsPageContainer>
+        <SettingsNewAccountSection />
+      </SettingsPageContainer>
+    </SubMenuTopBarContainer>
+  );
+};

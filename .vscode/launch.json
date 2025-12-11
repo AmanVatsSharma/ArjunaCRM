@@ -1,0 +1,101 @@
+{
+  "version": "0.2.0",
+  "resolveSourceMapLocations": ["${workspaceFolder}/**", "!**/node_modules/**"],
+  "configurations": [
+    {
+      "name": "arjuna-server - start debug",
+      "type": "node",
+      "runtimeVersion": "24.5",
+      "request": "launch",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["nx", "run", "arjuna-server:start"],
+      "outputCapture": "std",
+      "internalConsoleOptions": "openOnSessionStart",
+      "console": "internalConsole",
+      "cwd": "${workspaceFolder}/packages/arjuna-server/"
+    },
+    {
+      "name": "arjuna-server - worker debug",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["nx", "run", "arjuna-server:worker"],
+      "outputCapture": "std",
+      "internalConsoleOptions": "openOnSessionStart",
+      "console": "internalConsole",
+      "cwd": "${workspaceFolder}/packages/arjuna-server/"
+    },
+    {
+      "name": "arjuna-server - command debug example",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npx",
+      "runtimeVersion": "24.5",
+      "runtimeArgs": [
+        "nx",
+        "run",
+        "arjuna-server:command",
+        "my-command",
+        "--my-parameter value"
+      ],
+      "outputCapture": "std",
+      "internalConsoleOptions": "openOnSessionStart",
+      "console": "internalConsole",
+      "cwd": "${workspaceFolder}/packages/arjuna-server/"
+    },
+    {
+      "name": "Playwright Test current file",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["nx", "test", "arjuna-e2e-testing", "${file}"],
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "internalConsoleOptions": "neverOpen",
+      "envFile": "${workspaceFolder}/packages/arjuna-e2e-testing/.env"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "arjuna-server - debug integration test file (to launch with test file open)",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "nx",
+        "run",
+        "arjuna-server:jest",
+        "--",
+        "--config",
+        "./jest-integration.config.ts",
+        "${relativeFile}",
+        "--silent=false",
+      ],
+      "cwd": "${workspaceFolder}/packages/arjuna-server",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "env": {
+        "NODE_ENV": "test"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "arjuna-server - debug unit test file (to launch with test file open)",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "nx",
+        "run",
+        "arjuna-server:jest",
+        "--",
+        "--config",
+        "./jest.config.mjs",
+        "${relativeFile}"
+      ],
+      "cwd": "${workspaceFolder}/packages/arjuna-server",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "env": {
+        "NODE_ENV": "test"
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "arjuna-cli",
+  "version": "0.3.0",
+  "description": "[DEPRECATED] Use arjuna-sdk instead: https://www.npmjs.com/package/arjuna-sdk",
+  "scripts": {
+    "build": "echo 'use npx nx build'",
+    "start": "echo 'deprecated'"
+  },
+  "license": "AGPL-3.0"
+}

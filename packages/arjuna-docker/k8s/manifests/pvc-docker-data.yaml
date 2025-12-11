@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: arjunacrm-docker-data-pvc
+  namespace: arjunacrm
+spec:
+  storageClassName: default
+  volumeName: arjunacrm-docker-data-pv
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi

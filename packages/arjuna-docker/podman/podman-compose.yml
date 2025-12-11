@@ -1,0 +1,56 @@
+version: "3.8"
+
+services:
+  db:
+    container_name: arjuna-db
+    image: postgres:16
+    environment:
+      POSTGRES_DB: arjuna
+      POSTGRES_USER: arjuna
+      POSTGRES_PASSWORD: ${PG_DATABASE_PASSWORD}
+    volumes:
+      - arjuna-db-data:/var/lib/postgresql/data:Z
+
+  redis:
+    container_name: arjuna-redis
+    image: redis:latest
+    command: ["--maxmemory-policy", "noeviction"]
+    volumes:
+      - arjuna-redis-data:/data:Z
+
+  server:
+    container_name: arjuna-server
+    image: arjunacrm/arjuna:latest
+    environment:
+      NODE_PORT: "3000"
+      SERVER_URL: ${SERVER_URL}
+      PG_DATABASE_URL: "postgresql://arjuna:${PG_DATABASE_PASSWORD}@arjuna-db:5432/arjuna"
+      REDIS_URL: "redis://arjuna-redis:6379"
+      APP_SECRET: ${APP_SECRET}
+      NODE_ENV: production
+      LOG_LEVEL: info
+    volumes:
+      - arjuna-server-data:/app/docker-data:Z
+    ports:
+      - 127.0.0.1:8080:3000
+
+  worker:
+    container_name: arjuna-worker
+    image: arjunacrm/arjuna:latest
+    command: yarn worker:prod
+    environment:
+      SERVER_URL: ${SERVER_URL}
+      PG_DATABASE_URL: "postgresql://arjuna:${PG_DATABASE_PASSWORD}@arjuna-db:5432/arjuna"
+      REDIS_URL: "redis://arjuna-redis:6379"
+      APP_SECRET: ${APP_SECRET}
+      DISABLE_DB_MIGRATIONS: "true"
+      NODE_ENV: production
+      LOG_LEVEL: info
+    volumes:
+      - arjuna-server-data:/app/docker-data:Z
+    init: true
+
+volumes:
+  arjuna-db-data:
+  arjuna-server-data:
+  arjuna-redis-data:

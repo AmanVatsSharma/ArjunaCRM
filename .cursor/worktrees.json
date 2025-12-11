@@ -1,0 +1,8 @@
+{
+  "setup-worktree": [
+    "nvm use",
+    "yarn",
+    "cp $ROOT_WORKTREE_PATH/packages/arjuna-server/.env packages/arjuna-server/.env || true",
+    "cp $ROOT_WORKTREE_PATH/packages/arjuna-front/.env packages/arjuna-front/.env || true"
+  ]
+}

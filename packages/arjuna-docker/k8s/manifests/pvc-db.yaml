@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: arjunacrm-db-pvc
+  namespace: arjunacrm
+spec:
+  storageClassName: default
+  volumeName: arjunacrm-db-pv
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
