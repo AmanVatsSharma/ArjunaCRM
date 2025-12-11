@@ -1,0 +1,62 @@
+import { InjectRepository } from '@nestjs/typeorm';
+
+import { Command } from 'nest-commander';
+import { Repository } from 'typeorm';
+
+import { ActiveOrSuspendedWorkspacesMigrationCommandRunner } from 'src/database/commands/command-runners/active-or-suspended-workspaces-migration.command-runner';
+import { RunOnWorkspaceArgs } from 'src/database/commands/command-runners/workspaces-migration.command-runner';
+import { ApplicationService } from 'src/engine/core-modules/application/application.service';
+import { WorkspaceEntity } from 'src/engine/core-modules/workspace/workspace.entity';
+import { DataSourceService } from 'src/engine/metadata-modules/data-source/data-source.service';
+import { GlobalWorkspaceOrmManager } from 'src/engine/arjuna-orm/global-workspace-datasource/global-workspace-orm.manager';
+
+// Note: this command needs to be run after CreateWorkspaceCustomApplicationCommand
+@Command({
+  name: 'upgrade:1-12:set-standard-application-not-uninstallable',
+  description: 'Set canBeUninstalled flag to false for standard applications',
+})
+export class SetStandardApplicationNotUninstallableCommand extends ActiveOrSuspendedWorkspacesMigrationCommandRunner {
+  constructor(
+    @InjectRepository(WorkspaceEntity)
+    protected readonly workspaceRepository: Repository<WorkspaceEntity>,
+    protected readonly arjunaORMGlobalManager: GlobalWorkspaceOrmManager,
+    protected readonly dataSourceService: DataSourceService,
+    private readonly applicationService: ApplicationService,
+  ) {
+    super(workspaceRepository, arjunaORMGlobalManager, dataSourceService);
+  }
+
+  override async runOnWorkspace({
+    workspaceId,
+    options,
+  }: RunOnWorkspaceArgs): Promise<void> {
+    try {
+      this.logger.log(
+        `Checking workspace applications for workspace ${workspaceId}`,
+      );
+
+      const { arjunaStandardFlatApplication, workspaceCustomFlatApplication } =
+        await this.applicationService.findWorkspaceArjunaCRMStandardAndCustomApplicationOrThrow(
+          {
+            workspaceId,
+          },
+        );
+
+      if (options.dryRun) {
+        return;
+      }
+
+      for (const existingApplication of [
+        arjunaStandardFlatApplication,
+        workspaceCustomFlatApplication,
+      ]) {
+        await this.applicationService.update(existingApplication.id, {
+          canBeUninstalled: false,
+        });
+      }
+      this.logger.log(`Successfully updated workspace application`);
+    } catch (e) {
+      this.logger.error(`Failed to update workspace application`, e);
+    }
+  }
+}

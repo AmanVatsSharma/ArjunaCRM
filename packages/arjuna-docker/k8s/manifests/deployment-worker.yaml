@@ -42,7 +42,8 @@ spec:
                   name: tokens
                   key: accessToken
           command:
-            - yarn
+            - npm
+            - run
             - worker:prod
           resources:
             requests:

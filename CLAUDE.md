@@ -11,7 +11,7 @@ ArjunaCRM is an open-source CRM built with modern technologies in a monorepo str
 ### Development
 ```bash
 # Start development environment (frontend + backend + worker)
-yarn start
+npm start
 
 # Individual package development
 npx nx start arjuna-front     # Start frontend dev server
@@ -82,7 +82,7 @@ npx nx run arjuna-front:graphql:generate
 ### Tech Stack
 - **Frontend**: React 18, TypeScript, Recoil (state management), Emotion (styling), Vite
 - **Backend**: NestJS, TypeORM, PostgreSQL, Redis, GraphQL (with GraphQL Yoga)
-- **Monorepo**: Nx workspace managed with Yarn 4
+- **Monorepo**: Nx workspace managed with npm
 
 ### Package Structure
 ```

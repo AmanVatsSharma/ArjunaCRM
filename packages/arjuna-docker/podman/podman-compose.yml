@@ -37,7 +37,7 @@ services:
   worker:
     container_name: arjuna-worker
     image: arjunacrm/arjuna:latest
-    command: yarn worker:prod
+    command: npm run worker:prod
     environment:
       SERVER_URL: ${SERVER_URL}
       PG_DATABASE_URL: "postgresql://arjuna:${PG_DATABASE_PASSWORD}@arjuna-db:5432/arjuna"
