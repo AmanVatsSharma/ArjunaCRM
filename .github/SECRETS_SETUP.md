@@ -133,3 +133,4 @@ After setting secrets, verify they're configured:
 - Check security groups allow outbound internet access
 - Ensure subnets are in the same VPC as ECS service
 
+
