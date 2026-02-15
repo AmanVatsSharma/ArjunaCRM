@@ -17,7 +17,7 @@ export { LinkType, SocialLink } from './link/components/SocialLink';
 export { UndecoratedLink } from './link/components/UndecoratedLink';
 export { CAL_LINK } from './link/constants/Cal';
 export { GITHUB_LINK } from './link/constants/GithubLink';
-export { ARJUNA_PRICING_LINK } from './link/constants/ArjunaCRMPricingLink';
+export { ARJUNA_PRICING_LINK } from './link/constants/TwentyPricingLink';
 export type { MenuPickerProps } from './menu/components/MenuPicker';
 export { MenuPicker } from './menu/components/MenuPicker';
 export type {

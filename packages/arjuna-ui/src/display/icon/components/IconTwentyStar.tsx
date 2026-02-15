@@ -1,6 +1,6 @@
 import { useTheme } from '@emotion/react';
 
-import IconArjunaCRMStarRaw from '@assets/icons/arjuna-star.svg?react';
+import IconArjunaCRMStarRaw from '@assets/icons/twenty-star.svg?react';
 import { type IconComponentProps } from '@ui/display/icon/types/IconComponent';
 
 type IconArjunaCRMStarProps = Pick<IconComponentProps, 'size' | 'stroke'>;
