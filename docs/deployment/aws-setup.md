@@ -13,10 +13,10 @@ This guide walks you through setting up ArjunaCRM on AWS infrastructure.
 
 ArjunaCRM requires the following AWS services:
 
-- **ECS/Fargate** - Container hosting for backend API
+- **ECS/Fargate** - Container hosting for backend API and website
 - **RDS PostgreSQL** - Database
 - **ElastiCache Redis** - Caching and session storage
-- **S3** - Static file hosting for frontend, docs, and website
+- **S3** - Static file hosting for frontend and docs
 - **CloudFront** - CDN for static assets
 - **Route53** - DNS management
 - **ACM** - SSL certificates
@@ -68,15 +68,11 @@ aws s3 website s3://arjunacrm-app --index-document index.html --error-document i
 # Docs bucket
 aws s3 mb s3://arjunacrm-docs --region us-east-1
 aws s3 website s3://arjunacrm-docs --index-document index.html --error-document index.html
-
-# Website bucket
-aws s3 mb s3://arjunacrm-website --region us-east-1
-aws s3 website s3://arjunacrm-website --index-document index.html --error-document index.html
 ```
 
 ## Step 4: Set Up CloudFront Distributions
 
-Create CloudFront distributions for each S3 bucket:
+Create CloudFront distributions for frontend and docs buckets:
 
 1. Go to CloudFront console
 2. Create distribution for each bucket
@@ -89,6 +85,7 @@ Create CloudFront distributions for each S3 bucket:
 
 ```bash
 aws ecr create-repository --repository-name arjunacrm/arjuna --region us-east-1
+aws ecr create-repository --repository-name arjunacrm/arjuna-website --region us-east-1
 ```
 
 ## Step 6: Set Up ECS Cluster
@@ -100,7 +97,7 @@ aws ecs create-cluster --cluster-name arjunacrm-cluster --region us-east-1
 ## Step 7: Configure Route53 DNS
 
 Create A records (or CNAME) pointing to:
-- `www.arjunacrm.com` → CloudFront distribution for website
+- `www.arjunacrm.com` → ALB / ECS service for website
 - `app.arjunacrm.com` → CloudFront distribution for frontend
 - `api.arjunacrm.com` → Application Load Balancer (if using ALB) or ECS service
 - `docs.arjunacrm.com` → CloudFront distribution for docs

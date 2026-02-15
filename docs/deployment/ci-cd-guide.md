@@ -16,8 +16,8 @@ ArjunaCRM uses GitHub Actions for continuous integration and deployment. The pip
 
 Runs on every push and pull request:
 
-1. **Lint and Type Check** - Validates code quality
-2. **Test** - Runs unit tests across all packages
+1. **Lint and Type Check** - Available via manual dispatch for focused QA runs
+2. **Test** - Available via manual dispatch for focused QA runs
 3. **Build** - Builds all packages to verify compilation
 
 ### Backend Deployment (`.github/workflows/deploy-backend.yml`)
@@ -57,21 +57,18 @@ Deploys documentation site to S3 + CloudFront:
 3. Invalidates CloudFront cache
 
 **Triggers:**
-- Push to `main` branch
-- Version tags (`v*.*.*`)
 - Manual workflow dispatch
 
 ### Website Deployment (`.github/workflows/deploy-website.yml`)
 
-Deploys marketing website to S3 + CloudFront:
+Deploys marketing website to AWS ECS:
 
-1. Builds Next.js website
-2. Syncs to S3 bucket
-3. Invalidates CloudFront cache
+1. Builds Docker image from `packages/arjuna-docker/arjuna-website-docker/Dockerfile`
+2. Pushes image to ECR
+3. Updates ECS task definition
+4. Deploys to ECS service
 
 **Triggers:**
-- Push to `main` branch
-- Version tags (`v*.*.*`)
 - Manual workflow dispatch
 
 ### Release Workflow (`.github/workflows/release.yml`)
@@ -104,6 +101,10 @@ Configure these secrets in your repository settings:
 - `ECS_CLUSTER` - ECS cluster name
 - `ECS_SERVICE` - ECS service name
 - `ECS_TASK_DEFINITION` - ECS task definition name
+- `ECR_REPOSITORY_WEBSITE` - ECR repository name for website container
+- `ECS_CLUSTER_WEBSITE` - ECS cluster hosting website service
+- `ECS_SERVICE_WEBSITE` - ECS service for website
+- `ECS_TASK_DEFINITION_WEBSITE` - ECS task definition for website
 - `ECS_SUBNETS` - Comma-separated list of subnet IDs for ECS tasks (e.g., `subnet-xxx,subnet-yyy`)
 - `ECS_SECURITY_GROUPS` - Comma-separated list of security group IDs (e.g., `sg-xxx,sg-yyy`)
 - `S3_BUCKET_*` - S3 bucket names for each service
@@ -193,6 +194,6 @@ Each service has a specific build output directory:
 
 - **Frontend** (`arjuna-front`): `packages/arjuna-front/build/`
 - **Documentation** (`arjuna-docs`): `packages/arjuna-docs/.mintlify/` (Mintlify build output)
-- **Website** (`arjuna-website`): `packages/arjuna-website/.next/out/` (Next.js static export)
+- **Website** (`arjuna-website`): Docker image built from `packages/arjuna-docker/arjuna-website-docker/Dockerfile`
 - **Backend** (`arjuna-server`): Docker image built from `packages/arjuna-docker/arjuna/Dockerfile`
 

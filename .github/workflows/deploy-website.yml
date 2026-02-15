@@ -5,8 +5,10 @@ on:
 
 env:
   AWS_REGION: us-east-1
-  S3_BUCKET: arjunacrm-website
-  CLOUDFRONT_DISTRIBUTION_ID: EABCDEF123456789
+  ECR_REPOSITORY: ${{ vars.ECR_REPOSITORY_WEBSITE || 'arjunacrm/arjuna-website' }}
+  ECS_SERVICE: ${{ vars.ECS_SERVICE_WEBSITE || 'arjunacrm-website' }}
+  ECS_CLUSTER: ${{ vars.ECS_CLUSTER_WEBSITE || 'arjunacrm-cluster' }}
+  ECS_TASK_DEFINITION: ${{ vars.ECS_TASK_DEFINITION_WEBSITE || 'arjunacrm-website-task' }}
 
 jobs:
   build-and-deploy:
@@ -18,17 +20,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install dependencies
-        uses: ./.github/workflows/actions/yarn-install
-        with:
-          node-version: '24'
-
-      - name: Build website
-        env:
-          NEXT_PUBLIC_APP_URL: https://www.arjunacrm.com
-        run: |
-          npx nx build arjuna-website
-
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -36,33 +27,52 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
-      - name: Deploy to S3
-        run: |
-          set -e
-          aws s3 sync \
-            packages/arjuna-website/.next/out/ \
-            s3://${{ env.S3_BUCKET }}/ \
-            --delete \
-            --cache-control "public, max-age=31536000, immutable" \
-            --exclude "*.html"
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
 
-      - name: Deploy HTML files with no cache
-        run: |
-          set -e
-          aws s3 sync \
-            packages/arjuna-website/.next/out/ \
-            s3://${{ env.S3_BUCKET }}/ \
-            --delete \
-            --cache-control "no-cache, no-store, must-revalidate" \
-            --exclude "*" \
-            --include "*.html"
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
-      - name: Invalidate CloudFront cache
+      - name: Build, tag, and push image to Amazon ECR
+        id: build-image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: ${{ github.sha }}
         run: |
           set -e
-          aws cloudfront create-invalidation \
-            --distribution-id ${{ env.CLOUDFRONT_DISTRIBUTION_ID }} \
-            --paths "/*" || echo "Warning: CloudFront invalidation failed, but deployment succeeded"
+          docker build \
+            -f packages/arjuna-docker/arjuna-website-docker/Dockerfile \
+            -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG \
+            -t $ECR_REGISTRY/$ECR_REPOSITORY:latest \
+            .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
+          echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT
+
+      - name: Download task definition
+        run: |
+          set -e
+          aws ecs describe-task-definition \
+            --task-definition ${{ env.ECS_TASK_DEFINITION }} \
+            --query taskDefinition > task-definition.json || \
+          echo '{"family":"arjunacrm-website-task","containerDefinitions":[{"name":"arjunacrm-website","image":"","essential":true}]}' > task-definition.json
+
+      - name: Fill in the new image ID in the Amazon ECS task definition
+        id: task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: task-definition.json
+          container-name: arjunacrm-website
+          image: ${{ steps.build-image.outputs.image }}
+
+      - name: Deploy Amazon ECS task definition
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.task-def.outputs.task-definition }}
+          service: ${{ env.ECS_SERVICE }}
+          cluster: ${{ env.ECS_CLUSTER }}
+          wait-for-service-stability: true
 
       - name: Notify deployment status
         if: always()

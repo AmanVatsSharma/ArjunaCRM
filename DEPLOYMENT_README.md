@@ -9,7 +9,7 @@ This document provides a quick reference for deploying ArjunaCRM v1.0 to product
 ### 1. Prerequisites
 
 - Node.js 24.x
-- npm 10.x or higher
+- Yarn 4.x (via Corepack)
 - AWS account with appropriate permissions
 - Domain name configured
 
@@ -17,14 +17,14 @@ This document provides a quick reference for deploying ArjunaCRM v1.0 to product
 
 ```bash
 # Install dependencies
-npm install
+yarn install --immutable
 
 # Copy environment files
 cp packages/arjuna-server/.env.example packages/arjuna-server/.env
 cp packages/arjuna-front/.env.example packages/arjuna-front/.env
 
 # Start development servers
-npm start
+yarn start
 ```
 
 ### 3. AWS Infrastructure Setup
@@ -33,9 +33,9 @@ Follow the detailed guide in [docs/deployment/aws-setup.md](docs/deployment/aws-
 
 - RDS PostgreSQL database
 - ElastiCache Redis
-- ECS cluster for backend
-- S3 buckets for static sites
-- CloudFront distributions
+- ECS cluster for backend and website
+- S3 buckets for static frontend/docs
+- CloudFront distributions for static assets
 - Route53 DNS records
 
 ### 4. Configure GitHub Secrets
@@ -68,11 +68,10 @@ Or manually trigger deployments from GitHub Actions.
 
 ```bash
 # Development
-npm start                    # Start all services
-npm run build                # Build all packages
-npm test                     # Run all tests
-npm run lint                 # Lint all packages
-npm run typecheck            # Type check all packages
+yarn start                    # Start all services
+yarn nx run-many --target=build --projects=arjuna-front,arjuna-server,arjuna-ui,arjuna-shared,arjuna-emails,arjuna-website --parallel=3
+yarn nx run-many --target=test --projects=arjuna-front,arjuna-server,arjuna-ui,arjuna-shared,arjuna-emails --parallel=3
+yarn nx run-many --target=lint --projects=arjuna-front,arjuna-server,arjuna-ui,arjuna-shared,arjuna-emails,arjuna-website --parallel=3
 
 # Backend
 npx nx start arjuna-server   # Start backend server
@@ -92,22 +91,13 @@ npx nx run arjuna-server:database:migrate:prod  # Run migrations
 - [CI/CD Guide](docs/deployment/ci-cd-guide.md) - GitHub Actions pipeline documentation
 - [Environment Variables](docs/deployment/environment-variables.md) - Complete environment variable reference
 
-## Migration from Yarn
-
-This project has been migrated from Yarn to npm. All commands now use `npm` instead of `yarn`:
-
-- `yarn install` → `npm install`
-- `yarn start` → `npm start`
-- `yarn build` → `npm run build`
-- `yarn test` → `npm test`
-
 ## Troubleshooting
 
 ### Build Failures
 
 - Ensure Node.js version is 24.x
-- Clear node_modules and reinstall: `rm -rf node_modules package-lock.json && npm install`
-- Check for TypeScript errors: `npm run typecheck`
+- Clear node_modules and reinstall: `rm -rf node_modules && yarn install --immutable`
+- Check for TypeScript errors: `yarn nx run-many --target=typecheck --projects=arjuna-front,arjuna-server,arjuna-ui,arjuna-shared,arjuna-emails,arjuna-website --parallel=3`
 
 ### Deployment Failures
 

@@ -3,13 +3,16 @@ FROM node:24-alpine AS arjuna-website-build
 
 WORKDIR /app
 
-COPY ./package.json ./package-lock.json /app/
+COPY ./package.json ./yarn.lock /app/
+COPY ./.yarnrc.yml /app/.yarnrc.yml
+COPY ./.yarn/releases /app/.yarn/releases
+COPY ./.yarn/patches /app/.yarn/patches
 COPY ./tools/eslint-rules /app/tools/eslint-rules
 COPY ./packages/arjuna-ui/package.json /app/packages/arjuna-ui/
 COPY ./packages/arjuna-shared/package.json /app/packages/arjuna-shared/
 COPY ./packages/arjuna-website/package.json /app/packages/arjuna-website/package.json
 
-RUN npm ci
+RUN corepack enable && yarn install --immutable
 
 ENV KEYSTATIC_GITHUB_CLIENT_ID="<fake build value>"
 ENV KEYSTATIC_GITHUB_CLIENT_SECRET="<fake build value>"
@@ -36,4 +39,4 @@ RUN chown -R 1000 /app
 # Use non root user with uid 1000
 USER 1000
 
-CMD ["/bin/sh", "-c", "npx nx start"]
+CMD ["/bin/sh", "-c", "npx nx run arjuna-website:start"]
