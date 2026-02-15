@@ -42,25 +42,8 @@ jobs:
           token: ${{ github.token }}
           ref: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref }}
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'yarn'
-          cache-dependency-path: 'yarn.lock'
-
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'yarn'
-          cache-dependency-path: 'yarn.lock'
-
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        uses: ./.github/workflows/actions/yarn-install
 
       - name: Setup i18n branch
         if: github.event_name != 'pull_request'
@@ -71,7 +54,7 @@ jobs:
       - name: Configure git
         run: |
           git config --global user.name 'github-actions'
-          git config --global user.email 'github-actions@arjuna.com'
+          git config --global user.email 'github-actions@vedpragya.com'
 
       - name: Stash any changes before pulling translations
         if: github.event_name != 'pull_request'
@@ -154,4 +137,3 @@ jobs:
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-

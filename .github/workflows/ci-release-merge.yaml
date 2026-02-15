@@ -1,4 +1,4 @@
-name: "Release: on merge"
+name: 'Release: on merge'
 
 permissions:
   contents: write
@@ -51,7 +51,7 @@ jobs:
         run: |
           set -euo pipefail
           git config --global user.name 'Github Action Deploy'
-          git config --global user.email 'github-action-deploy@arjuna.com'
+          git config --global user.email 'github-action-deploy@vedpragya.com'
           git tag "v${{ env.VERSION }}"
           git push origin "v${{ env.VERSION }}"
 

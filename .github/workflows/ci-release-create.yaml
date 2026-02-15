@@ -1,4 +1,4 @@
-name: "Release: create"
+name: 'Release: create'
 
 permissions:
   contents: read
@@ -50,9 +50,9 @@ jobs:
         uses: peter-evans/create-pull-request@v6
         with:
           branch: release/${{ steps.sanitize.outputs.version }}
-          commit-message: "chore: release v${{ steps.sanitize.outputs.version }}"
-          committer: Github Action Deploy <github-action-deploy@arjuna.com>
-          author: Github Action Deploy <github-action-deploy@arjuna.com>
+          commit-message: 'chore: release v${{ steps.sanitize.outputs.version }}'
+          committer: Github Action Deploy <github-action-deploy@vedpragya.com>
+          author: Github Action Deploy <github-action-deploy@vedpragya.com>
           title: Release v${{ steps.sanitize.outputs.version }}
           labels: |
             release
