@@ -113,8 +113,8 @@ Configure the following secrets in your GitHub repository:
 
 ### ECS Deployment Secrets
 
-- `ECS_SUBNETS` - Comma-separated subnet IDs for ECS tasks (e.g., `subnet-abc123,subnet-def456`)
-- `ECS_SECURITY_GROUPS` - Comma-separated security group IDs (e.g., `sg-abc123,sg-def456`)
+- `ECS_SUBNETS` - ECS subnet IDs as comma-separated string or JSON array (e.g., `subnet-abc123,subnet-def456` or `["subnet-abc123","subnet-def456"]`)
+- `ECS_SECURITY_GROUPS` - ECS security groups as comma-separated string or JSON array (e.g., `sg-abc123,sg-def456` or `["sg-abc123","sg-def456"]`)
 
 **Note**: These are required for database migrations and ECS task execution. Get subnet IDs from your VPC and security group IDs from your ECS service configuration.
 

@@ -107,8 +107,8 @@ Configure these secrets in your repository settings:
 
 ### Environment-Specific
 
-- `ECS_SUBNETS` - Comma-separated list of subnet IDs for ECS tasks (e.g., `subnet-xxx,subnet-yyy`)
-- `ECS_SECURITY_GROUPS` - Comma-separated list of security group IDs (e.g., `sg-xxx,sg-yyy`)
+- `ECS_SUBNETS` - ECS subnet IDs as comma-separated string or JSON array (e.g., `subnet-xxx,subnet-yyy` or `["subnet-xxx","subnet-yyy"]`)
+- `ECS_SECURITY_GROUPS` - ECS security groups as comma-separated string or JSON array (e.g., `sg-xxx,sg-yyy` or `["sg-xxx","sg-yyy"]`)
 
 ### Repository Variables (GitHub Actions → Variables)
 

@@ -101,12 +101,37 @@ jobs:
             exit 1
           fi
 
+          normalize_to_json_array() {
+            local raw_value="$1"
+
+            if printf '%s' "$raw_value" | jq -e 'type == "array"' > /dev/null 2>&1; then
+              printf '%s' "$raw_value" | jq -c 'map(tostring | gsub("^\\s+|\\s+$"; "")) | map(select(length > 0))'
+              return
+            fi
+
+            printf '%s\n' "$raw_value" \
+              | tr ',' '\n' \
+              | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' \
+              | sed '/^$/d' \
+              | jq -R . \
+              | jq -s .
+          }
+
           SUBNETS="$ECS_SUBNETS"
           SECURITY_GROUPS="$ECS_SECURITY_GROUPS"
 
-          # Convert comma-separated to JSON array format
-          SUBNET_ARRAY=$(echo "$SUBNETS" | sed 's/,/","/g' | sed 's/^/["/' | sed 's/$/"]/')
-          SG_ARRAY=$(echo "$SECURITY_GROUPS" | sed 's/,/","/g' | sed 's/^/["/' | sed 's/$/"]/')
+          SUBNET_ARRAY=$(normalize_to_json_array "$SUBNETS")
+          SG_ARRAY=$(normalize_to_json_array "$SECURITY_GROUPS")
+
+          if [ "$(echo "$SUBNET_ARRAY" | jq 'length')" -eq 0 ]; then
+            echo "::error::ECS_SUBNETS must resolve to at least one subnet"
+            exit 1
+          fi
+
+          if [ "$(echo "$SG_ARRAY" | jq 'length')" -eq 0 ]; then
+            echo "::error::ECS_SECURITY_GROUPS must resolve to at least one security group"
+            exit 1
+          fi
 
           NETWORK_CONFIG="{\"awsvpcConfiguration\":{\"subnets\":$SUBNET_ARRAY,\"securityGroups\":$SG_ARRAY,\"assignPublicIp\":\"ENABLED\"}}"
 
