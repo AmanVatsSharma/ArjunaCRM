@@ -126,6 +126,7 @@ Configure these secrets in your repository settings:
 - `ECS_CLUSTER_WEBSITE` - ECS cluster hosting website service
 - `ECS_SERVICE_WEBSITE` - ECS service for website
 - `ECS_TASK_DEFINITION_WEBSITE` - ECS task definition for website
+- `ECS_CONTAINER_NAME_WEBSITE` - website container name inside ECS task definition
 
 ## Deployment Process
 

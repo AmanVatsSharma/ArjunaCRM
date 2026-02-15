@@ -9,6 +9,7 @@ env:
   ECS_SERVICE: ${{ vars.ECS_SERVICE_WEBSITE || 'arjunacrm-website' }}
   ECS_CLUSTER: ${{ vars.ECS_CLUSTER_WEBSITE || 'arjunacrm-cluster' }}
   ECS_TASK_DEFINITION: ${{ vars.ECS_TASK_DEFINITION_WEBSITE || 'arjunacrm-website-task' }}
+  ECS_CONTAINER_NAME: ${{ vars.ECS_CONTAINER_NAME_WEBSITE || 'arjunacrm-website' }}
   WEBSITE_PUBLIC_URL: ${{ vars.WEBSITE_PUBLIC_URL || 'https://www.vedpragya.com' }}
 
 jobs:
@@ -24,7 +25,7 @@ jobs:
       - name: Validate deployment variables
         run: |
           set -e
-          if [ -z "${{ env.ECR_REPOSITORY }}" ] || [ -z "${{ env.ECS_SERVICE }}" ] || [ -z "${{ env.ECS_CLUSTER }}" ] || [ -z "${{ env.ECS_TASK_DEFINITION }}" ]; then
+          if [ -z "${{ env.ECR_REPOSITORY }}" ] || [ -z "${{ env.ECS_SERVICE }}" ] || [ -z "${{ env.ECS_CLUSTER }}" ] || [ -z "${{ env.ECS_TASK_DEFINITION }}" ] || [ -z "${{ env.ECS_CONTAINER_NAME }}" ]; then
             echo "::error::Missing required website deployment variables"
             exit 1
           fi
@@ -65,14 +66,14 @@ jobs:
           aws ecs describe-task-definition \
             --task-definition ${{ env.ECS_TASK_DEFINITION }} \
             --query taskDefinition > task-definition.json || \
-          echo '{"family":"arjunacrm-website-task","containerDefinitions":[{"name":"arjunacrm-website","image":"","essential":true}]}' > task-definition.json
+          echo '{"family":"${{ env.ECS_TASK_DEFINITION }}","containerDefinitions":[{"name":"${{ env.ECS_CONTAINER_NAME }}","image":"","essential":true}]}' > task-definition.json
 
       - name: Fill in the new image ID in the Amazon ECS task definition
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: task-definition.json
-          container-name: arjunacrm-website
+          container-name: ${{ env.ECS_CONTAINER_NAME }}
           image: ${{ steps.build-image.outputs.image }}
 
       - name: Deploy Amazon ECS task definition
