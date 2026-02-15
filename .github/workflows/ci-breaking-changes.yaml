@@ -262,7 +262,9 @@ jobs:
           rm -rf node_modules packages/*/node_modules packages/*/dist dist .nx/cache
 
       - name: Install dependencies for main branch
-        uses: ./.github/workflows/actions/yarn-install
+        run: |
+          yarn config set enableHardenedMode false
+          yarn install
 
       - name: Build main branch dependencies
         run: |

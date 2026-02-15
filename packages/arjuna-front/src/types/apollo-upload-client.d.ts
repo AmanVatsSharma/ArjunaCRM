@@ -11,7 +11,5 @@ declare module 'apollo-upload-client' {
     ) => void;
   };
 
-  export const createUploadLink: (
-    options?: UploadLinkOptions,
-  ) => ApolloLink;
+  export const createUploadLink: (options?: UploadLinkOptions) => ApolloLink;
 }
