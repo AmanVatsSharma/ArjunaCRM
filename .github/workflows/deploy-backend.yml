@@ -13,6 +13,7 @@ env:
   ECS_SERVICE: ${{ vars.ECS_SERVICE_BACKEND || 'arjunacrm-server' }}
   ECS_CLUSTER: ${{ vars.ECS_CLUSTER_BACKEND || 'arjunacrm-cluster' }}
   ECS_TASK_DEFINITION: ${{ vars.ECS_TASK_DEFINITION_BACKEND || 'arjunacrm-server-task' }}
+  ECS_CONTAINER_NAME: ${{ vars.ECS_CONTAINER_NAME_BACKEND || 'arjunacrm' }}
   BACKEND_PUBLIC_URL: ${{ vars.BACKEND_PUBLIC_URL || 'https://api.vedpragya.com' }}
 
 jobs:
@@ -28,7 +29,7 @@ jobs:
       - name: Validate deployment variables
         run: |
           set -e
-          if [ -z "${{ env.ECR_REPOSITORY }}" ] || [ -z "${{ env.ECS_SERVICE }}" ] || [ -z "${{ env.ECS_CLUSTER }}" ] || [ -z "${{ env.ECS_TASK_DEFINITION }}" ]; then
+          if [ -z "${{ env.ECR_REPOSITORY }}" ] || [ -z "${{ env.ECS_SERVICE }}" ] || [ -z "${{ env.ECS_CLUSTER }}" ] || [ -z "${{ env.ECS_TASK_DEFINITION }}" ] || [ -z "${{ env.ECS_CONTAINER_NAME }}" ]; then
             echo "::error::Missing required backend deployment variables"
             exit 1
           fi
@@ -76,7 +77,7 @@ jobs:
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: task-definition.json
-          container-name: arjunacrm
+          container-name: ${{ env.ECS_CONTAINER_NAME }}
           image: ${{ steps.build-image.outputs.image }}
 
       - name: Deploy Amazon ECS task definition
@@ -112,7 +113,7 @@ jobs:
             --task-definition ${{ env.ECS_TASK_DEFINITION }} \
             --launch-type FARGATE \
             --network-configuration "$NETWORK_CONFIG" \
-            --overrides '{"containerOverrides":[{"name":"arjunacrm","command":["npm","run","database:migrate:prod"]}]}' \
+            --overrides '{"containerOverrides":[{"name":"${{ env.ECS_CONTAINER_NAME }}","command":["npm","run","database:migrate:prod"]}]}' \
             --query 'tasks[0].taskArn' \
             --output text)
 
@@ -127,7 +128,7 @@ jobs:
           EXIT_CODE=$(aws ecs describe-tasks \
             --cluster ${{ env.ECS_CLUSTER }} \
             --tasks "$TASK_ARN" \
-            --query 'tasks[0].containers[?name==`arjunacrm`].exitCode | [0]' \
+            --query 'tasks[0].containers[?name==`${{ env.ECS_CONTAINER_NAME }}`].exitCode | [0]' \
             --output text)
 
           STOP_REASON=$(aws ecs describe-tasks \

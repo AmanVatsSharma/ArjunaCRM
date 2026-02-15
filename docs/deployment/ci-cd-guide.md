@@ -115,6 +115,7 @@ Configure these secrets in your repository settings:
 - `ECS_CLUSTER_BACKEND` - ECS cluster hosting backend service
 - `ECS_SERVICE_BACKEND` - ECS service for backend
 - `ECS_TASK_DEFINITION_BACKEND` - ECS task definition name for backend
+- `ECS_CONTAINER_NAME_BACKEND` - backend container name inside ECS task definition
 - `FRONTEND_API_BASE_URL` - API base URL injected into frontend build
 - `FRONTEND_PUBLIC_URL` - Public frontend URL
 - `S3_BUCKET_FRONTEND` - S3 bucket used for frontend deployment
