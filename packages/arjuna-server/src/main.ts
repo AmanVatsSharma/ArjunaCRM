@@ -10,6 +10,7 @@ import graphqlUploadExpress from 'graphql-upload/graphqlUploadExpress.mjs';
 
 import { NodeEnvironment } from 'src/engine/core-modules/arjuna-config/interfaces/node-environment.interface';
 
+import { setPgDateTypeParser } from 'src/database/pg/set-pg-date-type-parser';
 import { LoggerService } from 'src/engine/core-modules/logger/logger.service';
 import { getSessionStorageOptions } from 'src/engine/core-modules/session-storage/session-storage.module-factory';
 import { ArjunaCRMConfigService } from 'src/engine/core-modules/arjuna-config/arjuna-config.service';
@@ -76,6 +77,8 @@ const buildCorsAllowList = (
 };
 
 const bootstrap = async () => {
+  setPgDateTypeParser();
+
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     cors: false,
     bufferLogs: process.env.LOGGER_IS_BUFFER_ENABLED === 'true',
