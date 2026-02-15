@@ -51,7 +51,7 @@ jobs:
     if: needs.changed-files-check.outputs.any_changed == 'true'
     services:
       postgres:
-        image: arjunacrm/arjuna-postgres-spilo
+        image: twentycrm/twenty-postgres-spilo
         env:
           PGUSER_SUPERUSER: postgres
           PGPASSWORD_SUPERUSER: postgres

@@ -1,7 +1,7 @@
 name: GraphQL and OpenAPI Breaking Changes Detection
 
 on:
- pull_request:
+  pull_request:
     types: [opened, synchronize, edited]
     branches:
       - main
@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: arjunacrm/arjuna-postgres-spilo
+        image: twentycrm/twenty-postgres-spilo
         env:
           PGUSER_SUPERUSER: postgres
           PGPASSWORD_SUPERUSER: postgres
@@ -58,7 +58,7 @@ jobs:
         image: clickhouse/clickhouse-server:25.8.8
         env:
           CLICKHOUSE_PASSWORD: clickhousePassword
-          CLICKHOUSE_URL: "http://default:clickhousePassword@localhost:8123/arjuna"
+          CLICKHOUSE_URL: 'http://default:clickhousePassword@localhost:8123/arjuna'
         ports:
           - 8123:8123
           - 9000:9000
@@ -78,12 +78,12 @@ jobs:
         id: merge_attempt
         run: |
           echo "Attempting to merge main into current branch..."
-          
+
           git fetch origin main
-          
+
           CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
           echo "Current branch: $CURRENT_BRANCH"
-          
+
           if git merge origin/main --no-edit; then
             echo "✅ Successfully merged main into current branch"
             echo "merged=true" >> $GITHUB_OUTPUT
@@ -137,13 +137,13 @@ jobs:
               echo "${var_name}=${var_value}" >> "$env_file"
             fi
           }
-          
+
           set_env_var "PG_DATABASE_URL" "postgres://postgres:postgres@localhost:5432/current_branch"
           set_env_var "NODE_PORT" "${{ env.CURRENT_SERVER_PORT }}"
           set_env_var "REDIS_URL" "redis://localhost:6379"
           set_env_var "CLICKHOUSE_URL" "http://default:clickhousePassword@localhost:8123/arjuna"
           set_env_var "CLICKHOUSE_PASSWORD" "clickhousePassword"
-          
+
           npx nx run arjuna-server:database:init:prod
           npx nx run arjuna-server:database:migrate:prod
 
@@ -166,7 +166,7 @@ jobs:
           timeout=300
           interval=5
           elapsed=0
-          
+
           while [ $elapsed -lt $timeout ]; do
             if curl -s "http://localhost:${{ env.CURRENT_SERVER_PORT }}/graphql" > /dev/null 2>&1 && \
                curl -s "http://localhost:${{ env.CURRENT_SERVER_PORT }}/rest/open-api/core" > /dev/null 2>&1; then
@@ -178,7 +178,7 @@ jobs:
             sleep $interval
             elapsed=$((elapsed + interval))
           done
-          
+
           if [ $elapsed -ge $timeout ]; then
             echo "Timeout waiting for current branch server to start"
             echo "Current server log:"
@@ -190,13 +190,13 @@ jobs:
         run: |
           # Admin token from jest-integration.config.ts
           ADMIN_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyMDIwMjAyMC05ZTNiLTQ2ZDQtYTU1Ni04OGI5ZGRjMmIwMzQiLCJ3b3Jrc3BhY2VJZCI6IjIwMjAyMDIwLTFjMjUtNGQwMi1iZjI1LTZhZWNjZjdlYTQxOSIsIndvcmtzcGFjZU1lbWJlcklkIjoiMjAyMDIwMjAtMDY4Ny00YzQxLWI3MDctZWQxYmZjYTk3MmE3IiwidXNlcldvcmtzcGFjZUlkIjoiMjAyMDIwMjAtOWUzYi00NmQ0LWE1NTYtODhiOWRkYzJiMDM1IiwiaWF0IjoxNzM5NTQ3NjYxLCJleHAiOjMzMjk3MTQ3NjYxfQ.fbOM9yhr3jWDicPZ1n771usUURiPGmNdeFApsgrbxOw"
-          
+
           # Load introspection query from file
           INTROSPECTION_QUERY=$(cat packages/arjuna-utils/graphql-introspection-query.graphql)
-          
+
           # Prepare the query payload
           QUERY_PAYLOAD=$(echo "$INTROSPECTION_QUERY" | tr '\n' ' ' | sed 's/"/\\"/g')
-          
+
           echo "Downloading GraphQL schema from current server..."
           curl -X POST "http://localhost:${{ env.CURRENT_SERVER_PORT }}/graphql" \
             -H "Content-Type: application/json" \
@@ -205,7 +205,7 @@ jobs:
             -o current-schema-introspection.json \
             -w "HTTP Status: %{http_code}\n" \
             -s
-          
+
           echo "Downloading GraphQL metadata schema from current server..."
           curl -X POST "http://localhost:${{ env.CURRENT_SERVER_PORT }}/metadata" \
             -H "Content-Type: application/json" \
@@ -214,32 +214,31 @@ jobs:
             -o current-metadata-schema-introspection.json \
             -w "HTTP Status: %{http_code}\n" \
             -s
-          
+
           # Download current branch OpenAPI specs
           echo "Downloading OpenAPI specifications from current server..."
           curl -s "http://localhost:${{ env.CURRENT_SERVER_PORT }}/rest/open-api/core" \
             -H "Authorization: Bearer ${ADMIN_TOKEN}" \
             -o current-rest-api.json \
             -w "HTTP Status: %{http_code}\n"
-          
+
           curl -s "http://localhost:${{ env.CURRENT_SERVER_PORT }}/rest/open-api/metadata" \
             -H "Authorization: Bearer ${ADMIN_TOKEN}" \
             -o current-rest-metadata-api.json \
             -w "HTTP Status: %{http_code}\n"
-          
+
           # Verify the downloads
           echo "Current branch files downloaded:"
           ls -la current-*
-          
 
       - name: Preserve current branch files
         run: |
           # Create a temp directory to store current branch files
           mkdir -p /tmp/current-branch-files
-          
+
           # Move current branch files to temp directory
           mv current-* /tmp/current-branch-files/ 2>/dev/null || echo "No current-* files to preserve"
-          
+
           echo "Preserved current branch files for later restoration"
 
       - name: Stop current branch server
@@ -290,13 +289,13 @@ jobs:
               echo "${var_name}=${var_value}" >> "$env_file"
             fi
           }
-          
+
           set_env_var "PG_DATABASE_URL" "postgres://postgres:postgres@localhost:5432/main_branch"
           set_env_var "NODE_PORT" "${{ env.MAIN_SERVER_PORT }}"
           set_env_var "REDIS_URL" "redis://localhost:6379"
           set_env_var "CLICKHOUSE_URL" "http://default:clickhousePassword@localhost:8123/arjuna"
           set_env_var "CLICKHOUSE_PASSWORD" "clickhousePassword"
-          
+
           npx nx run arjuna-server:database:init:prod
           npx nx run arjuna-server:database:migrate:prod
 
@@ -319,7 +318,7 @@ jobs:
           timeout=300
           interval=5
           elapsed=0
-          
+
           while [ $elapsed -lt $timeout ]; do
             if curl -s "http://localhost:${{ env.MAIN_SERVER_PORT }}/graphql" > /dev/null 2>&1 && \
                curl -s "http://localhost:${{ env.MAIN_SERVER_PORT }}/rest/open-api/core" > /dev/null 2>&1; then
@@ -331,7 +330,7 @@ jobs:
             sleep $interval
             elapsed=$((elapsed + interval))
           done
-          
+
           if [ $elapsed -ge $timeout ]; then
             echo "Timeout waiting for main branch server to start"
             echo "Main server log:"
@@ -343,13 +342,13 @@ jobs:
         run: |
           # Admin token from jest-integration.config.ts
           ADMIN_TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIyMDIwMjAyMC05ZTNiLTQ2ZDQtYTU1Ni04OGI5ZGRjMmIwMzQiLCJ3b3Jrc3BhY2VJZCI6IjIwMjAyMDIwLTFjMjUtNGQwMi1iZjI1LTZhZWNjZjdlYTQxOSIsIndvcmtzcGFjZU1lbWJlcklkIjoiMjAyMDIwMjAtMDY4Ny00YzQxLWI3MDctZWQxYmZjYTk3MmE3IiwidXNlcldvcmtzcGFjZUlkIjoiMjAyMDIwMjAtOWUzYi00NmQ0LWE1NTYtODhiOWRkYzJiMDM1IiwiaWF0IjoxNzM5NTQ3NjYxLCJleHAiOjMzMjk3MTQ3NjYxfQ.fbOM9yhr3jWDicPZ1n771usUURiPGmNdeFApsgrbxOw"
-          
+
           # Load introspection query from file
           INTROSPECTION_QUERY=$(cat packages/arjuna-utils/graphql-introspection-query.graphql)
-          
+
           # Prepare the query payload
           QUERY_PAYLOAD=$(echo "$INTROSPECTION_QUERY" | tr '\n' ' ' | sed 's/"/\\"/g')
-          
+
           echo "Downloading GraphQL schema from main server..."
           curl -X POST "http://localhost:${{ env.MAIN_SERVER_PORT }}/graphql" \
             -H "Content-Type: application/json" \
@@ -358,7 +357,7 @@ jobs:
             -o main-schema-introspection.json \
             -w "HTTP Status: %{http_code}\n" \
             -s
-          
+
           echo "Downloading GraphQL metadata schema from main server..."
           curl -X POST "http://localhost:${{ env.MAIN_SERVER_PORT }}/metadata" \
             -H "Content-Type: application/json" \
@@ -367,33 +366,32 @@ jobs:
             -o main-metadata-schema-introspection.json \
             -w "HTTP Status: %{http_code}\n" \
             -s
-          
+
           # Download main branch OpenAPI specs
           echo "Downloading OpenAPI specifications from main server..."
           curl -s "http://localhost:${{ env.MAIN_SERVER_PORT }}/rest/open-api/core" \
             -H "Authorization: Bearer ${ADMIN_TOKEN}" \
             -o main-rest-api.json \
             -w "HTTP Status: %{http_code}\n"
-          
+
           curl -s "http://localhost:${{ env.MAIN_SERVER_PORT }}/rest/open-api/metadata" \
             -H "Authorization: Bearer ${ADMIN_TOKEN}" \
             -o main-rest-metadata-api.json \
             -w "HTTP Status: %{http_code}\n"
-          
+
           # Verify the downloads
           echo "Main branch files downloaded:"
           ls -la main-*
-          
 
       - name: Restore current branch files
         run: |
           # Move current branch files back to working directory
           mv /tmp/current-branch-files/* . 2>/dev/null || echo "No files to restore"
-          
+
           # Verify all files are present
           echo "All API files restored:"
           ls -la current-* main-* 2>/dev/null || echo "Some files may be missing"
-          
+
           # Clean up temp directory
           rm -rf /tmp/current-branch-files
 
@@ -406,9 +404,9 @@ jobs:
         run: |
           echo "=== INSTALLING GRAPHQL INSPECTOR CLI ==="
           npm install -g @graphql-inspector/cli
-          
+
           echo "=== GENERATING GRAPHQL DIFF REPORTS ==="
-          
+
           # Check if GraphQL schema has changes
           echo "Checking GraphQL schema for changes..."
           if graphql-inspector diff main-schema-introspection.json current-schema-introspection.json >/dev/null 2>&1; then
@@ -426,7 +424,7 @@ jobs:
               echo "\`\`\`" >> graphql-schema-diff.md
             }
           fi
-          
+
           # Check if GraphQL metadata schema has changes
           echo "Checking GraphQL metadata schema for changes..."
           if graphql-inspector diff main-metadata-schema-introspection.json current-metadata-schema-introspection.json >/dev/null 2>&1; then
@@ -444,7 +442,7 @@ jobs:
               echo "\`\`\`" >> graphql-metadata-diff.md
             }
           fi
-          
+
           # Show summary
           echo "Generated diff files:"
           ls -la *-diff.md 2>/dev/null || echo "No diff files generated (no changes detected)"
@@ -452,12 +450,12 @@ jobs:
       - name: Check REST API Breaking Changes
         run: |
           echo "=== CHECKING REST API FOR BREAKING CHANGES ==="
-          
+
           # Use the Java-based openapi-diff via Docker
           docker run --rm -v "$(pwd):/specs" openapitools/openapi-diff:latest \
             --json /specs/rest-api-diff.json \
             /specs/main-rest-api.json /specs/current-rest-api.json || echo "OpenAPI diff completed with exit code $?"
-          
+
           # Check if the output file was created and is valid JSON
           if [ -f "rest-api-diff.json" ] && jq empty rest-api-diff.json 2>/dev/null; then
             # Check for breaking changes using Java openapi-diff JSON structure
@@ -520,12 +518,12 @@ jobs:
       - name: Check REST Metadata API Breaking Changes
         run: |
           echo "=== CHECKING REST METADATA API FOR BREAKING CHANGES ==="
-          
+
           # Use the Java-based openapi-diff for metadata API as well
           docker run --rm -v "$(pwd):/specs" openapitools/openapi-diff:latest \
             --json /specs/rest-metadata-api-diff.json \
             /specs/main-rest-metadata-api.json /specs/current-rest-metadata-api.json || echo "OpenAPI diff completed with exit code $?"
-          
+
           # Check if the output file was created and is valid JSON
           if [ -f "rest-metadata-api-diff.json" ] && jq empty rest-metadata-api-diff.json 2>/dev/null; then
             # Check for breaking changes using Java openapi-diff JSON structure
@@ -592,7 +590,7 @@ jobs:
             const fs = require('fs');
             let hasChanges = false;
             let comment = '';
-            
+
             try {
               if (fs.existsSync('graphql-schema-diff.md')) {
                 const graphqlDiff = fs.readFileSync('graphql-schema-diff.md', 'utf8');
@@ -783,4 +781,3 @@ jobs:
             *-schema-introspection.json  
             *-diff.md
             *-diff.json
-
