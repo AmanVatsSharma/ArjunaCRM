@@ -73,7 +73,11 @@ const buildCorsAllowList = (
       : [];
 
   return Array.from(
-    new Set([...knownOrigins, ...configuredOrigins, ...localDevelopmentOrigins]),
+    new Set([
+      ...knownOrigins,
+      ...configuredOrigins,
+      ...localDevelopmentOrigins,
+    ]),
   );
 };
 
@@ -85,10 +89,7 @@ const applySecurityHeaders = (
   app.use((_request: Request, response: Response, next: NextFunction) => {
     response.setHeader('X-Content-Type-Options', 'nosniff');
     response.setHeader('X-Frame-Options', 'DENY');
-    response.setHeader(
-      'Referrer-Policy',
-      'strict-origin-when-cross-origin',
-    );
+    response.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
     response.setHeader('X-DNS-Prefetch-Control', 'off');
     response.setHeader('X-Permitted-Cross-Domain-Policies', 'none');
 
@@ -168,7 +169,9 @@ const bootstrap = async () => {
     credentials: true,
   });
 
-  app.use(session(getSessionStorageOptions(arjunaConfigService)));
+  const sessionStorageOptions =
+    await getSessionStorageOptions(arjunaConfigService);
+  app.use(session(sessionStorageOptions));
 
   // Apply class-validator container so that we can use injection in validators
   useContainer(app.select(AppModule), { fallbackOnErrors: true });

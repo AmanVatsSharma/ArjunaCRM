@@ -32,6 +32,9 @@ configured through `FRONTEND_URL`, `PUBLIC_DOMAIN_URL`, or
 | `REDIS_URL`       | Yes      | -       | Redis connection string              |
 | `REDIS_QUEUE_URL` | No       | -       | Separate Redis for queues (advanced) |
 
+The API now validates Redis session-store connectivity during startup and fails
+fast when `REDIS_URL` is unreachable.
+
 ### Storage Configuration
 
 | Variable                | Required    | Default | Description                            |
