@@ -3,6 +3,9 @@
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
+      "src/engine/arjuna-orm/*": [
+        "packages/arjuna-server/src/engine/twenty-orm/*"
+      ],
       "src/*": ["packages/arjuna-server/src/*"]
     },
     "types": ["node"]
