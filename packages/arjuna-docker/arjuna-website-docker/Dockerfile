@@ -12,7 +12,7 @@ COPY ./packages/arjuna-ui/package.json /app/packages/arjuna-ui/
 COPY ./packages/arjuna-shared/package.json /app/packages/arjuna-shared/
 COPY ./packages/arjuna-website/package.json /app/packages/arjuna-website/package.json
 
-RUN corepack enable && yarn install --immutable
+RUN corepack enable && yarn install
 
 ENV KEYSTATIC_GITHUB_CLIENT_ID="<fake build value>"
 ENV KEYSTATIC_GITHUB_CLIENT_SECRET="<fake build value>"

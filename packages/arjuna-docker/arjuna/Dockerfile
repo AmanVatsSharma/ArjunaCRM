@@ -18,7 +18,7 @@ COPY ./packages/arjuna-shared/package.json /app/packages/arjuna-shared/
 COPY ./packages/arjuna-front/package.json /app/packages/arjuna-front/
 
 # Install all dependencies
-RUN corepack enable && yarn install --immutable && npx nx reset
+RUN corepack enable && yarn install && npx nx reset
 
 
 # Build the back
