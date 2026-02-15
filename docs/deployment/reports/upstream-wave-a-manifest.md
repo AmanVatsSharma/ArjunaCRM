@@ -1,0 +1,290 @@
+# Upstream Wave A Manifest
+
+Focused missing-file manifest for runtime-critical sync buckets.
+
+## packages/arjuna-server
+
+- Missing file count: **1709**
+
+### Sample paths
+
+- `packages/arjuna-server/.env.e2e-testing-server`
+- `packages/arjuna-server/patches/README.md`
+- `packages/arjuna-server/src/database/clickHouse/clickHouse.util.ts`
+- `packages/arjuna-server/src/database/clickHouse/migrations/004-optimize-workspace-event-table.sql`
+- `packages/arjuna-server/src/database/clickHouse/migrations/005-optimize-pageview-table.sql`
+- `packages/arjuna-server/src/database/clickHouse/migrations/006-optimize-object-event-table.sql`
+- `packages/arjuna-server/src/database/commands/list-and-delete-orphaned-workspace-entities.command.ts`
+- `packages/arjuna-server/src/database/commands/upgrade-version-command/1-16/constants/standard-index-field-names.constant.ts`
+- `packages/arjuna-server/src/database/commands/upgrade-version-command/1-17/1-17-backfill-application-package-files.command.ts`
+- `packages/arjuna-server/src/database/commands/upgrade-version-command/1-17/1-17-delete-all-files-and-update-table.command.ts`
+- `packages/arjuna-server/src/database/commands/upgrade-version-command/1-17/1-17-fix-morph-relation-field-names.command.ts`
+- `packages/arjuna-server/src/database/commands/upgrade-version-command/1-17/1-17-identify-webhook-metadata.command.ts`
+- `packages/arjuna-server/src/database/commands/upgrade-version-command/1-17/1-17-make-webhook-universal-identifier-and-application-id-not-nullable-migration.command.ts`
+- `packages/arjuna-server/src/database/commands/upgrade-version-command/1-17/1-17-migrate-attachment-to-morph-relations.command.ts`
+- `packages/arjuna-server/src/database/commands/upgrade-version-command/1-17/1-17-migrate-favorites-to-navigation-menu-items.command.ts`
+- `packages/arjuna-server/src/database/commands/upgrade-version-command/1-17/1-17-migrate-note-target-to-morph-relations.command.ts`
+- `packages/arjuna-server/src/database/commands/upgrade-version-command/1-17/1-17-migrate-send-email-recipients.command.ts`
+- `packages/arjuna-server/src/database/commands/upgrade-version-command/1-17/1-17-migrate-task-target-to-morph-relations.command.ts`
+- `packages/arjuna-server/src/database/commands/upgrade-version-command/1-17/1-17-migrate-workflow-code-steps.command.ts`
+- `packages/arjuna-server/src/database/commands/upgrade-version-command/1-17/1-17-seed-workflow-v1-16.command.ts`
+- `packages/arjuna-server/src/database/commands/upgrade-version-command/1-17/1-17-upgrade-version-command.module.ts`
+- `packages/arjuna-server/src/database/commands/upgrade-version-command/1-17/utils/__tests__/migrate-send-email-step.util.spec.ts`
+- `packages/arjuna-server/src/database/commands/upgrade-version-command/1-17/utils/migrate-send-email-step.util.ts`
+- `packages/arjuna-server/src/database/commands/upgrade-version-command/1-17/utils/migrate-workflow-code-step.util.ts`
+- `packages/arjuna-server/src/database/commands/upgrade-version-command/1-18/1-18-backfill-file-size-and-mime-type.command.ts`
+- `packages/arjuna-server/src/database/commands/upgrade-version-command/1-18/1-18-backfill-message-channel-throttle-retry-after.command.ts`
+- `packages/arjuna-server/src/database/commands/upgrade-version-command/1-18/1-18-migrate-activity-rich-text-attachment-file-ids.command.ts`
+- `packages/arjuna-server/src/database/commands/upgrade-version-command/1-18/1-18-migrate-attachment-files.command.ts`
+- `packages/arjuna-server/src/database/commands/upgrade-version-command/1-18/1-18-migrate-person-avatar-files.command.ts`
+- `packages/arjuna-server/src/database/commands/upgrade-version-command/1-18/1-18-upgrade-version-command.module.ts`
+- `packages/arjuna-server/src/database/pg/constants/PG_DATE_TYPE_OID.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1764700000000-add-usage-columns-to-agent-chat-thread.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1765206100942-updateRoleColumns.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1765499361805-addRLS.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1765808791153-remove-field-metadata-id-in-view-group.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1765970658815-AddFieldWidgetType.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1766069735219-set-page-layout-widget-configuration-not-nullable.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1766077618558-removeCanBeAssignedToApplications.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1767002571103-addWorkspaceForeignKeys.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1767003000000-add-skill-entity.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1767100000000-makeViewFilterGroupParentFkDeferrable.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1767200000000-fixDataSourceAndWorkspaceMigrationWorkspaceIdType.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1767277454048-makeFieldMetadataUniversalIdentifierAndApplicationIdNotNullable.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1767364430164-add-tool-schema-to-serverless-function.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1767812158000-remoteRemoteTables.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1767876112877-removeWorkspaceMigration.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1767998263185-addObjectMetadataIdToRowLevelPermissionPredicateGroup.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1768212224801-makeObjectMetadataUniversalIdentifierAndApplicationIdNotNullable.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1768213174271-makeViewUniversalIdentifierAndApplicationIdNotNullable.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1768213174272-makeViewFieldUniversalIdentifierAndApplicationIdNotNullable.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1768213174273-makeViewFilterUniversalIdentifierAndApplicationIdNotNullable.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1768213174274-makeAgentUniversalIdentifierAndApplicationIdNotNullable.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1768213174274-makeViewGroupUniversalIdentifierAndApplicationIdNotNullable.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1768213174275-makeRoleUniversalIdentifierAndApplicationIdNotNullable.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1768399525609-addForwardedRequestHeadersInRouteTriggers.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1768495429374-addFrontComponent.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1768503887441-addCommandMenuItemEntity.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1768572831179-updateFileTable.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1768750308557-foreignKeyIndexStandardization.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1768807499350-addNavigationMenuItemEntity.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1768830235328-makeIndexMetadataUniversalIdentifierAndApplicationIdNotNullable.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1768916632478-makeRemainingEntitiesUniversalIdentifierAndApplicationIdNotNullable.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1768917890810-AddFrontComponentType.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1769016869438-addBuiltHandlerPathToServerlessFunctions.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1769091641000-renameHandlerPathToSourceHandlerPath.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1769196250679-addNavigationMenuItemViewForeignKey.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1769434782880-add-file-settings-column-on-file-table.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1769517102605-addUniversalToWebhook.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1769525557511-makeWebhookUnivesralIdentiferAndApplicationIdNotNull.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1769532887284-migrateServerlessTriggersToServerless.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1769556947746-renameServerless.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1769557200000-updateLogicFunctionConstraints.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1769654418252-add-front-component-id-to-command-menu-item.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1769679579382-updatePageLayoutForRecordPageLayout.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1769679579383-setPageLayoutDefaultTabDeferred.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1769681396664-removeLogicFunctionVersion.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1769685701443-updateColumnName.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1769710304101-updateLogicFunctionDefault.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1770032815802-addFileEntityUniqueConstraint.ts`
+- `packages/arjuna-server/src/database/typeorm/core/migrations/common/1770038963629-addDependencyChecksumsToLogicFunctionLayer.ts`
+- _... 1629 additional files omitted from markdown sample_
+
+## packages/arjuna-front
+
+- Missing file count: **1086**
+
+### Sample paths
+
+- `packages/arjuna-front/.storybook/vitest.setup.ts`
+- `packages/arjuna-front/src/generated/workflowVersion-payloads-v1.16.json`
+- `packages/arjuna-front/src/generated/workflowVersion-payloads-v1.17.json`
+- `packages/arjuna-front/src/localization/states/dateLocaleStateV2.ts`
+- `packages/arjuna-front/src/modules/accounts/constants/GmailComposeScope.ts`
+- `packages/arjuna-front/src/modules/accounts/utils/__tests__/hasMissingDraftEmailScopes.test.ts`
+- `packages/arjuna-front/src/modules/accounts/utils/hasMissingDraftEmailScopes.ts`
+- `packages/arjuna-front/src/modules/action-menu/actions/record-actions/multiple-records/components/UpdateMultipleRecordsAction.tsx`
+- `packages/arjuna-front/src/modules/action-menu/actions/record-actions/single-record/dashboard-actions/components/DuplicateDashboardSingleRecordAction.tsx`
+- `packages/arjuna-front/src/modules/action-menu/actions/record-actions/single-record/dashboard-actions/types/DashboardSingleRecordActionKeys.ts`
+- `packages/arjuna-front/src/modules/action-menu/actions/record-actions/single-record/record-page-layout-actions/components/CancelRecordPageLayoutSingleRecordAction.tsx`
+- `packages/arjuna-front/src/modules/action-menu/actions/record-actions/single-record/record-page-layout-actions/components/EditRecordPageLayoutSingleRecordAction.tsx`
+- `packages/arjuna-front/src/modules/action-menu/actions/record-actions/single-record/record-page-layout-actions/components/SaveRecordPageLayoutSingleRecordAction.tsx`
+- `packages/arjuna-front/src/modules/action-menu/actions/record-actions/single-record/record-page-layout-actions/types/RecordPageLayoutSingleRecordActionKeys.ts`
+- `packages/arjuna-front/src/modules/activities/files/utils/__tests__/fetchCsvPreview.test.ts`
+- `packages/arjuna-front/src/modules/activities/utils/getActivityTargetFieldNameForObject.ts`
+- `packages/arjuna-front/src/modules/activities/utils/getAttachmentUrl.ts`
+- `packages/arjuna-front/src/modules/ai/components/AIChatApiKeyNotConfiguredMessage.tsx`
+- `packages/arjuna-front/src/modules/ai/components/AIChatBanner.tsx`
+- `packages/arjuna-front/src/modules/ai/components/AIChatCreditsExhaustedMessage.tsx`
+- `packages/arjuna-front/src/modules/ai/components/AIChatErrorRenderer.tsx`
+- `packages/arjuna-front/src/modules/ai/components/AIChatStandaloneError.tsx`
+- `packages/arjuna-front/src/modules/ai/components/CodeExecutionDisplay.tsx`
+- `packages/arjuna-front/src/modules/ai/components/TerminalOutput.tsx`
+- `packages/arjuna-front/src/modules/ai/components/__stories__/AIChatMessage.stories.tsx`
+- `packages/arjuna-front/src/modules/ai/components/__stories__/CodeExecutionDisplay.stories.tsx`
+- `packages/arjuna-front/src/modules/ai/components/__stories__/TerminalOutput.stories.tsx`
+- `packages/arjuna-front/src/modules/ai/components/internal/AIChatContextUsageButton.tsx`
+- `packages/arjuna-front/src/modules/ai/components/internal/ContextUsageProgressRing.tsx`
+- `packages/arjuna-front/src/modules/ai/components/suggested-prompts/AIChatSuggestedPrompts.tsx`
+- `packages/arjuna-front/src/modules/ai/components/suggested-prompts/default-suggested-prompts.ts`
+- `packages/arjuna-front/src/modules/ai/graphql/fragments/skillFragment.ts`
+- `packages/arjuna-front/src/modules/ai/graphql/mutations/activateSkill.ts`
+- `packages/arjuna-front/src/modules/ai/graphql/mutations/createSkill.ts`
+- `packages/arjuna-front/src/modules/ai/graphql/mutations/deactivateSkill.ts`
+- `packages/arjuna-front/src/modules/ai/graphql/mutations/deleteSkill.ts`
+- `packages/arjuna-front/src/modules/ai/graphql/mutations/updateSkill.ts`
+- `packages/arjuna-front/src/modules/ai/graphql/queries/findManySkills.ts`
+- `packages/arjuna-front/src/modules/ai/graphql/queries/findOneSkill.ts`
+- `packages/arjuna-front/src/modules/ai/graphql/queries/getToolIndex.ts`
+- `packages/arjuna-front/src/modules/ai/graphql/queries/getToolInputSchemas.ts`
+- `packages/arjuna-front/src/modules/ai/hooks/useAIChatEditor.ts`
+- `packages/arjuna-front/src/modules/ai/hooks/useBrowsingContext.ts`
+- `packages/arjuna-front/src/modules/ai/hooks/useGetToolIndex.ts`
+- `packages/arjuna-front/src/modules/ai/schemas/toolOutputMessageSchema.ts`
+- `packages/arjuna-front/src/modules/ai/schemas/toolOutputResultSchema.ts`
+- `packages/arjuna-front/src/modules/ai/states/agentChatUsageState.ts`
+- `packages/arjuna-front/src/modules/ai/states/isCreatingChatThreadState.ts`
+- `packages/arjuna-front/src/modules/ai/types/BrowsingContext.ts`
+- `packages/arjuna-front/src/modules/ai/utils/AIChatErrorCode.ts`
+- `packages/arjuna-front/src/modules/ai/utils/__tests__/extractErrorCode.test.ts`
+- `packages/arjuna-front/src/modules/ai/utils/__tests__/getToolDisplayMessage.test.ts`
+- `packages/arjuna-front/src/modules/ai/utils/__tests__/isAIChatErrorOfType.test.ts`
+- `packages/arjuna-front/src/modules/ai/utils/__tests__/isApiKeyNotConfiguredError.test.ts`
+- `packages/arjuna-front/src/modules/ai/utils/__tests__/isBillingCreditsExhaustedError.test.ts`
+- `packages/arjuna-front/src/modules/ai/utils/extractErrorCode.ts`
+- `packages/arjuna-front/src/modules/ai/utils/getToolDisplayMessage.ts`
+- `packages/arjuna-front/src/modules/ai/utils/isAIChatErrorOfType.ts`
+- `packages/arjuna-front/src/modules/ai/utils/isApiKeyNotConfiguredError.ts`
+- `packages/arjuna-front/src/modules/ai/utils/isBillingCreditsExhaustedError.ts`
+- `packages/arjuna-front/src/modules/auth/sign-in-up/components/internal/LastUsedPill.tsx`
+- `packages/arjuna-front/src/modules/auth/sign-in-up/components/internal/SignInUpSSOButtonStyles.ts`
+- `packages/arjuna-front/src/modules/auth/sign-in-up/hooks/useHasMultipleAuthMethods.ts`
+- `packages/arjuna-front/src/modules/auth/states/lastAuthenticatedMethodState.ts`
+- `packages/arjuna-front/src/modules/auth/types/AuthenticatedMethod.enum.ts`
+- `packages/arjuna-front/src/modules/auth/utils/__tests__/availableWorkspacesUtils.test.ts`
+- `packages/arjuna-front/src/modules/blocknote-editor/blocks/FileBlock.tsx`
+- `packages/arjuna-front/src/modules/blocknote-editor/blocks/MentionInlineContent.tsx`
+- `packages/arjuna-front/src/modules/blocknote-editor/blocks/Schema.ts`
+- `packages/arjuna-front/src/modules/blocknote-editor/components/BlockEditor.tsx`
+- `packages/arjuna-front/src/modules/blocknote-editor/components/BlockEditorDropdownFocusEffect.tsx`
+- `packages/arjuna-front/src/modules/blocknote-editor/components/CustomAddBlockItem.tsx`
+- `packages/arjuna-front/src/modules/blocknote-editor/components/CustomMentionMenu.tsx`
+- `packages/arjuna-front/src/modules/blocknote-editor/components/CustomSideMenu.tsx`
+- `packages/arjuna-front/src/modules/blocknote-editor/components/CustomSideMenuOptions.tsx`
+- `packages/arjuna-front/src/modules/blocknote-editor/components/CustomSlashMenu.tsx`
+- `packages/arjuna-front/src/modules/blocknote-editor/components/CustomSlashMenuListItem.tsx`
+- `packages/arjuna-front/src/modules/blocknote-editor/components/CustomSlashMenuSelectedIndexSyncEffect.tsx`
+- `packages/arjuna-front/src/modules/blocknote-editor/constants/BlockEditorGlobalHotkeysConfig.ts`
+- `packages/arjuna-front/src/modules/blocknote-editor/contexts/BlockEditorCompoponeInstanceContext.ts`
+- _... 1006 additional files omitted from markdown sample_
+
+## packages/arjuna-ui
+
+- Missing file count: **16**
+
+### Sample paths
+
+- `packages/arjuna-ui/.storybook/vitest.setup.ts`
+- `packages/arjuna-ui/src/assets/icons/illustration-file.svg`
+- `packages/arjuna-ui/src/display/avatar/components/states/invalidAvatarUrlsAtomV2.ts`
+- `packages/arjuna-ui/src/display/callout/Callout.tsx`
+- `packages/arjuna-ui/src/display/callout/__stories__/Callout.stories.tsx`
+- `packages/arjuna-ui/src/display/command-block/components/CommandBlock.tsx`
+- `packages/arjuna-ui/src/display/icon/components/Icon.tsx`
+- `packages/arjuna-ui/src/display/icon/components/IllustrationIconFile.tsx`
+- `packages/arjuna-ui/src/display/icon/components/__stories__/Icon.stories.tsx`
+- `packages/arjuna-ui/src/input/components/SearchInput.tsx`
+- `packages/arjuna-ui/src/navigation/menu/menu-item/internals/components/MenuItemIcon.tsx`
+- `packages/arjuna-ui/src/navigation/menu/menu-item/internals/components/MenuItemIconBoxContainer.tsx`
+- `packages/arjuna-ui/src/navigation/menu/menu-item/internals/components/MenuItemIconWithGripSwap.tsx`
+- `packages/arjuna-ui/src/navigation/menu/menu-item/types/MenuItemDraggableGripMode.ts`
+- `packages/arjuna-ui/src/utilities/utils/__tests__/getDisplayValueByUrlType.test.ts`
+- `packages/arjuna-ui/vitest.config.ts`
+
+## packages/arjuna-shared
+
+- Missing file count: **159**
+
+### Sample paths
+
+- `packages/arjuna-shared/src/application/assetManifestType.ts`
+- `packages/arjuna-shared/src/application/constants/AssetDirectory.ts`
+- `packages/arjuna-shared/src/application/constants/DefaultApiKeyName.ts`
+- `packages/arjuna-shared/src/application/constants/DefaultApiUrlName.ts`
+- `packages/arjuna-shared/src/application/constants/GeneratedDirectory.ts`
+- `packages/arjuna-shared/src/application/constants/NodeEsmCjsBanner.ts`
+- `packages/arjuna-shared/src/application/constants/OutputDirectory.ts`
+- `packages/arjuna-shared/src/application/enums/syncable-entities.enum.ts`
+- `packages/arjuna-shared/src/application/frontComponentManifestType.ts`
+- `packages/arjuna-shared/src/application/logicFunctionManifestType.ts`
+- `packages/arjuna-shared/src/application/manifestType.ts`
+- `packages/arjuna-shared/src/application/objectFieldManifest.type.ts`
+- `packages/arjuna-shared/src/application/roleManifestType.ts`
+- `packages/arjuna-shared/src/application/syncableEntityOptionsType.ts`
+- `packages/arjuna-shared/src/constants/DocumentationBaseUrl.ts`
+- `packages/arjuna-shared/src/constants/DocumentationDefaultLanguage.ts`
+- `packages/arjuna-shared/src/constants/DocumentationDefaultPath.ts`
+- `packages/arjuna-shared/src/constants/DocumentationPaths.ts`
+- `packages/arjuna-shared/src/constants/DocumentationSupportedLanguages.ts`
+- `packages/arjuna-shared/src/constants/FilesFieldMaxNumberOfValues.ts`
+- `packages/arjuna-shared/src/constants/GroupByDateGranularityThatRequireTimeZone.ts`
+- `packages/arjuna-shared/src/constants/IanaTimeZones.ts`
+- `packages/arjuna-shared/src/constants/ViewGroupVisibleOptionsMax.ts`
+- `packages/arjuna-shared/src/database-events/database-event-payload.type.ts`
+- `packages/arjuna-shared/src/database-events/index.ts`
+- `packages/arjuna-shared/src/database-events/object-record-create.event.ts`
+- `packages/arjuna-shared/src/database-events/object-record-delete.event.ts`
+- `packages/arjuna-shared/src/database-events/object-record-destroy.event.ts`
+- `packages/arjuna-shared/src/database-events/object-record-diff.ts`
+- `packages/arjuna-shared/src/database-events/object-record-event.event.ts`
+- `packages/arjuna-shared/src/database-events/object-record-non-destructive-event.ts`
+- `packages/arjuna-shared/src/database-events/object-record-restore.event.ts`
+- `packages/arjuna-shared/src/database-events/object-record-update.event.ts`
+- `packages/arjuna-shared/src/database-events/object-record-upsert.event.ts`
+- `packages/arjuna-shared/src/database-events/object-record.base.event.ts`
+- `packages/arjuna-shared/src/metadata/standard-object.constant.ts`
+- `packages/arjuna-shared/src/types/ArraySortDirection.ts`
+- `packages/arjuna-shared/src/types/CrudOperationType.ts`
+- `packages/arjuna-shared/src/types/EventLogTable.ts`
+- `packages/arjuna-shared/src/types/ExtractPropertiesThatEndsWithIds.ts`
+- `packages/arjuna-shared/src/types/ExtractSerializedRelationProperties.type.ts`
+- `packages/arjuna-shared/src/types/FieldMetadataUniversalSettings.ts`
+- `packages/arjuna-shared/src/types/FileCategory.ts`
+- `packages/arjuna-shared/src/types/FileFolder.ts`
+- `packages/arjuna-shared/src/types/FormatRecordSerializedRelationProperties.type.ts`
+- `packages/arjuna-shared/src/types/IsEmptyObject.type.ts`
+- `packages/arjuna-shared/src/types/IsNever.type.ts`
+- `packages/arjuna-shared/src/types/IsSerializedRelation.type.ts`
+- `packages/arjuna-shared/src/types/LogicFunctionEvent.ts`
+- `packages/arjuna-shared/src/types/NavigateOptions.ts`
+- `packages/arjuna-shared/src/types/OrderBy.ts`
+- `packages/arjuna-shared/src/types/QueryCursorDirection.ts`
+- `packages/arjuna-shared/src/types/RecordGqlFieldsDeprecated.ts`
+- `packages/arjuna-shared/src/types/RecordGqlOperationGqlRecordFields.ts`
+- `packages/arjuna-shared/src/types/RecordGqlOperationOrderBy.ts`
+- `packages/arjuna-shared/src/types/RecordGqlOperationSignature.ts`
+- `packages/arjuna-shared/src/types/RecordGqlOperationVariables.ts`
+- `packages/arjuna-shared/src/types/RemoveSuffix.type.ts`
+- `packages/arjuna-shared/src/types/RowLevelPermissionPredicate.ts`
+- `packages/arjuna-shared/src/types/RowLevelPermissionPredicateGroup.ts`
+- `packages/arjuna-shared/src/types/RowLevelPermissionPredicateGroupLogicalOperator.ts`
+- `packages/arjuna-shared/src/types/RowLevelPermissionPredicateOperand.ts`
+- `packages/arjuna-shared/src/types/RowLevelPermissionPredicateValue.ts`
+- `packages/arjuna-shared/src/types/SerializedRelation.type.ts`
+- `packages/arjuna-shared/src/types/__tests__/extract-serialized-relation-properties.type-test.ts`
+- `packages/arjuna-shared/src/types/page-layout/PageLayoutTabLayoutMode.ts`
+- `packages/arjuna-shared/src/types/page-layout/PageLayoutWidgetConditionalDisplay.ts`
+- `packages/arjuna-shared/src/types/page-layout/page-layout-widget-position.type.ts`
+- `packages/arjuna-shared/src/utils/__tests__/formatToShortNumber.test.ts`
+- `packages/arjuna-shared/src/utils/__tests__/rich-text-variable-resolver.test.ts`
+- `packages/arjuna-shared/src/utils/__tests__/variable-resolver.test.ts`
+- `packages/arjuna-shared/src/utils/array/__tests__/compareArraysOfObjectsByProperty.test.ts`
+- `packages/arjuna-shared/src/utils/array/__tests__/upsertIntoArrayOfObjectsComparingId.test.ts`
+- `packages/arjuna-shared/src/utils/array/__tests__/upsertPropertiesOfItemIntoArrayOfObjectsComparingId.test.ts`
+- `packages/arjuna-shared/src/utils/array/compareArraysOfObjectsByProperty.ts`
+- `packages/arjuna-shared/src/utils/array/mapById.ts`
+- `packages/arjuna-shared/src/utils/array/mapByProperty.ts`
+- `packages/arjuna-shared/src/utils/array/upsertIntoArrayOfObjectsComparingId.ts`
+- `packages/arjuna-shared/src/utils/array/upsertPropertiesOfItemIntoArrayOfObjectsComparingId.ts`
+- `packages/arjuna-shared/src/utils/date/__tests__/sortPlainDate.spec.ts`
+- _... 79 additional files omitted from markdown sample_

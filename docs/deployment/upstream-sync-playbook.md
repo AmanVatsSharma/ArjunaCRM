@@ -28,6 +28,11 @@ python3 scripts/upstream-sync-drift-report.py \
 python3 scripts/upstream-sync-priority-report.py \
   --input docs/deployment/reports/upstream-drift.json \
   --output docs/deployment/reports/upstream-sync-priority.md
+
+python3 scripts/upstream-sync-wave-manifest.py \
+  --input docs/deployment/reports/upstream-drift.json \
+  --output-json docs/deployment/reports/upstream-wave-a-manifest.json \
+  --output-md docs/deployment/reports/upstream-wave-a-manifest.md
 ```
 
 The report includes:
@@ -37,6 +42,7 @@ The report includes:
 - extra files by package bucket,
 - sample missing and extra file lists.
 - a markdown priority board of top missing/extra buckets.
+- wave-specific manifests for runtime-critical buckets (`server`, `front`, `ui`, `shared`).
 
 ## Sync priority waves
 

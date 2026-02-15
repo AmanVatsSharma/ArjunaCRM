@@ -121,6 +121,8 @@ def build_drift_report(
     'forkFileCount': len(fork_file_paths),
     'missingInForkCount': len(missing_paths),
     'extraInForkCount': len(extra_paths),
+    'missingInFork': missing_paths,
+    'extraInFork': extra_paths,
     'missingInForkTopBuckets': missing_count_by_bucket.most_common(30),
     'extraInForkTopBuckets': extra_count_by_bucket.most_common(30),
     'missingInForkSample': missing_paths[:200],

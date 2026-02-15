@@ -5,16 +5,16 @@ _Source: `/workspace/docs/deployment/reports/upstream-drift.json`_
 ## Snapshot Summary
 
 - Upstream file count: **17475**
-- Fork file count: **16074**
-- Missing in fork: **5226**
-- Extra in fork: **3825**
+- Fork file count: **16085**
+- Missing in fork: **5225**
+- Extra in fork: **3835**
 
 ## Top Missing Buckets (Priority Candidates)
 
 | Bucket                        | Missing file count |
 | ----------------------------- | -----------------: |
 | `packages/arjuna-docs`        |               1959 |
-| `packages/arjuna-server`      |               1710 |
+| `packages/arjuna-server`      |               1709 |
 | `packages/arjuna-front`       |               1086 |
 | `packages/arjuna-sdk`         |                214 |
 | `packages/arjuna-shared`      |                159 |
@@ -34,20 +34,20 @@ _Source: `/workspace/docs/deployment/reports/upstream-drift.json`_
 | Bucket                       | Extra file count |
 | ---------------------------- | ---------------: |
 | `packages/arjuna-docs`       |             2395 |
-| `packages/arjuna-server`     |              804 |
+| `packages/arjuna-server`     |              805 |
 | `packages/arjuna-front`      |              441 |
 | `packages/arjuna-sdk`        |               53 |
 | `packages/arjuna-apps`       |               33 |
 | `packages/arjuna-zapier`     |               19 |
-| `packages/arjuna-shared`     |               15 |
 | `.github`                    |               15 |
+| `packages/arjuna-shared`     |               15 |
+| `docs`                       |               11 |
 | `packages/arjuna-ui`         |                8 |
 | `packages/arjuna-website`    |                7 |
 | `packages/arjuna-docker`     |                5 |
-| `docs`                       |                4 |
 | `.cache`                     |                4 |
+| `scripts`                    |                4 |
 | `packages/create-arjuna-app` |                3 |
-| `scripts`                    |                2 |
 
 ## Recommended Next Wave
 
