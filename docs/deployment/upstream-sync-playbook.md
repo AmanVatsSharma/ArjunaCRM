@@ -24,26 +24,35 @@ python3 scripts/upstream-sync-drift-report.py \
   --upstream-path /tmp/twenty-upstream \
   --fork-path . \
   --output docs/deployment/reports/upstream-drift.json
+
+python3 scripts/upstream-sync-priority-report.py \
+  --input docs/deployment/reports/upstream-drift.json \
+  --output docs/deployment/reports/upstream-sync-priority.md
 ```
 
 The report includes:
+
 - total file counts,
 - missing files by package bucket,
 - extra files by package bucket,
 - sample missing and extra file lists.
+- a markdown priority board of top missing/extra buckets.
 
 ## Sync priority waves
 
 ## Wave A (P0): security + critical runtime correctness
+
 - backend upgrade commands and migration safety
 - auth/session/config hardening
 - deployment pipeline integrity fixes
 
 ## Wave B (P1): product-critical feature parity
+
 - front modules used in core CRM user flows
 - server APIs required by those features
 
 ## Wave C (P2): non-critical parity and cleanup
+
 - docs parity updates
 - low-priority UI polish and infra cleanup
 
@@ -63,6 +72,7 @@ npx nx build arjuna-website
 ```
 
 If any command fails:
+
 1. revert the last partial import,
 2. reduce the slice size,
 3. retry with smaller scope.
@@ -70,6 +80,7 @@ If any command fails:
 ## Reporting and traceability
 
 For each wave:
+
 - keep a markdown log of adopted/deferred upstream paths,
 - attach test outputs,
 - include migration or config side effects,
