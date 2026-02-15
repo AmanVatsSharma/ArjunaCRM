@@ -52,11 +52,11 @@ Deploys the frontend application to S3 + CloudFront:
 
 ### Documentation Deployment (`.github/workflows/deploy-docs.yml`)
 
-Deploys documentation site to S3 + CloudFront:
+Validates documentation content for Mintlify Cloud deployment:
 
-1. Builds Mintlify documentation (output: `.mintlify/`)
-2. Syncs to S3 bucket
-3. Invalidates CloudFront cache
+1. Installs workspace dependencies
+2. Lints core MDX documentation routes
+3. Reports validation result (Mintlify Cloud handles publishing)
 
 **Triggers:**
 
@@ -120,8 +120,6 @@ Configure these secrets in your repository settings:
 - `S3_BUCKET_FRONTEND` - S3 bucket used for frontend deployment
 - `CLOUDFRONT_DISTRIBUTION_ID_FRONTEND` - CloudFront distribution for frontend
 - `DOCS_PUBLIC_URL` - Public docs URL
-- `S3_BUCKET_DOCS` - S3 bucket used for docs deployment
-- `CLOUDFRONT_DISTRIBUTION_ID_DOCS` - CloudFront distribution for docs
 - `WEBSITE_PUBLIC_URL` - Public website URL
 - `ECR_REPOSITORY_WEBSITE` - ECR repository name for website container
 - `ECS_CLUSTER_WEBSITE` - ECS cluster hosting website service
@@ -174,7 +172,7 @@ Configure these secrets in your repository settings:
      --task-definition arjunacrm-server-task:REVISION
    ```
 
-### Frontend/Docs Rollback
+### Frontend Rollback
 
 1. Find previous build in S3 version history
 2. Restore previous version:
@@ -182,6 +180,12 @@ Configure these secrets in your repository settings:
    aws s3 cp s3://bucket-name/previous-version/ s3://bucket-name/ --recursive
    ```
 3. Invalidate CloudFront cache
+
+### Documentation Rollback
+
+Documentation is hosted by Mintlify Cloud. Rollback from the Mintlify
+dashboard by restoring a previous synced revision or reverting the source commit
+and re-syncing.
 
 ### Website Rollback
 
@@ -219,9 +223,9 @@ Configure these secrets in your repository settings:
 
 ## Build Output Paths
 
-Each service has a specific build output directory:
+Each service has a specific build/deployment path:
 
 - **Frontend** (`arjuna-front`): `packages/arjuna-front/build/`
-- **Documentation** (`arjuna-docs`): `packages/arjuna-docs/.mintlify/` (Mintlify build output)
+- **Documentation** (`arjuna-docs`): lint-only validation in workflow; published by Mintlify Cloud
 - **Website** (`arjuna-website`): Docker image built from `packages/arjuna-docker/arjuna-website-docker/Dockerfile`
 - **Backend** (`arjuna-server`): Docker image built from `packages/arjuna-docker/arjuna/Dockerfile`

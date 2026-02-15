@@ -14,10 +14,9 @@
     },
     "build": {
       "executor": "nx:run-commands",
-      "outputs": ["{projectRoot}/.mintlify"],
       "options": {
         "cwd": "{projectRoot}",
-        "command": "mintlify build"
+        "command": "eslint \"{developers,user-guide,arjuna-ui,getting-started,snippets}/**/*.mdx\" --max-warnings 0"
       }
     },
     "lint": {

@@ -16,7 +16,7 @@ ArjunaCRM requires the following AWS services:
 - **ECS/Fargate** - Container hosting for backend API and website
 - **RDS PostgreSQL** - Database
 - **ElastiCache Redis** - Caching and session storage
-- **S3** - Static file hosting for frontend and docs
+- **S3** - Static file hosting for frontend
 - **CloudFront** - CDN for static assets
 - **Route53** - DNS management
 - **ACM** - SSL certificates
@@ -64,15 +64,11 @@ aws elasticache create-cache-cluster \
 # Frontend bucket
 aws s3 mb s3://arjunacrm-app --region us-east-1
 aws s3 website s3://arjunacrm-app --index-document index.html --error-document index.html
-
-# Docs bucket
-aws s3 mb s3://arjunacrm-docs --region us-east-1
-aws s3 website s3://arjunacrm-docs --index-document index.html --error-document index.html
 ```
 
 ## Step 4: Set Up CloudFront Distributions
 
-Create CloudFront distributions for frontend and docs buckets:
+Create a CloudFront distribution for the frontend bucket:
 
 1. Go to CloudFront console
 2. Create distribution for each bucket
@@ -101,7 +97,7 @@ Create A records (or CNAME) pointing to:
 - `www.vedpragya.com` → ALB / ECS service for website
 - `app.vedpragya.com` → CloudFront distribution for frontend
 - `api.vedpragya.com` → Application Load Balancer (if using ALB) or ECS service
-- `docs.vedpragya.com` → CloudFront distribution for docs
+- `docs.vedpragya.com` → Mintlify hosted docs domain (CNAME target from Mintlify dashboard)
 
 ## Step 8: Set Up GitHub Secrets
 
@@ -130,7 +126,6 @@ Configure these repository variables in GitHub Actions:
 - `ECR_REPOSITORY_BACKEND`, `ECS_CLUSTER_BACKEND`, `ECS_SERVICE_BACKEND`, `ECS_TASK_DEFINITION_BACKEND`
 - `ECR_REPOSITORY_WEBSITE`, `ECS_CLUSTER_WEBSITE`, `ECS_SERVICE_WEBSITE`, `ECS_TASK_DEFINITION_WEBSITE`
 - `S3_BUCKET_FRONTEND`, `CLOUDFRONT_DISTRIBUTION_ID_FRONTEND`
-- `S3_BUCKET_DOCS`, `CLOUDFRONT_DISTRIBUTION_ID_DOCS`
 - `BACKEND_PUBLIC_URL`, `FRONTEND_PUBLIC_URL`, `DOCS_PUBLIC_URL`, `WEBSITE_PUBLIC_URL`
 - `FRONTEND_API_BASE_URL`
 
