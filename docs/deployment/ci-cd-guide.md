@@ -30,6 +30,9 @@ Deploys the backend API to AWS ECS:
 4. Deploys to ECS service
 5. Runs database migrations as a dedicated ECS task and fails deployment if the task exits non-zero
 
+When deployment is triggered from a `v*.*.*` tag, the workflow also injects
+that tag as `APP_VERSION` build-arg into the backend image.
+
 **Triggers:**
 
 - Push to `main` branch
