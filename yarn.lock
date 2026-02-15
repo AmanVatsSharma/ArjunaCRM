@@ -444,7 +444,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@apollo/client@npm:^3.7.0, @apollo/client@npm:^3.7.17":
+"@apollo/client@npm:^3.7.17":
   version: 3.13.8
   resolution: "@apollo/client@npm:3.13.8"
   dependencies:
@@ -23305,17 +23305,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/apollo-upload-client@npm:^17.0.2":
-  version: 17.0.5
-  resolution: "@types/apollo-upload-client@npm:17.0.5"
-  dependencies:
-    "@apollo/client": "npm:^3.7.0"
-    "@types/extract-files": "npm:*"
-    graphql: "npm:14 - 16"
-  checksum: 10c0/ce3ea0bb1579867b7a8da16edab7c4ba56a174e820238a087f748f1d8be5d65fbd6ba796961023722f86e78425e459e5fb51d05414ecf4acd59880e0f4b8b1ac
-  languageName: node
-  linkType: hard
-
 "@types/argparse@npm:1.0.38":
   version: 1.0.38
   resolution: "@types/argparse@npm:1.0.38"
@@ -23790,13 +23779,6 @@ __metadata:
     "@types/qs": "npm:*"
     "@types/serve-static": "npm:*"
   checksum: 10c0/60490cd4f73085007247e7d4fafad0a7abdafa34fa3caba2757512564ca5e094ece7459f0f324030a63d513f967bb86579a8682af76ae2fd718e889b0a2a4fe8
-  languageName: node
-  linkType: hard
-
-"@types/extract-files@npm:*":
-  version: 13.0.1
-  resolution: "@types/extract-files@npm:13.0.1"
-  checksum: 10c0/4732f875db36498a4bf3deb6965267d515cc7a82be6a3b0346a6b9a6c9eec173ebae774301070de6c7f9b879121d81bc106498cce9cc7bc521b2e75b84710ed2
   languageName: node
   linkType: hard
 
@@ -27648,7 +27630,6 @@ __metadata:
     "@tiptap/extensions": "npm:^3.4.2"
     "@tiptap/react": "npm:^3.4.2"
     "@tiptap/suggestion": "npm:^3.4.2"
-    "@types/apollo-upload-client": "npm:^17.0.2"
     "@types/file-saver": "npm:^2.0.7"
     "@types/js-cookie": "npm:^3.0.3"
     "@types/json-logic-js": "npm:^2"
@@ -38160,7 +38141,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphql@npm:*, graphql@npm:14 - 16, graphql@npm:^16.3.0, graphql@npm:^16.6.0, graphql@npm:^16.8.1":
+"graphql@npm:*, graphql@npm:^16.3.0, graphql@npm:^16.6.0, graphql@npm:^16.8.1":
   version: 16.12.0
   resolution: "graphql@npm:16.12.0"
   checksum: 10c0/b6fffa4e8a4e4a9933ebe85e7470b346dbf49050c1a482fac5e03e4a1a7bed2ecd3a4c97e29f04457af929464bc5e4f2aac991090c2f320111eef26e902a5c75

@@ -32,12 +32,6 @@
       "src/engine/workspace-manager/arjuna-standard-application/*": [
         "./src/engine/workspace-manager/twenty-standard-application/*"
       ],
-      "src/database/commands/compute-arjuna-standard-workspace-migration.command": [
-        "./src/database/commands/compute-twenty-standard-workspace-migration.command"
-      ],
-      "src/database/commands/upgrade-version-command/1-11/1-11-create-arjuna-standard-application.command": [
-        "./src/database/commands/upgrade-version-command/1-11/1-11-create-twenty-standard-application.command"
-      ],
       "test/integration/arjuna-config/*": [
         "./test/integration/twenty-config/*"
       ],
