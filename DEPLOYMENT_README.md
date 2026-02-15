@@ -90,6 +90,8 @@ npx nx run arjuna-server:database:migrate:prod  # Run migrations
 - [AWS Setup Guide](docs/deployment/aws-setup.md) - Detailed AWS infrastructure setup
 - [CI/CD Guide](docs/deployment/ci-cd-guide.md) - GitHub Actions pipeline documentation
 - [Environment Variables](docs/deployment/environment-variables.md) - Complete environment variable reference
+- [Deployment and Rollback Runbook](docs/deployment/runbook-deployment-and-rollback.md) - Release, smoke checks, and rollback steps
+- [Backup and Incident Runbook](docs/deployment/runbook-backup-restore-and-incident.md) - Backup policy, restore flow, and incident response
 
 ## Troubleshooting
 
