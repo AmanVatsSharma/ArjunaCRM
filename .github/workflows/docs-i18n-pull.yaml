@@ -89,7 +89,7 @@ jobs:
         run: sudo chown -R runner:docker . || true
 
       - name: Fix translated documentation links
-        run: bash packages/arjuna-docs/scripts/fix-translated-links.sh
+        run: cd packages/arjuna-docs && bash scripts/fix-translated-links.sh
 
       - name: Regenerate navigation template
         if: github.event_name == 'pull_request'
