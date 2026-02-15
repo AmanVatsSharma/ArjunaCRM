@@ -8,9 +8,11 @@ on:
   workflow_dispatch:
 
 env:
-  AWS_REGION: us-east-1
-  S3_BUCKET: arjunacrm-app
-  CLOUDFRONT_DISTRIBUTION_ID: E1234567890ABC
+  AWS_REGION: ${{ vars.AWS_REGION || 'us-east-1' }}
+  S3_BUCKET: ${{ vars.S3_BUCKET_FRONTEND }}
+  CLOUDFRONT_DISTRIBUTION_ID: ${{ vars.CLOUDFRONT_DISTRIBUTION_ID_FRONTEND }}
+  FRONTEND_API_BASE_URL: ${{ vars.FRONTEND_API_BASE_URL || 'https://api.vedpragya.com' }}
+  FRONTEND_PUBLIC_URL: ${{ vars.FRONTEND_PUBLIC_URL || 'https://app.vedpragya.com' }}
 
 jobs:
   build-and-deploy:
@@ -22,18 +24,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '24'
-          cache: 'npm'
+      - name: Validate deployment variables
+        run: |
+          set -e
+          if [ -z "${{ env.S3_BUCKET }}" ] || [ -z "${{ env.CLOUDFRONT_DISTRIBUTION_ID }}" ]; then
+            echo "::error::S3_BUCKET_FRONTEND and CLOUDFRONT_DISTRIBUTION_ID_FRONTEND variables are required"
+            exit 1
+          fi
 
       - name: Install dependencies
-        run: npm ci
+        uses: ./.github/workflows/actions/yarn-install
+        with:
+          node-version: '24'
 
       - name: Build frontend
         env:
-          REACT_APP_SERVER_BASE_URL: https://api.arjunacrm.com
+          REACT_APP_SERVER_BASE_URL: ${{ env.FRONTEND_API_BASE_URL }}
         run: |
           npx nx build arjuna-front
 
@@ -78,8 +84,7 @@ jobs:
         if: always()
         run: |
           if [ "${{ job.status }}" == "success" ]; then
-            echo "✅ Frontend deployed successfully to app.arjunacrm.com"
+            echo "✅ Frontend deployed successfully to ${{ env.FRONTEND_PUBLIC_URL }}"
           else
             echo "❌ Frontend deployment failed"
           fi
-

@@ -4,7 +4,10 @@ FROM node:24-alpine AS common-deps
 WORKDIR /app
 
 # Copy only the necessary files for dependency resolution
-COPY ./package.json ./package-lock.json ./tsconfig.base.json ./nx.json /app/
+COPY ./package.json ./yarn.lock ./tsconfig.base.json ./nx.json /app/
+COPY ./.yarnrc.yml /app/.yarnrc.yml
+COPY ./.yarn/releases /app/.yarn/releases
+COPY ./.yarn/patches /app/.yarn/patches
 
 COPY ./.prettierrc /app/
 COPY ./packages/arjuna-emails/package.json /app/packages/arjuna-emails/
@@ -15,7 +18,7 @@ COPY ./packages/arjuna-shared/package.json /app/packages/arjuna-shared/
 COPY ./packages/arjuna-front/package.json /app/packages/arjuna-front/
 
 # Install all dependencies
-RUN npm ci && npm cache clean --force && npx nx reset
+RUN corepack enable && yarn install && npx nx reset
 
 
 # Build the back

@@ -1,5 +1,6 @@
 import { createHash } from 'crypto';
 
+import { Logger } from '@nestjs/common';
 import RedisStore from 'connect-redis';
 import { createClient } from 'redis';
 
@@ -8,9 +9,16 @@ import type session from 'express-session';
 import { CacheStorageType } from 'src/engine/core-modules/cache-storage/types/cache-storage-type.enum';
 import { type ArjunaCRMConfigService } from 'src/engine/core-modules/arjuna-config/arjuna-config.service';
 
+const logger = new Logger('SessionStorageFactory');
+
 export const getSessionStorageOptions = (
   arjunaConfigService: ArjunaCRMConfigService,
-): session.SessionOptions => {
+): Promise<session.SessionOptions> =>
+  buildSessionStorageOptions(arjunaConfigService);
+
+const buildSessionStorageOptions = async (
+  arjunaConfigService: ArjunaCRMConfigService,
+): Promise<session.SessionOptions> => {
   const cacheStorageType = CacheStorageType.Redis;
 
   const SERVER_URL = arjunaConfigService.get('SERVER_URL');
@@ -25,7 +33,7 @@ export const getSessionStorageOptions = (
     .update(`${appSecret}SESSION_STORE_SECRET`)
     .digest('hex');
 
-  const sessionStorage: session.SessionOptions = {
+  const sessionStorageOptions: session.SessionOptions = {
     secret: sessionSecret,
     resave: false,
     saveUninitialized: false,
@@ -59,12 +67,16 @@ export const getSessionStorageOptions = (
         url: connectionString,
       });
 
-      redisClient.connect().catch((err) => {
-        throw new Error(`Redis connection failed: ${err}`);
+      redisClient.on('error', (error) => {
+        logger.error('Redis session client error', error?.stack);
       });
 
+      logger.log('Connecting Redis session store client');
+      await redisClient.connect();
+      logger.log('Redis session store client connected');
+
       return {
-        ...sessionStorage,
+        ...sessionStorageOptions,
         store: new RedisStore({
           client: redisClient,
           prefix: 'engine:session:',

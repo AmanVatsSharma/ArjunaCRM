@@ -13,10 +13,10 @@ This guide walks you through setting up ArjunaCRM on AWS infrastructure.
 
 ArjunaCRM requires the following AWS services:
 
-- **ECS/Fargate** - Container hosting for backend API
+- **ECS/Fargate** - Container hosting for backend API and website
 - **RDS PostgreSQL** - Database
 - **ElastiCache Redis** - Caching and session storage
-- **S3** - Static file hosting for frontend, docs, and website
+- **S3** - Static file hosting for frontend
 - **CloudFront** - CDN for static assets
 - **Route53** - DNS management
 - **ACM** - SSL certificates
@@ -24,10 +24,10 @@ ArjunaCRM requires the following AWS services:
 
 ## Domain Structure
 
-- `www.arjunacrm.com` - Marketing website
-- `app.arjunacrm.com` - Main CRM application
-- `api.arjunacrm.com` - Backend API
-- `docs.arjunacrm.com` - Documentation site
+- `www.vedpragya.com` - Marketing website
+- `app.vedpragya.com` - Main CRM application
+- `api.vedpragya.com` - Backend API
+- `docs.vedpragya.com` - Documentation site
 
 ## Step 1: Set Up RDS PostgreSQL
 
@@ -64,19 +64,11 @@ aws elasticache create-cache-cluster \
 # Frontend bucket
 aws s3 mb s3://arjunacrm-app --region us-east-1
 aws s3 website s3://arjunacrm-app --index-document index.html --error-document index.html
-
-# Docs bucket
-aws s3 mb s3://arjunacrm-docs --region us-east-1
-aws s3 website s3://arjunacrm-docs --index-document index.html --error-document index.html
-
-# Website bucket
-aws s3 mb s3://arjunacrm-website --region us-east-1
-aws s3 website s3://arjunacrm-website --index-document index.html --error-document index.html
 ```
 
 ## Step 4: Set Up CloudFront Distributions
 
-Create CloudFront distributions for each S3 bucket:
+Create a CloudFront distribution for the frontend bucket:
 
 1. Go to CloudFront console
 2. Create distribution for each bucket
@@ -89,6 +81,7 @@ Create CloudFront distributions for each S3 bucket:
 
 ```bash
 aws ecr create-repository --repository-name arjunacrm/arjuna --region us-east-1
+aws ecr create-repository --repository-name arjunacrm/arjuna-website --region us-east-1
 ```
 
 ## Step 6: Set Up ECS Cluster
@@ -100,10 +93,11 @@ aws ecs create-cluster --cluster-name arjunacrm-cluster --region us-east-1
 ## Step 7: Configure Route53 DNS
 
 Create A records (or CNAME) pointing to:
-- `www.arjunacrm.com` → CloudFront distribution for website
-- `app.arjunacrm.com` → CloudFront distribution for frontend
-- `api.arjunacrm.com` → Application Load Balancer (if using ALB) or ECS service
-- `docs.arjunacrm.com` → CloudFront distribution for docs
+
+- `www.vedpragya.com` → ALB / ECS service for website
+- `app.vedpragya.com` → CloudFront distribution for frontend
+- `api.vedpragya.com` → Application Load Balancer (if using ALB) or ECS service
+- `docs.vedpragya.com` → Mintlify hosted docs domain (CNAME target from Mintlify dashboard)
 
 ## Step 8: Set Up GitHub Secrets
 
@@ -119,24 +113,37 @@ Configure the following secrets in your GitHub repository:
 
 ### ECS Deployment Secrets
 
-- `ECS_SUBNETS` - Comma-separated subnet IDs for ECS tasks (e.g., `subnet-abc123,subnet-def456`)
-- `ECS_SECURITY_GROUPS` - Comma-separated security group IDs (e.g., `sg-abc123,sg-def456`)
+- `ECS_SUBNETS` - ECS subnet IDs as comma-separated string or JSON array (e.g., `subnet-abc123,subnet-def456` or `["subnet-abc123","subnet-def456"]`)
+- `ECS_SECURITY_GROUPS` - ECS security groups as comma-separated string or JSON array (e.g., `sg-abc123,sg-def456` or `["sg-abc123","sg-def456"]`)
 
 **Note**: These are required for database migrations and ECS task execution. Get subnet IDs from your VPC and security group IDs from your ECS service configuration.
 
-## Step 9: Configure GitHub Secrets
+## Step 9: Set Up GitHub Variables
+
+Configure these repository variables in GitHub Actions:
+
+- `AWS_REGION` (example: `us-east-1`)
+- `ECR_REPOSITORY_BACKEND`, `ECS_CLUSTER_BACKEND`, `ECS_SERVICE_BACKEND`, `ECS_TASK_DEFINITION_BACKEND`, `ECS_CONTAINER_NAME_BACKEND`
+- `ECR_REPOSITORY_WEBSITE`, `ECS_CLUSTER_WEBSITE`, `ECS_SERVICE_WEBSITE`, `ECS_TASK_DEFINITION_WEBSITE`, `ECS_CONTAINER_NAME_WEBSITE`
+- `S3_BUCKET_FRONTEND`, `CLOUDFRONT_DISTRIBUTION_ID_FRONTEND`
+- `BACKEND_PUBLIC_URL`, `FRONTEND_PUBLIC_URL`, `DOCS_PUBLIC_URL`, `WEBSITE_PUBLIC_URL`
+- `FRONTEND_API_BASE_URL`
+
+## Step 10: Configure GitHub Secrets
 
 Before deploying, ensure all required secrets are configured in GitHub:
 
 1. Go to your repository → Settings → Secrets and variables → Actions
 2. Add all secrets listed in Step 8
-3. Verify ECS subnet and security group IDs match your infrastructure
+3. Add the repository variables listed in Step 9
+4. Verify ECS subnet and security group IDs match your infrastructure
 
-## Step 10: Deploy
+## Step 11: Deploy
 
 Once infrastructure is set up and secrets are configured, deployments will happen automatically via GitHub Actions when you push to `main` branch or create a release tag.
 
 **First Deployment:**
+
 - Push to `main` branch or manually trigger workflows
 - Monitor GitHub Actions for deployment status
 - Check CloudWatch logs for application startup
@@ -145,6 +152,7 @@ Once infrastructure is set up and secrets are configured, deployments will happe
 ## Monitoring
 
 Set up CloudWatch for:
+
 - Application logs
 - Database monitoring
 - Redis monitoring
@@ -163,4 +171,3 @@ Set up CloudWatch for:
 - Use security groups to restrict access
 - Enable CloudFront signed URLs for sensitive content
 - Regularly rotate secrets and credentials
-

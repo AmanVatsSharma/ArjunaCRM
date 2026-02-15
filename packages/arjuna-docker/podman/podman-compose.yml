@@ -1,4 +1,4 @@
-version: "3.8"
+version: '3.8'
 
 services:
   db:
@@ -14,18 +14,21 @@ services:
   redis:
     container_name: arjuna-redis
     image: redis:latest
-    command: ["--maxmemory-policy", "noeviction"]
+    command: ['--maxmemory-policy', 'noeviction']
     volumes:
       - arjuna-redis-data:/data:Z
 
   server:
     container_name: arjuna-server
+    build:
+      context: ../../
+      dockerfile: ./packages/arjuna-docker/arjuna/Dockerfile
     image: arjunacrm/arjuna:latest
     environment:
-      NODE_PORT: "3000"
+      NODE_PORT: '3000'
       SERVER_URL: ${SERVER_URL}
-      PG_DATABASE_URL: "postgresql://arjuna:${PG_DATABASE_PASSWORD}@arjuna-db:5432/arjuna"
-      REDIS_URL: "redis://arjuna-redis:6379"
+      PG_DATABASE_URL: 'postgresql://arjuna:${PG_DATABASE_PASSWORD}@arjuna-db:5432/arjuna'
+      REDIS_URL: 'redis://arjuna-redis:6379'
       APP_SECRET: ${APP_SECRET}
       NODE_ENV: production
       LOG_LEVEL: info
@@ -36,14 +39,17 @@ services:
 
   worker:
     container_name: arjuna-worker
+    build:
+      context: ../../
+      dockerfile: ./packages/arjuna-docker/arjuna/Dockerfile
     image: arjunacrm/arjuna:latest
     command: npm run worker:prod
     environment:
       SERVER_URL: ${SERVER_URL}
-      PG_DATABASE_URL: "postgresql://arjuna:${PG_DATABASE_PASSWORD}@arjuna-db:5432/arjuna"
-      REDIS_URL: "redis://arjuna-redis:6379"
+      PG_DATABASE_URL: 'postgresql://arjuna:${PG_DATABASE_PASSWORD}@arjuna-db:5432/arjuna'
+      REDIS_URL: 'redis://arjuna-redis:6379'
       APP_SECRET: ${APP_SECRET}
-      DISABLE_DB_MIGRATIONS: "true"
+      DISABLE_DB_MIGRATIONS: 'true'
       NODE_ENV: production
       LOG_LEVEL: info
     volumes:

@@ -640,6 +640,16 @@ export class ConfigVariables {
   @ConfigVariablesMetadata({
     group: ConfigVariablesGroup.SERVER_CONFIG,
     description:
+      'Comma-separated list of additional allowed CORS origins (for example https://app.vedpragya.com,https://admin.vedpragya.com)',
+    type: ConfigVariableType.STRING,
+    isEnvOnly: true,
+  })
+  @IsOptional()
+  CORS_ALLOWED_ORIGINS: string;
+
+  @ConfigVariablesMetadata({
+    group: ConfigVariablesGroup.SERVER_CONFIG,
+    description:
       'Default subdomain for the frontend when multi-workspace is enabled',
     type: ConfigVariableType.STRING,
   })

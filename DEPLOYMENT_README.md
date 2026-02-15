@@ -9,7 +9,7 @@ This document provides a quick reference for deploying ArjunaCRM v1.0 to product
 ### 1. Prerequisites
 
 - Node.js 24.x
-- npm 10.x or higher
+- Yarn 4.x (via Corepack)
 - AWS account with appropriate permissions
 - Domain name configured
 
@@ -17,14 +17,14 @@ This document provides a quick reference for deploying ArjunaCRM v1.0 to product
 
 ```bash
 # Install dependencies
-npm install
+yarn install --immutable
 
 # Copy environment files
 cp packages/arjuna-server/.env.example packages/arjuna-server/.env
 cp packages/arjuna-front/.env.example packages/arjuna-front/.env
 
 # Start development servers
-npm start
+yarn start
 ```
 
 ### 3. AWS Infrastructure Setup
@@ -33,9 +33,9 @@ Follow the detailed guide in [docs/deployment/aws-setup.md](docs/deployment/aws-
 
 - RDS PostgreSQL database
 - ElastiCache Redis
-- ECS cluster for backend
-- S3 buckets for static sites
-- CloudFront distributions
+- ECS cluster for backend and website
+- S3 bucket + CloudFront for static frontend assets
+- Mintlify Cloud domain for docs hosting
 - Route53 DNS records
 
 ### 4. Configure GitHub Secrets
@@ -47,6 +47,17 @@ Set up the following secrets in your GitHub repository:
 - `DATABASE_URL` (production)
 - `REDIS_URL` (production)
 - `APP_SECRET` (generate a random string)
+- `ECS_SUBNETS` (comma-separated private subnet IDs)
+- `ECS_SECURITY_GROUPS` (comma-separated security group IDs)
+
+Also configure repository variables for deployment routing:
+
+- `AWS_REGION`
+- `ECR_REPOSITORY_BACKEND`, `ECS_CLUSTER_BACKEND`, `ECS_SERVICE_BACKEND`, `ECS_TASK_DEFINITION_BACKEND`, `ECS_CONTAINER_NAME_BACKEND`
+- `ECR_REPOSITORY_WEBSITE`, `ECS_CLUSTER_WEBSITE`, `ECS_SERVICE_WEBSITE`, `ECS_TASK_DEFINITION_WEBSITE`, `ECS_CONTAINER_NAME_WEBSITE`
+- `S3_BUCKET_FRONTEND`, `CLOUDFRONT_DISTRIBUTION_ID_FRONTEND`
+- `BACKEND_PUBLIC_URL`, `FRONTEND_PUBLIC_URL`, `DOCS_PUBLIC_URL`, `WEBSITE_PUBLIC_URL`
+- `FRONTEND_API_BASE_URL`
 
 ### 5. Deploy
 
@@ -59,20 +70,19 @@ Or manually trigger deployments from GitHub Actions.
 
 ## Domain Structure
 
-- `www.arjunacrm.com` - Marketing website
-- `app.arjunacrm.com` - Main CRM application
-- `api.arjunacrm.com` - Backend API
-- `docs.arjunacrm.com` - Documentation site
+- `www.vedpragya.com` - Marketing website
+- `app.vedpragya.com` - Main CRM application
+- `api.vedpragya.com` - Backend API
+- `docs.vedpragya.com` - Documentation site
 
 ## Key Commands
 
 ```bash
 # Development
-npm start                    # Start all services
-npm run build                # Build all packages
-npm test                     # Run all tests
-npm run lint                 # Lint all packages
-npm run typecheck            # Type check all packages
+yarn start                    # Start all services
+yarn nx run-many --target=build --projects=arjuna-front,arjuna-server,arjuna-ui,arjuna-shared,arjuna-emails,arjuna-website --parallel=3
+yarn nx run-many --target=test --projects=arjuna-front,arjuna-server,arjuna-ui,arjuna-shared,arjuna-emails --parallel=3
+yarn nx run-many --target=lint --projects=arjuna-front,arjuna-server,arjuna-ui,arjuna-shared,arjuna-emails,arjuna-website --parallel=3
 
 # Backend
 npx nx start arjuna-server   # Start backend server
@@ -91,23 +101,18 @@ npx nx run arjuna-server:database:migrate:prod  # Run migrations
 - [AWS Setup Guide](docs/deployment/aws-setup.md) - Detailed AWS infrastructure setup
 - [CI/CD Guide](docs/deployment/ci-cd-guide.md) - GitHub Actions pipeline documentation
 - [Environment Variables](docs/deployment/environment-variables.md) - Complete environment variable reference
-
-## Migration from Yarn
-
-This project has been migrated from Yarn to npm. All commands now use `npm` instead of `yarn`:
-
-- `yarn install` → `npm install`
-- `yarn start` → `npm start`
-- `yarn build` → `npm run build`
-- `yarn test` → `npm test`
+- [Deployment and Rollback Runbook](docs/deployment/runbook-deployment-and-rollback.md) - Release, smoke checks, and rollback steps
+- [Backup and Incident Runbook](docs/deployment/runbook-backup-restore-and-incident.md) - Backup policy, restore flow, and incident response
+- [Launch Readiness Checklist](docs/deployment/launch-readiness-checklist.md) - Final go/no-go validation checklist
+- [Observability and Alerting Guide](docs/deployment/observability-and-alerting.md) - Dashboards, alerts, and release monitoring baseline
 
 ## Troubleshooting
 
 ### Build Failures
 
 - Ensure Node.js version is 24.x
-- Clear node_modules and reinstall: `rm -rf node_modules package-lock.json && npm install`
-- Check for TypeScript errors: `npm run typecheck`
+- Clear node_modules and reinstall: `rm -rf node_modules && yarn install --immutable`
+- Check for TypeScript errors: `yarn nx run-many --target=typecheck --projects=arjuna-front,arjuna-server,arjuna-ui,arjuna-shared,arjuna-emails,arjuna-website --parallel=3`
 
 ### Deployment Failures
 
@@ -125,6 +130,7 @@ This project has been migrated from Yarn to npm. All commands now use `npm` inst
 ## Support
 
 For issues and questions:
+
 - Check documentation in `docs/` directory
 - Review GitHub Actions logs
 - Check CloudWatch logs for runtime errors
@@ -136,4 +142,3 @@ For issues and questions:
 3. Set up staging environment
 4. Review security settings
 5. Configure custom domain SSL certificates
-

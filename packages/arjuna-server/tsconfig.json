@@ -25,6 +25,16 @@
     "resolveJsonModule": true,
     "types": ["jest", "node"],
     "paths": {
+      "src/engine/arjuna-orm/*": ["./src/engine/twenty-orm/*"],
+      "src/engine/core-modules/arjuna-config/*": [
+        "./src/engine/core-modules/twenty-config/*"
+      ],
+      "src/engine/workspace-manager/arjuna-standard-application/*": [
+        "./src/engine/workspace-manager/twenty-standard-application/*"
+      ],
+      "test/integration/arjuna-config/*": [
+        "./test/integration/twenty-config/*"
+      ],
       "src/*": ["./src/*"],
       "test/*": ["./test/*"]
     }
@@ -33,8 +43,5 @@
     "files": true,
     "require": ["tsconfig-paths/register"]
   },
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+  "exclude": ["node_modules", "dist"]
 }

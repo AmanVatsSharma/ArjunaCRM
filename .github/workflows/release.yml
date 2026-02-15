@@ -20,14 +20,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Install dependencies
+        uses: ./.github/workflows/actions/yarn-install
         with:
           node-version: '24'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
 
       - name: Generate changelog
         id: changelog
@@ -66,10 +62,10 @@ jobs:
             ## Deployment
 
             All services are being deployed automatically:
-            - Backend API: api.arjunacrm.com
-            - Frontend App: app.arjunacrm.com
-            - Documentation: docs.arjunacrm.com
-            - Website: www.arjunacrm.com
+            - Backend API: api.vedpragya.com
+            - Frontend App: app.vedpragya.com
+            - Documentation: docs.vedpragya.com
+            - Website: www.vedpragya.com
           draft: false
           prerelease: false
         env:
@@ -151,4 +147,3 @@ jobs:
       - name: Notify release completion
         run: |
           echo "✅ Release ${{ steps.changelog.outputs.version }} created and deployments triggered"
-

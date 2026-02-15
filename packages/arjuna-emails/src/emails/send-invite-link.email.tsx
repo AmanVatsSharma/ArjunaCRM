@@ -9,7 +9,7 @@ import { HighlightedText } from 'src/components/HighlightedText';
 import { Link } from 'src/components/Link';
 import { MainText } from 'src/components/MainText';
 import { Title } from 'src/components/Title';
-import { WhatIsArjunaCRM } from 'src/components/WhatIsArjunaCRM';
+import { WhatIsArjunaCRM } from 'src/components/WhatIsTwenty';
 import { capitalize } from 'src/utils/capitalize';
 import { createI18nInstance } from 'src/utils/i18n.utils';
 import { type APP_LOCALES } from 'arjuna-shared/translations';

@@ -3,6 +3,18 @@
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
+      "src/engine/arjuna-orm/*": [
+        "packages/arjuna-server/src/engine/twenty-orm/*"
+      ],
+      "src/engine/core-modules/arjuna-config/*": [
+        "packages/arjuna-server/src/engine/core-modules/twenty-config/*"
+      ],
+      "src/engine/workspace-manager/arjuna-standard-application/*": [
+        "packages/arjuna-server/src/engine/workspace-manager/twenty-standard-application/*"
+      ],
+      "test/integration/arjuna-config/*": [
+        "packages/arjuna-server/test/integration/twenty-config/*"
+      ],
       "src/*": ["packages/arjuna-server/src/*"]
     },
     "types": ["node"]
