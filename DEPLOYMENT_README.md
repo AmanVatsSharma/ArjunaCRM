@@ -104,6 +104,7 @@ npx nx run arjuna-server:database:migrate:prod  # Run migrations
 - [Deployment and Rollback Runbook](docs/deployment/runbook-deployment-and-rollback.md) - Release, smoke checks, and rollback steps
 - [Backup and Incident Runbook](docs/deployment/runbook-backup-restore-and-incident.md) - Backup policy, restore flow, and incident response
 - [Launch Readiness Checklist](docs/deployment/launch-readiness-checklist.md) - Final go/no-go validation checklist
+- [Observability and Alerting Guide](docs/deployment/observability-and-alerting.md) - Dashboards, alerts, and release monitoring baseline
 
 ## Troubleshooting
 
