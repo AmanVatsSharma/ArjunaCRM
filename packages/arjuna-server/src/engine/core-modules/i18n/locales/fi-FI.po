@@ -1840,10 +1840,10 @@ msgstr "Tammikuu"
 msgid "Job Title"
 msgstr "Työnimike"
 
-#. js-lingui-id: PviVyk
+#. js-lingui-id: ieW+l6
 #: src/engine/core-modules/workspace-invitation/services/workspace-invitation.service.ts
-msgid "Join your team on Twenty"
-msgstr "Liity tiimiisi Twentyssä"
+msgid "Join your team on ArjunaCRM"
+msgstr ""
 
 #. js-lingui-id: WNfJ8M
 #: src/modules/connected-account/standard-objects/connected-account.workspace-entity.ts
@@ -4210,10 +4210,10 @@ msgstr "Kohtasimme ongelman muodostaessamme yhteyttä sähköpostitilillesi. Tar
 msgid "Wednesday"
 msgstr "Keskiviikko"
 
-#. js-lingui-id: TVkCrJ
+#. js-lingui-id: R3IYAH
 #: src/engine/core-modules/email-verification/services/email-verification.service.ts
-msgid "Welcome to Twenty: Please Confirm Your Email"
-msgstr "Tervetuloa Twentyyn: Vahvista sähköpostisi"
+msgid "Welcome to ArjunaCRM: Please Confirm Your Email"
+msgstr ""
 
 #. js-lingui-id: bLt/0J
 #: src/modules/workflow/common/standard-objects/workflow.workspace-entity.ts

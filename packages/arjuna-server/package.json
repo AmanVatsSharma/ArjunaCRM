@@ -213,9 +213,9 @@
     "@types/react": "^18.2.39",
     "@types/unzipper": "^0",
     "@yarnpkg/types": "^4.0.0",
-    "rimraf": "^5.0.5",
     "arjuna-emails": "workspace:*",
-    "arjuna-shared": "workspace:*"
+    "arjuna-shared": "workspace:*",
+    "rimraf": "^5.0.5"
   },
   "engines": {
     "node": "^24.5.0",

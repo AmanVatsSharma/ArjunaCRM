@@ -1840,10 +1840,10 @@ msgstr "一月"
 msgid "Job Title"
 msgstr "職稱"
 
-#. js-lingui-id: PviVyk
+#. js-lingui-id: ieW+l6
 #: src/engine/core-modules/workspace-invitation/services/workspace-invitation.service.ts
-msgid "Join your team on Twenty"
-msgstr "加入您的團隊，使用 Twenty"
+msgid "Join your team on ArjunaCRM"
+msgstr ""
 
 #. js-lingui-id: WNfJ8M
 #: src/modules/connected-account/standard-objects/connected-account.workspace-entity.ts
@@ -4210,10 +4210,10 @@ msgstr "我們遇到了連接您的電子郵件帳戶問題。請檢查您的設
 msgid "Wednesday"
 msgstr "星期三"
 
-#. js-lingui-id: TVkCrJ
+#. js-lingui-id: R3IYAH
 #: src/engine/core-modules/email-verification/services/email-verification.service.ts
-msgid "Welcome to Twenty: Please Confirm Your Email"
-msgstr "歡迎來到 Twenty：請確認您的電子郵件"
+msgid "Welcome to ArjunaCRM: Please Confirm Your Email"
+msgstr ""
 
 #. js-lingui-id: bLt/0J
 #: src/modules/workflow/common/standard-objects/workflow.workspace-entity.ts

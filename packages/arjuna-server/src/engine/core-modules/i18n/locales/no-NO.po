@@ -1840,10 +1840,10 @@ msgstr "Januar"
 msgid "Job Title"
 msgstr "Stillingstittel"
 
-#. js-lingui-id: PviVyk
+#. js-lingui-id: ieW+l6
 #: src/engine/core-modules/workspace-invitation/services/workspace-invitation.service.ts
-msgid "Join your team on Twenty"
-msgstr "Bli med teamet ditt på Twenty"
+msgid "Join your team on ArjunaCRM"
+msgstr ""
 
 #. js-lingui-id: WNfJ8M
 #: src/modules/connected-account/standard-objects/connected-account.workspace-entity.ts
@@ -4210,10 +4210,10 @@ msgstr "Vi opplevde et problem med å koble til e-postkontoen din. Vennligst sje
 msgid "Wednesday"
 msgstr "Onsdag"
 
-#. js-lingui-id: TVkCrJ
+#. js-lingui-id: R3IYAH
 #: src/engine/core-modules/email-verification/services/email-verification.service.ts
-msgid "Welcome to Twenty: Please Confirm Your Email"
-msgstr "Velkommen til Twenty: Vennligst bekreft din e-post"
+msgid "Welcome to ArjunaCRM: Please Confirm Your Email"
+msgstr ""
 
 #. js-lingui-id: bLt/0J
 #: src/modules/workflow/common/standard-objects/workflow.workspace-entity.ts
