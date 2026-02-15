@@ -28,7 +28,7 @@ Deploys the backend API to AWS ECS:
 2. Pushes to ECR
 3. Updates ECS task definition
 4. Deploys to ECS service
-5. Runs database migrations
+5. Runs database migrations as a dedicated ECS task and fails deployment if the task exits non-zero
 
 **Triggers:**
 
