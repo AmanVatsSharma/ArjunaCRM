@@ -640,7 +640,7 @@ export class ConfigVariables {
   @ConfigVariablesMetadata({
     group: ConfigVariablesGroup.SERVER_CONFIG,
     description:
-      'Comma-separated list of additional allowed CORS origins (for example https://app.arjunacrm.com,https://admin.arjunacrm.com)',
+      'Comma-separated list of additional allowed CORS origins (for example https://app.vedpragya.com,https://admin.vedpragya.com)',
     type: ConfigVariableType.STRING,
     isEnvOnly: true,
   })

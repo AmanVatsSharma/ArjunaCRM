@@ -59,10 +59,10 @@ Or manually trigger deployments from GitHub Actions.
 
 ## Domain Structure
 
-- `www.arjunacrm.com` - Marketing website
-- `app.arjunacrm.com` - Main CRM application
-- `api.arjunacrm.com` - Backend API
-- `docs.arjunacrm.com` - Documentation site
+- `www.vedpragya.com` - Marketing website
+- `app.vedpragya.com` - Main CRM application
+- `api.vedpragya.com` - Backend API
+- `docs.vedpragya.com` - Documentation site
 
 ## Key Commands
 
@@ -115,6 +115,7 @@ npx nx run arjuna-server:database:migrate:prod  # Run migrations
 ## Support
 
 For issues and questions:
+
 - Check documentation in `docs/` directory
 - Review GitHub Actions logs
 - Check CloudWatch logs for runtime errors
@@ -126,4 +127,3 @@ For issues and questions:
 3. Set up staging environment
 4. Review security settings
 5. Configure custom domain SSL certificates
-

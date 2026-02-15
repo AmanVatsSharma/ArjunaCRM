@@ -107,8 +107,7 @@ jobs:
         if: always()
         run: |
           if [ "${{ job.status }}" == "success" ]; then
-            echo "✅ Backend deployed successfully to api.arjunacrm.com"
+            echo "✅ Backend deployed successfully to api.vedpragya.com"
           else
             echo "❌ Backend deployment failed"
           fi
-

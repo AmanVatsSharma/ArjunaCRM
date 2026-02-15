@@ -24,10 +24,10 @@ ArjunaCRM requires the following AWS services:
 
 ## Domain Structure
 
-- `www.arjunacrm.com` - Marketing website
-- `app.arjunacrm.com` - Main CRM application
-- `api.arjunacrm.com` - Backend API
-- `docs.arjunacrm.com` - Documentation site
+- `www.vedpragya.com` - Marketing website
+- `app.vedpragya.com` - Main CRM application
+- `api.vedpragya.com` - Backend API
+- `docs.vedpragya.com` - Documentation site
 
 ## Step 1: Set Up RDS PostgreSQL
 
@@ -97,10 +97,11 @@ aws ecs create-cluster --cluster-name arjunacrm-cluster --region us-east-1
 ## Step 7: Configure Route53 DNS
 
 Create A records (or CNAME) pointing to:
-- `www.arjunacrm.com` → ALB / ECS service for website
-- `app.arjunacrm.com` → CloudFront distribution for frontend
-- `api.arjunacrm.com` → Application Load Balancer (if using ALB) or ECS service
-- `docs.arjunacrm.com` → CloudFront distribution for docs
+
+- `www.vedpragya.com` → ALB / ECS service for website
+- `app.vedpragya.com` → CloudFront distribution for frontend
+- `api.vedpragya.com` → Application Load Balancer (if using ALB) or ECS service
+- `docs.vedpragya.com` → CloudFront distribution for docs
 
 ## Step 8: Set Up GitHub Secrets
 
@@ -134,6 +135,7 @@ Before deploying, ensure all required secrets are configured in GitHub:
 Once infrastructure is set up and secrets are configured, deployments will happen automatically via GitHub Actions when you push to `main` branch or create a release tag.
 
 **First Deployment:**
+
 - Push to `main` branch or manually trigger workflows
 - Monitor GitHub Actions for deployment status
 - Check CloudWatch logs for application startup
@@ -142,6 +144,7 @@ Once infrastructure is set up and secrets are configured, deployments will happe
 ## Monitoring
 
 Set up CloudWatch for:
+
 - Application logs
 - Database monitoring
 - Redis monitoring
@@ -160,4 +163,3 @@ Set up CloudWatch for:
 - Use security groups to restrict access
 - Enable CloudFront signed URLs for sensitive content
 - Regularly rotate secrets and credentials
-

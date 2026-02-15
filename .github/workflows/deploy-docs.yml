@@ -66,8 +66,7 @@ jobs:
         if: always()
         run: |
           if [ "${{ job.status }}" == "success" ]; then
-            echo "✅ Documentation deployed successfully to docs.arjunacrm.com"
+            echo "✅ Documentation deployed successfully to docs.vedpragya.com"
           else
             echo "❌ Documentation deployment failed"
           fi
-

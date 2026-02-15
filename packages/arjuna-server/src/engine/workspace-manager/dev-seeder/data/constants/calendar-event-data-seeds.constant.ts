@@ -217,7 +217,7 @@ const GENERATE_CALENDAR_EVENT_SEEDS = (): CalendarEventDataSeed[] => {
       ).toISOString(),
       description: TEMPLATE.description,
       location: LOCATION,
-      iCalUid: `event${INDEX}@calendar.arjunacrm.com`,
+      iCalUid: `event${INDEX}@calendar.vedpragya.com`,
       conferenceSolution: CONFERENCE_SOLUTION,
       conferenceLinkPrimaryLinkLabel: CONFERENCE_LINK,
       conferenceLinkPrimaryLinkUrl: CONFERENCE_LINK,
