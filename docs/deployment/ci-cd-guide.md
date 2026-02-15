@@ -210,6 +210,8 @@ and re-syncing.
 - Check GitHub Actions logs for specific errors
 - Verify all dependencies are correctly specified
 - Ensure Node.js version matches (24.x)
+- `CI Utils` uses `pull_request_target`; workflow behavior may reflect default
+  branch config until changes are merged into `main`.
 
 ### Deployment Failures
 
