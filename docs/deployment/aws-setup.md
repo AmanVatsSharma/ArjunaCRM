@@ -122,15 +122,28 @@ Configure the following secrets in your GitHub repository:
 
 **Note**: These are required for database migrations and ECS task execution. Get subnet IDs from your VPC and security group IDs from your ECS service configuration.
 
-## Step 9: Configure GitHub Secrets
+## Step 9: Set Up GitHub Variables
+
+Configure these repository variables in GitHub Actions:
+
+- `AWS_REGION` (example: `us-east-1`)
+- `ECR_REPOSITORY_BACKEND`, `ECS_CLUSTER_BACKEND`, `ECS_SERVICE_BACKEND`, `ECS_TASK_DEFINITION_BACKEND`
+- `ECR_REPOSITORY_WEBSITE`, `ECS_CLUSTER_WEBSITE`, `ECS_SERVICE_WEBSITE`, `ECS_TASK_DEFINITION_WEBSITE`
+- `S3_BUCKET_FRONTEND`, `CLOUDFRONT_DISTRIBUTION_ID_FRONTEND`
+- `S3_BUCKET_DOCS`, `CLOUDFRONT_DISTRIBUTION_ID_DOCS`
+- `BACKEND_PUBLIC_URL`, `FRONTEND_PUBLIC_URL`, `DOCS_PUBLIC_URL`, `WEBSITE_PUBLIC_URL`
+- `FRONTEND_API_BASE_URL`
+
+## Step 10: Configure GitHub Secrets
 
 Before deploying, ensure all required secrets are configured in GitHub:
 
 1. Go to your repository → Settings → Secrets and variables → Actions
 2. Add all secrets listed in Step 8
-3. Verify ECS subnet and security group IDs match your infrastructure
+3. Add the repository variables listed in Step 9
+4. Verify ECS subnet and security group IDs match your infrastructure
 
-## Step 10: Deploy
+## Step 11: Deploy
 
 Once infrastructure is set up and secrets are configured, deployments will happen automatically via GitHub Actions when you push to `main` branch or create a release tag.
 

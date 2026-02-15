@@ -47,6 +47,18 @@ Set up the following secrets in your GitHub repository:
 - `DATABASE_URL` (production)
 - `REDIS_URL` (production)
 - `APP_SECRET` (generate a random string)
+- `ECS_SUBNETS` (comma-separated private subnet IDs)
+- `ECS_SECURITY_GROUPS` (comma-separated security group IDs)
+
+Also configure repository variables for deployment routing:
+
+- `AWS_REGION`
+- `ECR_REPOSITORY_BACKEND`, `ECS_CLUSTER_BACKEND`, `ECS_SERVICE_BACKEND`, `ECS_TASK_DEFINITION_BACKEND`
+- `ECR_REPOSITORY_WEBSITE`, `ECS_CLUSTER_WEBSITE`, `ECS_SERVICE_WEBSITE`, `ECS_TASK_DEFINITION_WEBSITE`
+- `S3_BUCKET_FRONTEND`, `CLOUDFRONT_DISTRIBUTION_ID_FRONTEND`
+- `S3_BUCKET_DOCS`, `CLOUDFRONT_DISTRIBUTION_ID_DOCS`
+- `BACKEND_PUBLIC_URL`, `FRONTEND_PUBLIC_URL`, `DOCS_PUBLIC_URL`, `WEBSITE_PUBLIC_URL`
+- `FRONTEND_API_BASE_URL`
 
 ### 5. Deploy
 

@@ -4,11 +4,12 @@ on:
   workflow_dispatch:
 
 env:
-  AWS_REGION: us-east-1
+  AWS_REGION: ${{ vars.AWS_REGION || 'us-east-1' }}
   ECR_REPOSITORY: ${{ vars.ECR_REPOSITORY_WEBSITE || 'arjunacrm/arjuna-website' }}
   ECS_SERVICE: ${{ vars.ECS_SERVICE_WEBSITE || 'arjunacrm-website' }}
   ECS_CLUSTER: ${{ vars.ECS_CLUSTER_WEBSITE || 'arjunacrm-cluster' }}
   ECS_TASK_DEFINITION: ${{ vars.ECS_TASK_DEFINITION_WEBSITE || 'arjunacrm-website-task' }}
+  WEBSITE_PUBLIC_URL: ${{ vars.WEBSITE_PUBLIC_URL || 'https://www.vedpragya.com' }}
 
 jobs:
   build-and-deploy:
@@ -19,6 +20,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Validate deployment variables
+        run: |
+          set -e
+          if [ -z "${{ env.ECR_REPOSITORY }}" ] || [ -z "${{ env.ECS_SERVICE }}" ] || [ -z "${{ env.ECS_CLUSTER }}" ] || [ -z "${{ env.ECS_TASK_DEFINITION }}" ]; then
+            echo "::error::Missing required website deployment variables"
+            exit 1
+          fi
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -78,7 +87,7 @@ jobs:
         if: always()
         run: |
           if [ "${{ job.status }}" == "success" ]; then
-            echo "✅ Website deployed successfully to www.vedpragya.com"
+            echo "✅ Website deployed successfully to ${{ env.WEBSITE_PUBLIC_URL }}"
           else
             echo "❌ Website deployment failed"
           fi

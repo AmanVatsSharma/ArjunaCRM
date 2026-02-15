@@ -31,6 +31,7 @@ Deploys the backend API to AWS ECS:
 5. Runs database migrations
 
 **Triggers:**
+
 - Push to `main` branch
 - Version tags (`v*.*.*`)
 - Manual workflow dispatch
@@ -44,6 +45,7 @@ Deploys the frontend application to S3 + CloudFront:
 3. Invalidates CloudFront cache
 
 **Triggers:**
+
 - Push to `main` branch
 - Version tags (`v*.*.*`)
 - Manual workflow dispatch
@@ -57,6 +59,7 @@ Deploys documentation site to S3 + CloudFront:
 3. Invalidates CloudFront cache
 
 **Triggers:**
+
 - Manual workflow dispatch
 
 ### Website Deployment (`.github/workflows/deploy-website.yml`)
@@ -69,6 +72,7 @@ Deploys marketing website to AWS ECS:
 4. Deploys to ECS service
 
 **Triggers:**
+
 - Manual workflow dispatch
 
 ### Release Workflow (`.github/workflows/release.yml`)
@@ -80,6 +84,7 @@ Creates GitHub releases and triggers all deployments:
 3. Triggers all deployment workflows
 
 **Triggers:**
+
 - Version tags (`v*.*.*`)
 
 ## Required GitHub Secrets
@@ -87,28 +92,41 @@ Creates GitHub releases and triggers all deployments:
 Configure these secrets in your repository settings:
 
 ### AWS Credentials
+
 - `AWS_ACCESS_KEY_ID` - AWS access key with deployment permissions
 - `AWS_SECRET_ACCESS_KEY` - AWS secret key
 
 ### Application Secrets
+
 - `DATABASE_URL` - PostgreSQL connection string (production)
 - `REDIS_URL` - Redis connection string (production)
 - `APP_SECRET` - Application secret key
 
 ### Environment-Specific
+
+- `ECS_SUBNETS` - Comma-separated list of subnet IDs for ECS tasks (e.g., `subnet-xxx,subnet-yyy`)
+- `ECS_SECURITY_GROUPS` - Comma-separated list of security group IDs (e.g., `sg-xxx,sg-yyy`)
+
+### Repository Variables (GitHub Actions → Variables)
+
 - `AWS_REGION` - AWS region (default: us-east-1)
-- `ECR_REPOSITORY` - ECR repository name
-- `ECS_CLUSTER` - ECS cluster name
-- `ECS_SERVICE` - ECS service name
-- `ECS_TASK_DEFINITION` - ECS task definition name
+- `BACKEND_PUBLIC_URL` - Public backend URL (for deployment notifications)
+- `ECR_REPOSITORY_BACKEND` - ECR repository for backend image
+- `ECS_CLUSTER_BACKEND` - ECS cluster hosting backend service
+- `ECS_SERVICE_BACKEND` - ECS service for backend
+- `ECS_TASK_DEFINITION_BACKEND` - ECS task definition name for backend
+- `FRONTEND_API_BASE_URL` - API base URL injected into frontend build
+- `FRONTEND_PUBLIC_URL` - Public frontend URL
+- `S3_BUCKET_FRONTEND` - S3 bucket used for frontend deployment
+- `CLOUDFRONT_DISTRIBUTION_ID_FRONTEND` - CloudFront distribution for frontend
+- `DOCS_PUBLIC_URL` - Public docs URL
+- `S3_BUCKET_DOCS` - S3 bucket used for docs deployment
+- `CLOUDFRONT_DISTRIBUTION_ID_DOCS` - CloudFront distribution for docs
+- `WEBSITE_PUBLIC_URL` - Public website URL
 - `ECR_REPOSITORY_WEBSITE` - ECR repository name for website container
 - `ECS_CLUSTER_WEBSITE` - ECS cluster hosting website service
 - `ECS_SERVICE_WEBSITE` - ECS service for website
 - `ECS_TASK_DEFINITION_WEBSITE` - ECS task definition for website
-- `ECS_SUBNETS` - Comma-separated list of subnet IDs for ECS tasks (e.g., `subnet-xxx,subnet-yyy`)
-- `ECS_SECURITY_GROUPS` - Comma-separated list of security group IDs (e.g., `sg-xxx,sg-yyy`)
-- `S3_BUCKET_*` - S3 bucket names for each service
-- `CLOUDFRONT_DISTRIBUTION_ID_*` - CloudFront distribution IDs
 
 ## Deployment Process
 
@@ -156,7 +174,7 @@ Configure these secrets in your repository settings:
      --task-definition arjunacrm-server-task:REVISION
    ```
 
-### Frontend/Docs/Website Rollback
+### Frontend/Docs Rollback
 
 1. Find previous build in S3 version history
 2. Restore previous version:
@@ -164,6 +182,17 @@ Configure these secrets in your repository settings:
    aws s3 cp s3://bucket-name/previous-version/ s3://bucket-name/ --recursive
    ```
 3. Invalidate CloudFront cache
+
+### Website Rollback
+
+1. Find previous healthy task definition in ECS
+2. Update the website service to previous task definition:
+   ```bash
+   aws ecs update-service \
+     --cluster arjunacrm-cluster \
+     --service arjunacrm-website \
+     --task-definition arjunacrm-website-task:REVISION
+   ```
 
 ## Troubleshooting
 
@@ -196,4 +225,3 @@ Each service has a specific build output directory:
 - **Documentation** (`arjuna-docs`): `packages/arjuna-docs/.mintlify/` (Mintlify build output)
 - **Website** (`arjuna-website`): Docker image built from `packages/arjuna-docker/arjuna-website-docker/Dockerfile`
 - **Backend** (`arjuna-server`): Docker image built from `packages/arjuna-docker/arjuna/Dockerfile`
-

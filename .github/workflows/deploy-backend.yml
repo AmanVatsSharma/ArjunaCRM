@@ -8,11 +8,12 @@ on:
   workflow_dispatch:
 
 env:
-  AWS_REGION: us-east-1
-  ECR_REPOSITORY: arjunacrm/arjuna
-  ECS_SERVICE: arjunacrm-server
-  ECS_CLUSTER: arjunacrm-cluster
-  ECS_TASK_DEFINITION: arjunacrm-server-task
+  AWS_REGION: ${{ vars.AWS_REGION || 'us-east-1' }}
+  ECR_REPOSITORY: ${{ vars.ECR_REPOSITORY_BACKEND || 'arjunacrm/arjuna' }}
+  ECS_SERVICE: ${{ vars.ECS_SERVICE_BACKEND || 'arjunacrm-server' }}
+  ECS_CLUSTER: ${{ vars.ECS_CLUSTER_BACKEND || 'arjunacrm-cluster' }}
+  ECS_TASK_DEFINITION: ${{ vars.ECS_TASK_DEFINITION_BACKEND || 'arjunacrm-server-task' }}
+  BACKEND_PUBLIC_URL: ${{ vars.BACKEND_PUBLIC_URL || 'https://api.vedpragya.com' }}
 
 jobs:
   build-and-deploy:
@@ -23,6 +24,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Validate deployment variables
+        run: |
+          set -e
+          if [ -z "${{ env.ECR_REPOSITORY }}" ] || [ -z "${{ env.ECS_SERVICE }}" ] || [ -z "${{ env.ECS_CLUSTER }}" ] || [ -z "${{ env.ECS_TASK_DEFINITION }}" ]; then
+            echo "::error::Missing required backend deployment variables"
+            exit 1
+          fi
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -80,14 +89,17 @@ jobs:
 
       - name: Run database migrations
         env:
-          ECS_SUBNETS: ${{ secrets.ECS_SUBNETS || '[]' }}
-          ECS_SECURITY_GROUPS: ${{ secrets.ECS_SECURITY_GROUPS || '[]' }}
+          ECS_SUBNETS: ${{ secrets.ECS_SUBNETS }}
+          ECS_SECURITY_GROUPS: ${{ secrets.ECS_SECURITY_GROUPS }}
         run: |
           set -e
-          # Use network configuration from secrets or environment variables
-          # Format: subnet-xxx,subnet-yyy for subnets and sg-xxx,sg-yyy for security groups
-          SUBNETS="${ECS_SUBNETS:-subnet-xxx}"
-          SECURITY_GROUPS="${ECS_SECURITY_GROUPS:-sg-xxx}"
+          if [ -z "$ECS_SUBNETS" ] || [ -z "$ECS_SECURITY_GROUPS" ]; then
+            echo "::error::ECS_SUBNETS and ECS_SECURITY_GROUPS secrets are required"
+            exit 1
+          fi
+
+          SUBNETS="$ECS_SUBNETS"
+          SECURITY_GROUPS="$ECS_SECURITY_GROUPS"
 
           # Convert comma-separated to JSON array format
           SUBNET_ARRAY=$(echo "$SUBNETS" | sed 's/,/","/g' | sed 's/^/["/' | sed 's/$/"]/')
@@ -107,7 +119,7 @@ jobs:
         if: always()
         run: |
           if [ "${{ job.status }}" == "success" ]; then
-            echo "✅ Backend deployed successfully to api.vedpragya.com"
+            echo "✅ Backend deployed successfully to ${{ env.BACKEND_PUBLIC_URL }}"
           else
             echo "❌ Backend deployment failed"
           fi

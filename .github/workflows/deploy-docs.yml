@@ -4,9 +4,10 @@ on:
   workflow_dispatch:
 
 env:
-  AWS_REGION: us-east-1
-  S3_BUCKET: arjunacrm-docs
-  CLOUDFRONT_DISTRIBUTION_ID: E0987654321XYZ
+  AWS_REGION: ${{ vars.AWS_REGION || 'us-east-1' }}
+  S3_BUCKET: ${{ vars.S3_BUCKET_DOCS }}
+  CLOUDFRONT_DISTRIBUTION_ID: ${{ vars.CLOUDFRONT_DISTRIBUTION_ID_DOCS }}
+  DOCS_PUBLIC_URL: ${{ vars.DOCS_PUBLIC_URL || 'https://docs.vedpragya.com' }}
 
 jobs:
   build-and-deploy:
@@ -17,6 +18,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Validate deployment variables
+        run: |
+          set -e
+          if [ -z "${{ env.S3_BUCKET }}" ] || [ -z "${{ env.CLOUDFRONT_DISTRIBUTION_ID }}" ]; then
+            echo "::error::S3_BUCKET_DOCS and CLOUDFRONT_DISTRIBUTION_ID_DOCS variables are required"
+            exit 1
+          fi
 
       - name: Install dependencies
         uses: ./.github/workflows/actions/yarn-install
@@ -66,7 +75,7 @@ jobs:
         if: always()
         run: |
           if [ "${{ job.status }}" == "success" ]; then
-            echo "✅ Documentation deployed successfully to docs.vedpragya.com"
+            echo "✅ Documentation deployed successfully to ${{ env.DOCS_PUBLIC_URL }}"
           else
             echo "❌ Documentation deployment failed"
           fi
