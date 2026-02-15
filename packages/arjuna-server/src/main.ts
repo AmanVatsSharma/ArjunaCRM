@@ -5,6 +5,7 @@ import fs from 'fs';
 
 import bytes from 'bytes';
 import { useContainer } from 'class-validator';
+import { type NextFunction, type Request, type Response } from 'express';
 import session from 'express-session';
 import graphqlUploadExpress from 'graphql-upload/graphqlUploadExpress.mjs';
 
@@ -76,6 +77,37 @@ const buildCorsAllowList = (
   );
 };
 
+const applySecurityHeaders = (
+  app: NestExpressApplication,
+  nodeEnvironment: NodeEnvironment,
+  serverUrl?: string,
+) => {
+  app.use((_request: Request, response: Response, next: NextFunction) => {
+    response.setHeader('X-Content-Type-Options', 'nosniff');
+    response.setHeader('X-Frame-Options', 'DENY');
+    response.setHeader(
+      'Referrer-Policy',
+      'strict-origin-when-cross-origin',
+    );
+    response.setHeader('X-DNS-Prefetch-Control', 'off');
+    response.setHeader('X-Permitted-Cross-Domain-Policies', 'none');
+
+    if (nodeEnvironment !== NodeEnvironment.DEVELOPMENT) {
+      response.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
+      response.setHeader('Cross-Origin-Resource-Policy', 'same-site');
+    }
+
+    if (serverUrl?.startsWith('https://')) {
+      response.setHeader(
+        'Strict-Transport-Security',
+        'max-age=31536000; includeSubDomains',
+      );
+    }
+
+    next();
+  });
+};
+
 const bootstrap = async () => {
   setPgDateTypeParser();
 
@@ -95,7 +127,17 @@ const bootstrap = async () => {
   });
   const logger = app.get(LoggerService);
   const arjunaConfigService = app.get(ArjunaCRMConfigService);
+  const nodeEnvironment = arjunaConfigService.get('NODE_ENV');
+  const serverUrl = arjunaConfigService.get('SERVER_URL');
   const corsAllowList = buildCorsAllowList(arjunaConfigService);
+
+  if (serverUrl?.startsWith('https://')) {
+    app.set('trust proxy', 1);
+  }
+
+  applySecurityHeaders(app, nodeEnvironment, serverUrl);
+
+  logger.log(`Configured CORS allowlist with ${corsAllowList.length} origins`);
 
   app.enableCors({
     origin: (origin, callback) => {
@@ -156,4 +198,7 @@ const bootstrap = async () => {
   await app.listen(arjunaConfigService.get('NODE_PORT'));
 };
 
-bootstrap();
+bootstrap().catch((error) => {
+  console.error('Failed to bootstrap ArjunaCRM server', error);
+  process.exit(1);
+});
