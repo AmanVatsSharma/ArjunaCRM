@@ -6,14 +6,14 @@ This document lists all environment variables used across ArjunaCRM services.
 
 ### Server Configuration
 
-| Variable               | Required | Default      | Description                                               |
-| ---------------------- | -------- | ------------ | --------------------------------------------------------- |
-| `NODE_ENV`             | No       | `production` | Node environment (development, production, test)          |
-| `NODE_PORT`            | No       | `3000`       | Port for the Node.js server                               |
-| `SERVER_URL`           | Yes      | -            | Base URL for the server (e.g., https://api.vedpragya.com) |
-| `PUBLIC_DOMAIN_URL`    | No       | -            | Public domain URL                                         |
-| `CORS_ALLOWED_ORIGINS` | No       | -            | Comma-separated list of extra allowed CORS origins        |
-| `APP_SECRET`           | Yes      | -            | Secret key for the application (generate random string)   |
+| Variable               | Required | Default      | Description                                                                                                             |
+| ---------------------- | -------- | ------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| `NODE_ENV`             | No       | `production` | Node environment (development, production, test)                                                                        |
+| `NODE_PORT`            | No       | `3000`       | Port for the Node.js server                                                                                             |
+| `SERVER_URL`           | Yes      | -            | Base URL for the server (e.g., https://api.vedpragya.com). HTTPS enables secure cookies, trust proxy, and HSTS headers. |
+| `PUBLIC_DOMAIN_URL`    | No       | -            | Public domain URL                                                                                                       |
+| `CORS_ALLOWED_ORIGINS` | No       | -            | Comma-separated list of extra allowed CORS origins                                                                      |
+| `APP_SECRET`           | Yes      | -            | Secret key for the application (generate random string)                                                                 |
 
 ### Database Configuration
 

@@ -23,6 +23,7 @@ Use this checklist before announcing production availability.
 - [ ] `APP_SECRET` rotated and stored in secret manager.
 - [ ] Production secrets are not hardcoded in workflows.
 - [ ] CORS allowlist is configured for production origins.
+- [ ] Security headers are present (`X-Frame-Options`, `X-Content-Type-Options`, `Referrer-Policy`, HSTS on HTTPS).
 - [ ] IAM permissions are least-privilege reviewed.
 - [ ] Audit logs and access logs are retained.
 
