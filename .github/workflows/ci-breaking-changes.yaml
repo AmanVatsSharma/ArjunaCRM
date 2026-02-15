@@ -264,7 +264,7 @@ jobs:
       - name: Install dependencies for main branch
         run: |
           yarn config set enableHardenedMode false
-          yarn install
+          yarn install --immutable=false
 
       - name: Build main branch dependencies
         run: |
