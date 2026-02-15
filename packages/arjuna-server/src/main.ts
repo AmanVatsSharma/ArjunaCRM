@@ -131,6 +131,15 @@ const bootstrap = async () => {
   const serverUrl = arjunaConfigService.get('SERVER_URL');
   const corsAllowList = buildCorsAllowList(arjunaConfigService);
 
+  if (
+    nodeEnvironment !== NodeEnvironment.DEVELOPMENT &&
+    corsAllowList.length === 0
+  ) {
+    throw new Error(
+      'No CORS origins are configured for non-development environment. Set FRONTEND_URL, PUBLIC_DOMAIN_URL, or CORS_ALLOWED_ORIGINS.',
+    );
+  }
+
   if (serverUrl?.startsWith('https://')) {
     app.set('trust proxy', 1);
   }

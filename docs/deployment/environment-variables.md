@@ -15,6 +15,10 @@ This document lists all environment variables used across ArjunaCRM services.
 | `CORS_ALLOWED_ORIGINS` | No       | -            | Comma-separated list of extra allowed CORS origins                                                                      |
 | `APP_SECRET`           | Yes      | -            | Secret key for the application (generate random string)                                                                 |
 
+For production/staging environments, ensure at least one CORS source is
+configured through `FRONTEND_URL`, `PUBLIC_DOMAIN_URL`, or
+`CORS_ALLOWED_ORIGINS`; startup now fails fast when the allowlist is empty.
+
 ### Database Configuration
 
 | Variable          | Required | Default | Description                  |
