@@ -6,6 +6,21 @@
       "src/engine/arjuna-orm/*": [
         "packages/arjuna-server/src/engine/twenty-orm/*"
       ],
+      "src/engine/core-modules/arjuna-config/*": [
+        "packages/arjuna-server/src/engine/core-modules/twenty-config/*"
+      ],
+      "src/engine/workspace-manager/arjuna-standard-application/*": [
+        "packages/arjuna-server/src/engine/workspace-manager/twenty-standard-application/*"
+      ],
+      "src/database/commands/compute-arjuna-standard-workspace-migration.command": [
+        "packages/arjuna-server/src/database/commands/compute-twenty-standard-workspace-migration.command"
+      ],
+      "src/database/commands/upgrade-version-command/1-11/1-11-create-arjuna-standard-application.command": [
+        "packages/arjuna-server/src/database/commands/upgrade-version-command/1-11/1-11-create-twenty-standard-application.command"
+      ],
+      "test/integration/arjuna-config/*": [
+        "packages/arjuna-server/test/integration/twenty-config/*"
+      ],
       "src/*": ["packages/arjuna-server/src/*"]
     },
     "types": ["node"]
