@@ -10,5 +10,7 @@ export const IconArjunaCRMStar = (props: IconArjunaCRMStarProps) => {
   const size = props.size ?? 24;
   const stroke = props.stroke ?? theme.icon.stroke.md;
 
-  return <IconArjunaCRMStarRaw height={size} width={size} strokeWidth={stroke} />;
+  return (
+    <IconArjunaCRMStarRaw height={size} width={size} strokeWidth={stroke} />
+  );
 };

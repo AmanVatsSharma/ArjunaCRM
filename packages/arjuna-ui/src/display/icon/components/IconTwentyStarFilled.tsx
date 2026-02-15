@@ -6,11 +6,17 @@ type IconArjunaCRMStarFilledProps = Pick<IconComponentProps, 'size' | 'stroke'>;
 
 const iconStrokeMd = THEME_COMMON.icon.stroke.md;
 
-export const IconArjunaCRMStarFilled = (props: IconArjunaCRMStarFilledProps) => {
+export const IconArjunaCRMStarFilled = (
+  props: IconArjunaCRMStarFilledProps,
+) => {
   const size = props.size ?? 24;
   const stroke = props.stroke ?? iconStrokeMd;
 
   return (
-    <IconArjunaCRMStarFilledRaw height={size} width={size} strokeWidth={stroke} />
+    <IconArjunaCRMStarFilledRaw
+      height={size}
+      width={size}
+      strokeWidth={stroke}
+    />
   );
 };

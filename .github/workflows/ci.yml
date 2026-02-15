@@ -5,54 +5,49 @@ on:
     branches: [main, develop]
   pull_request:
     branches: [main, develop]
+  workflow_dispatch:
 
 jobs:
   lint-and-typecheck:
     name: Lint and Type Check
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Install dependencies
+        uses: ./.github/workflows/actions/yarn-install
         with:
           node-version: '24'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
 
       - name: Run linting
         run: |
           set -e
-          npx nx run-many --target=lint --all --parallel=3
+          npx nx run-many --target=lint --projects=arjuna-front,arjuna-server,arjuna-ui,arjuna-shared,arjuna-emails,arjuna-website --parallel=3
 
       - name: Run type checking
         run: |
           set -e
-          npx nx run-many --target=typecheck --all --parallel=3
+          npx nx run-many --target=typecheck --projects=arjuna-front,arjuna-server,arjuna-ui,arjuna-shared,arjuna-emails,arjuna-website --parallel=3
 
   test:
     name: Test
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Install dependencies
+        uses: ./.github/workflows/actions/yarn-install
         with:
           node-version: '24'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
 
       - name: Run unit tests
         run: |
           set -e
-          npx nx run-many --target=test --all --parallel=3 --skip-nx-cache
+          npx nx run-many --target=test --projects=arjuna-front,arjuna-server,arjuna-ui,arjuna-shared,arjuna-emails --parallel=3 --skip-nx-cache
 
       - name: Upload coverage
         uses: codecov/codecov-action@v4
@@ -64,23 +59,24 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    env:
+      KEYSTATIC_GITHUB_CLIENT_ID: ci-placeholder
+      KEYSTATIC_GITHUB_CLIENT_SECRET: ci-placeholder
+      KEYSTATIC_SECRET: ci-placeholder
+      NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG: ci-placeholder
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Install dependencies
+        uses: ./.github/workflows/actions/yarn-install
         with:
           node-version: '24'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
 
       - name: Build all packages
         run: |
           set -e
-          npx nx run-many --target=build --all --parallel=3
+          npx nx run-many --target=build --projects=arjuna-front,arjuna-server,arjuna-ui,arjuna-shared,arjuna-emails,arjuna-website --parallel=3
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4

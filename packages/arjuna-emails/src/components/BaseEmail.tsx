@@ -16,8 +16,9 @@ type BaseEmailProps = {
 
 export const BaseEmail = ({ children, width, locale }: BaseEmailProps) => {
   const i18nInstance = createI18nInstance(locale);
-  const i18nProviderInstance =
-    i18nInstance as unknown as ComponentProps<typeof I18nProvider>['i18n'];
+  const i18nProviderInstance = i18nInstance as unknown as ComponentProps<
+    typeof I18nProvider
+  >['i18n'];
 
   return (
     <I18nProvider i18n={i18nProviderInstance}>
