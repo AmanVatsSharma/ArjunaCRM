@@ -122,17 +122,17 @@ fi
 # Ask user if they want to start the project
 read -p "🚀 Do you want to start the project now? (Y/n) " answer
 if [ "$answer" = "n" ]; then
-  echo "✅ Project setup completed. Run 'docker compose up -d' to start."
+  echo "✅ Project setup completed. Run 'docker compose up -d --build' to start."
   exit 0
 else
   echo "🐳 Starting Docker containers..."
-  docker compose up -d
+  docker compose up -d --build
   # Check if port is listening
   echo "Waiting for server to be healthy, it might take a few minutes while we initialize the database..."
   # Tail logs of the server until it's ready
   docker compose logs -f server &
   pid=$!
-  while [ ! $(docker inspect --format='{{.State.Health.Status}}' twenty-server-1) = "healthy" ]; do
+  while [ ! $(docker inspect --format='{{.State.Health.Status}}' arjuna-server-1) = "healthy" ]; do
     sleep 1
   done
   kill $pid

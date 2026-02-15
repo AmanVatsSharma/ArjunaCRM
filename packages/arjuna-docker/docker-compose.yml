@@ -2,11 +2,15 @@ name: arjuna
 
 services:
   server:
+    build:
+      context: ../../
+      dockerfile: ./packages/arjuna-docker/arjuna/Dockerfile
     image: arjunacrm/arjuna:${TAG:-latest}
+    pull_policy: never
     volumes:
       - server-local-data:/app/packages/arjuna-server/.local-storage
     ports:
-      - "3000:3000"
+      - '3000:3000'
     environment:
       NODE_PORT: 3000
       PG_DATABASE_URL: postgres://${PG_DATABASE_USER:-postgres}:${PG_DATABASE_PASSWORD:-postgres}@${PG_DATABASE_HOST:-db}:${PG_DATABASE_PORT:-5432}/default
@@ -58,16 +62,20 @@ services:
     restart: always
 
   worker:
+    build:
+      context: ../../
+      dockerfile: ./packages/arjuna-docker/arjuna/Dockerfile
     image: arjunacrm/arjuna:${TAG:-latest}
+    pull_policy: never
     volumes:
       - server-local-data:/app/packages/arjuna-server/.local-storage
-    command: ["npm", "run", "worker:prod"]
+    command: ['npm', 'run', 'worker:prod']
     environment:
       PG_DATABASE_URL: postgres://${PG_DATABASE_USER:-postgres}:${PG_DATABASE_PASSWORD:-postgres}@${PG_DATABASE_HOST:-db}:${PG_DATABASE_PORT:-5432}/default
       SERVER_URL: ${SERVER_URL}
       REDIS_URL: ${REDIS_URL:-redis://redis:6379}
-      DISABLE_DB_MIGRATIONS: "true" # it already runs on the server
-      DISABLE_CRON_JOBS_REGISTRATION: "true" # it already runs on the server
+      DISABLE_DB_MIGRATIONS: 'true' # it already runs on the server
+      DISABLE_CRON_JOBS_REGISTRATION: 'true' # it already runs on the server
 
       STORAGE_TYPE: ${STORAGE_TYPE}
       STORAGE_S3_REGION: ${STORAGE_S3_REGION}
@@ -124,9 +132,9 @@ services:
   redis:
     image: redis
     restart: always
-    command: ["--maxmemory-policy", "noeviction"]
+    command: ['--maxmemory-policy', 'noeviction']
     healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
+      test: ['CMD', 'redis-cli', 'ping']
       interval: 5s
       timeout: 5s
       retries: 10
