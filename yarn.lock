@@ -7589,9 +7589,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@graphql-yoga/nestjs@patch:@graphql-yoga/nestjs@2.1.0#./patches/@graphql-yoga+nestjs+2.1.0.patch::locator=twenty-server%40workspace%3Apackages%2Ftwenty-server":
+"@graphql-yoga/nestjs@patch:@graphql-yoga/nestjs@2.1.0#./patches/@graphql-yoga+nestjs+2.1.0.patch::locator=arjuna-server%40workspace%3Apackages%2Farjuna-server":
   version: 2.1.0
-  resolution: "@graphql-yoga/nestjs@patch:@graphql-yoga/nestjs@npm%3A2.1.0#./patches/@graphql-yoga+nestjs+2.1.0.patch::version=2.1.0&hash=8f5028&locator=twenty-server%40workspace%3Apackages%2Ftwenty-server"
+  resolution: "@graphql-yoga/nestjs@patch:@graphql-yoga/nestjs@npm%3A2.1.0#./patches/@graphql-yoga+nestjs+2.1.0.patch::version=2.1.0&hash=8f5028&locator=arjuna-server%40workspace%3Apackages%2Farjuna-server"
   peerDependencies:
     "@nestjs/common": ^10.0.0
     "@nestjs/core": ^10.0.0
@@ -8926,6 +8926,13 @@ __metadata:
   dependencies:
     "@swc/helpers": "npm:^0.5.0"
   checksum: 10c0/cb58fdc69857e558bdde5aa7c256af42cfc86cc72cf74893b91c812124e00cc671ff4ef9360052433b43a6b16090345e6b27be267820ca939a21933321bf1f48
+  languageName: node
+  linkType: hard
+
+"@ioredis/commands@npm:1.5.0":
+  version: 1.5.0
+  resolution: "@ioredis/commands@npm:1.5.0"
+  checksum: 10c0/2d192d967a21f0192e17310d27ead02b0bdd504e834c782714abe641190ebfb548ad307fd89fd2d80db97c462afdc69ab4a4383831ab64ce61fe92f130d8b466
   languageName: node
   linkType: hard
 
@@ -11485,9 +11492,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nestjs/graphql@patch:@nestjs/graphql@12.1.1#./patches/@nestjs+graphql+12.1.1.patch::locator=twenty-server%40workspace%3Apackages%2Ftwenty-server":
+"@nestjs/graphql@patch:@nestjs/graphql@12.1.1#./patches/@nestjs+graphql+12.1.1.patch::locator=arjuna-server%40workspace%3Apackages%2Farjuna-server":
   version: 12.1.1
-  resolution: "@nestjs/graphql@patch:@nestjs/graphql@npm%3A12.1.1#./patches/@nestjs+graphql+12.1.1.patch::version=12.1.1&hash=214dda&locator=twenty-server%40workspace%3Apackages%2Ftwenty-server"
+  resolution: "@nestjs/graphql@patch:@nestjs/graphql@npm%3A12.1.1#./patches/@nestjs+graphql+12.1.1.patch::version=12.1.1&hash=214dda&locator=arjuna-server%40workspace%3Apackages%2Farjuna-server"
   dependencies:
     "@graphql-tools/merge": "npm:9.0.1"
     "@graphql-tools/schema": "npm:10.0.2"
@@ -15560,9 +15567,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ptc-org/nestjs-query-graphql@patch:@ptc-org/nestjs-query-graphql@4.2.0#./patches/@ptc-org+nestjs-query-graphql+4.2.0.patch::locator=twenty-server%40workspace%3Apackages%2Ftwenty-server":
+"@ptc-org/nestjs-query-graphql@patch:@ptc-org/nestjs-query-graphql@4.2.0#./patches/@ptc-org+nestjs-query-graphql+4.2.0.patch::locator=arjuna-server%40workspace%3Apackages%2Farjuna-server":
   version: 4.2.0
-  resolution: "@ptc-org/nestjs-query-graphql@patch:@ptc-org/nestjs-query-graphql@npm%3A4.2.0#./patches/@ptc-org+nestjs-query-graphql+4.2.0.patch::version=4.2.0&hash=2d5c00&locator=twenty-server%40workspace%3Apackages%2Ftwenty-server"
+  resolution: "@ptc-org/nestjs-query-graphql@patch:@ptc-org/nestjs-query-graphql@npm%3A4.2.0#./patches/@ptc-org+nestjs-query-graphql+4.2.0.patch::version=4.2.0&hash=2d5c00&locator=arjuna-server%40workspace%3Apackages%2Farjuna-server"
   dependencies:
     "@ptc-org/nestjs-query-core": "npm:4.2.0"
     dataloader: "npm:^2.2.2"
@@ -27546,6 +27553,728 @@ __metadata:
   languageName: node
   linkType: hard
 
+"arjuna-cli@workspace:packages/arjuna-cli":
+  version: 0.0.0-use.local
+  resolution: "arjuna-cli@workspace:packages/arjuna-cli"
+  languageName: unknown
+  linkType: soft
+
+"arjuna-docs@workspace:packages/arjuna-docs":
+  version: 0.0.0-use.local
+  resolution: "arjuna-docs@workspace:packages/arjuna-docs"
+  dependencies:
+    mintlify: "npm:latest"
+  languageName: unknown
+  linkType: soft
+
+"arjuna-e2e-testing@workspace:packages/arjuna-e2e-testing":
+  version: 0.0.0-use.local
+  resolution: "arjuna-e2e-testing@workspace:packages/arjuna-e2e-testing"
+  dependencies:
+    "@playwright/test": "npm:^1.56.1"
+    playwright: "npm:^1.56.1"
+  languageName: unknown
+  linkType: soft
+
+"arjuna-emails@workspace:*, arjuna-emails@workspace:packages/arjuna-emails":
+  version: 0.0.0-use.local
+  resolution: "arjuna-emails@workspace:packages/arjuna-emails"
+  dependencies:
+    "@lingui/cli": "npm:^5.1.2"
+    "@lingui/core": "npm:^5.1.2"
+    "@lingui/react": "npm:^5.1.2"
+    "@lingui/swc-plugin": "npm:^5.6.0"
+    "@lingui/vite-plugin": "npm:^5.1.2"
+    "@tiptap/core": "npm:^3.4.2"
+    "@types/react": "npm:^19"
+    "@types/react-dom": "npm:^19"
+    arjuna-shared: "workspace:*"
+    react-email: "npm:4.0.6"
+    vite-plugin-dts: "npm:3.8.1"
+  peerDependencies:
+    react: ^18.2.0 || ^19.0.0
+    react-dom: ^18.2.0 || ^19.0.0
+  languageName: unknown
+  linkType: soft
+
+"arjuna-front@workspace:packages/arjuna-front":
+  version: 0.0.0-use.local
+  resolution: "arjuna-front@workspace:packages/arjuna-front"
+  dependencies:
+    "@ai-sdk/react": "npm:2.0.52"
+    "@apollo/client": "npm:^3.7.17"
+    "@blocknote/mantine": "npm:^0.31.1"
+    "@blocknote/react": "npm:^0.31.1"
+    "@blocknote/xl-docx-exporter": "npm:^0.31.1"
+    "@blocknote/xl-pdf-exporter": "npm:^0.31.1"
+    "@calcom/embed-react": "npm:^1.5.3"
+    "@cyntler/react-doc-viewer": "npm:^1.17.0"
+    "@dagrejs/dagre": "npm:^1.1.2"
+    "@floating-ui/react": "npm:^0.24.3"
+    "@graphiql/plugin-explorer": "npm:^1.0.2"
+    "@graphiql/react": "npm:^0.23.0"
+    "@hello-pangea/dnd": "npm:^16.2.0"
+    "@hookform/resolvers": "npm:^5.2.2"
+    "@lingui/cli": "npm:^5.1.2"
+    "@lingui/core": "npm:^5.1.2"
+    "@lingui/detect-locale": "npm:^5.2.0"
+    "@lingui/react": "npm:^5.1.2"
+    "@lingui/swc-plugin": "npm:^5.6.0"
+    "@lingui/vite-plugin": "npm:^5.1.2"
+    "@monaco-editor/react": "npm:^4.6.0"
+    "@nivo/bar": "npm:^0.99.0"
+    "@nivo/core": "npm:^0.99.0"
+    "@nivo/line": "npm:^0.99.0"
+    "@nivo/pie": "npm:^0.99.0"
+    "@nivo/radial-bar": "npm:^0.99.0"
+    "@playwright/test": "npm:^1.56.1"
+    "@react-email/components": "npm:^0.5.3"
+    "@react-pdf/renderer": "npm:^4.1.6"
+    "@scalar/api-reference-react": "npm:^0.4.36"
+    "@sentry/react": "npm:^10.27.0"
+    "@tiptap/core": "npm:^3.4.2"
+    "@tiptap/extension-bold": "npm:^3.4.2"
+    "@tiptap/extension-document": "npm:^3.4.2"
+    "@tiptap/extension-hard-break": "npm:^3.4.2"
+    "@tiptap/extension-heading": "npm:^3.4.2"
+    "@tiptap/extension-image": "npm:^3.4.4"
+    "@tiptap/extension-italic": "npm:^3.4.2"
+    "@tiptap/extension-link": "npm:^3.4.2"
+    "@tiptap/extension-list": "npm:3.4.2"
+    "@tiptap/extension-paragraph": "npm:^3.4.2"
+    "@tiptap/extension-strike": "npm:^3.4.2"
+    "@tiptap/extension-text": "npm:^3.4.2"
+    "@tiptap/extension-underline": "npm:^3.4.2"
+    "@tiptap/extensions": "npm:^3.4.2"
+    "@tiptap/react": "npm:^3.4.2"
+    "@tiptap/suggestion": "npm:^3.4.2"
+    "@types/apollo-upload-client": "npm:^17.0.2"
+    "@types/file-saver": "npm:^2.0.7"
+    "@types/js-cookie": "npm:^3.0.3"
+    "@types/json-logic-js": "npm:^2"
+    "@types/react-grid-layout": "npm:^1"
+    "@typescript-eslint/eslint-plugin": "npm:^8.39.0"
+    "@typescript-eslint/parser": "npm:^8.39.0"
+    "@typescript-eslint/utils": "npm:^8.39.0"
+    "@xyflow/react": "npm:^12.4.2"
+    ai: "npm:5.0.52"
+    apollo-link-rest: "npm:^0.9.0"
+    apollo-upload-client: "npm:^17.0.0"
+    arjuna-shared: "workspace:*"
+    arjuna-ui: "workspace:*"
+    buffer: "npm:^6.0.3"
+    cron-parser: "npm:5.1.1"
+    date-fns: "npm:^2.30.0"
+    docx: "npm:^9.1.0"
+    eslint: "npm:^9.32.0"
+    eslint-config-prettier: "npm:^9.1.0"
+    eslint-plugin-import: "npm:^2.31.0"
+    eslint-plugin-jsx-a11y: "npm:^6.10.2"
+    eslint-plugin-lingui: "npm:^0.9.0"
+    eslint-plugin-prefer-arrow: "npm:^1.2.3"
+    eslint-plugin-prettier: "npm:^5.1.2"
+    eslint-plugin-project-structure: "npm:^3.9.1"
+    eslint-plugin-react: "npm:^7.37.2"
+    eslint-plugin-react-hooks: "npm:^5.0.0"
+    eslint-plugin-react-refresh: "npm:^0.4.4"
+    eslint-plugin-simple-import-sort: "npm:^10.0.0"
+    eslint-plugin-storybook: "npm:^0.9.0"
+    eslint-plugin-unicorn: "npm:^56.0.1"
+    eslint-plugin-unused-imports: "npm:^3.0.0"
+    file-saver: "npm:^2.0.5"
+    graphiql: "npm:^3.1.1"
+    graphql: "npm:16.8.1"
+    graphql-sse: "npm:^2.5.4"
+    input-otp: "npm:^1.4.2"
+    js-cookie: "npm:^3.0.5"
+    json-2-csv: "npm:^5.4.0"
+    json-logic-js: "npm:^2.0.5"
+    jwt-decode: "npm:^4.0.0"
+    monaco-editor: "npm:^0.51.0"
+    monaco-editor-auto-typings: "npm:^0.4.5"
+    optionator: "npm:^0.9.1"
+    playwright: "npm:^1.56.1"
+    qs: "npm:^6.11.2"
+    react-data-grid: "npm:7.0.0-beta.13"
+    react-datepicker: "npm:^6.7.1"
+    react-dropzone: "npm:^14.2.3"
+    react-error-boundary: "npm:^4.0.11"
+    react-grid-layout: "npm:^1.5.2"
+    react-helmet-async: "npm:^1.3.0"
+    react-hook-form: "npm:^7.45.1"
+    react-hotkeys-hook: "npm:^4.4.4"
+    react-imask: "npm:^7.6.0"
+    react-intersection-observer: "npm:^9.15.1"
+    react-loading-skeleton: "npm:^3.3.1"
+    react-markdown: "npm:^10.1.0"
+    react-phone-number-input: "patch:react-phone-number-input@npm%3A3.4.5#../../.yarn/patches/react-phone-number-input-npm-3.4.5-dc2895c306.patch"
+    react-qr-code: "npm:^2.0.18"
+    react-responsive: "npm:^9.0.2"
+    react-router-dom: "npm:^6.4.4"
+    react-textarea-autosize: "npm:^8.4.1"
+    recoil: "npm:^0.7.7"
+    remark-gfm: "npm:^4.0.1"
+    rollup-plugin-visualizer: "npm:^5.14.0"
+    transliteration: "npm:^2.3.5"
+    use-debounce: "npm:^10.0.0"
+    vite-plugin-checker: "npm:^0.10.2"
+    vite-plugin-svgr: "npm:^4.3.0"
+    vite-tsconfig-paths: "npm:^4.2.1"
+  languageName: unknown
+  linkType: soft
+
+"arjuna-sdk@workspace:packages/arjuna-sdk":
+  version: 0.0.0-use.local
+  resolution: "arjuna-sdk@workspace:packages/arjuna-sdk"
+  dependencies:
+    "@genql/cli": "npm:^3.0.3"
+    "@types/fs-extra": "npm:^11.0.0"
+    "@types/inquirer": "npm:^9.0.0"
+    "@types/jest": "npm:^29.5.0"
+    "@types/lodash.camelcase": "npm:^4.3.7"
+    "@types/lodash.capitalize": "npm:^4"
+    "@types/lodash.kebabcase": "npm:^4.1.7"
+    "@types/lodash.startcase": "npm:^4"
+    "@types/node": "npm:^24.0.0"
+    axios: "npm:^1.6.0"
+    chalk: "npm:^5.3.0"
+    chokidar: "npm:^4.0.0"
+    commander: "npm:^12.0.0"
+    dotenv: "npm:^16.4.0"
+    fs-extra: "npm:^11.2.0"
+    graphql: "npm:^16.8.1"
+    graphql-sse: "npm:^2.5.4"
+    inquirer: "npm:^10.0.0"
+    jest: "npm:^29.5.0"
+    jsonc-parser: "npm:^3.2.0"
+    lodash.camelcase: "npm:^4.3.0"
+    lodash.capitalize: "npm:^4.2.1"
+    lodash.kebabcase: "npm:^4.1.1"
+    lodash.startcase: "npm:^4.4.0"
+    tsx: "npm:^4.7.0"
+    typescript: "npm:^5.9.2"
+    uuid: "npm:^13.0.0"
+    vite: "npm:^7.0.0"
+    vite-plugin-dts: "npm:^4.5.4"
+    vite-tsconfig-paths: "npm:^4.2.1"
+    wait-on: "npm:^7.2.0"
+  bin:
+    arjuna: dist/cli.cjs
+  languageName: unknown
+  linkType: soft
+
+"arjuna-server@workspace:packages/arjuna-server":
+  version: 0.0.0-use.local
+  resolution: "arjuna-server@workspace:packages/arjuna-server"
+  dependencies:
+    "@ai-sdk/anthropic": "npm:^2.0.17"
+    "@ai-sdk/openai": "npm:^2.0.30"
+    "@ai-sdk/provider-utils": "npm:^3.0.9"
+    "@ai-sdk/xai": "npm:^2.0.19"
+    "@aws-sdk/client-lambda": "npm:3.825.0"
+    "@aws-sdk/client-s3": "npm:3.825.0"
+    "@aws-sdk/client-sesv2": "npm:^3.888.0"
+    "@aws-sdk/client-sts": "npm:3.825.0"
+    "@aws-sdk/credential-providers": "npm:3.825.0"
+    "@babel/preset-env": "npm:7.26.9"
+    "@blocknote/server-util": "npm:^0.31.1"
+    "@clickhouse/client": "npm:^1.11.0"
+    "@dagrejs/dagre": "npm:^1.1.2"
+    "@envelop/core": "npm:4.0.3"
+    "@envelop/on-resolve": "npm:4.1.0"
+    "@esbuild-plugins/node-modules-polyfill": "npm:^0.2.2"
+    "@eslint/js": "npm:9.32.0"
+    "@faker-js/faker": "npm:^9.8.0"
+    "@graphql-tools/schema": "npm:10.0.4"
+    "@graphql-tools/utils": "npm:9.2.1"
+    "@graphql-yoga/nestjs": "patch:@graphql-yoga/nestjs@2.1.0#./patches/@graphql-yoga+nestjs+2.1.0.patch"
+    "@lingui/cli": "npm:^5.1.2"
+    "@lingui/conf": "npm:5.1.2"
+    "@lingui/core": "npm:^5.1.2"
+    "@lingui/format-po": "npm:5.1.2"
+    "@lingui/react": "npm:5.1.2"
+    "@lingui/vite-plugin": "npm:5.1.2"
+    "@microsoft/microsoft-graph-client": "npm:3.0.7"
+    "@microsoft/microsoft-graph-types": "npm:^2.40.0"
+    "@nestjs/axios": "npm:3.1.2"
+    "@nestjs/cache-manager": "npm:^2.3.0"
+    "@nestjs/cli": "npm:11.0.10"
+    "@nestjs/common": "npm:11.1.9"
+    "@nestjs/config": "npm:3.3.0"
+    "@nestjs/core": "npm:11.1.9"
+    "@nestjs/devtools-integration": "npm:^0.2.1"
+    "@nestjs/event-emitter": "npm:2.1.0"
+    "@nestjs/graphql": "patch:@nestjs/graphql@12.1.1#./patches/@nestjs+graphql+12.1.1.patch"
+    "@nestjs/jwt": "npm:11.0.1"
+    "@nestjs/passport": "npm:11.0.5"
+    "@nestjs/platform-express": "npm:11.1.9"
+    "@nestjs/schedule": "npm:^6.0.1"
+    "@nestjs/schematics": "npm:^11.0.9"
+    "@nestjs/serve-static": "npm:5.0.4"
+    "@nestjs/terminus": "npm:11.0.0"
+    "@nestjs/testing": "npm:^11.1.9"
+    "@nestjs/typeorm": "npm:11.0.0"
+    "@node-saml/node-saml": "npm:5.1.0"
+    "@node-saml/passport-saml": "npm:^5.1.0"
+    "@opentelemetry/api": "npm:^1.9.0"
+    "@opentelemetry/auto-instrumentations-node": "npm:^0.60.0"
+    "@opentelemetry/exporter-metrics-otlp-http": "npm:^0.200.0"
+    "@opentelemetry/sdk-metrics": "npm:^2.0.0"
+    "@opentelemetry/sdk-node": "npm:^0.202.0"
+    "@ptc-org/nestjs-query-core": "npm:4.4.0"
+    "@ptc-org/nestjs-query-graphql": "patch:@ptc-org/nestjs-query-graphql@4.2.0#./patches/@ptc-org+nestjs-query-graphql+4.2.0.patch"
+    "@ptc-org/nestjs-query-typeorm": "npm:4.2.1-alpha.2"
+    "@react-email/render": "npm:^1.2.3"
+    "@sentry/nestjs": "npm:^10.27.0"
+    "@sentry/node": "npm:^10.27.0"
+    "@sentry/profiling-node": "npm:^10.27.0"
+    "@sniptt/guards": "npm:0.2.0"
+    "@types/babel__preset-env": "npm:7.10.0"
+    "@types/bytes": "npm:^3.1.1"
+    "@types/dompurify": "npm:^3.0.5"
+    "@types/express": "npm:^4.17.13"
+    "@types/express-session": "npm:^1.18.0"
+    "@types/graphql-upload": "npm:^16.0.7"
+    "@types/html-to-text": "npm:^9.0.4"
+    "@types/lodash.chunk": "npm:^4.2.9"
+    "@types/lodash.differencewith": "npm:^4.5.9"
+    "@types/lodash.isempty": "npm:^4.4.7"
+    "@types/lodash.isequal": "npm:^4.5.8"
+    "@types/lodash.isobject": "npm:^3.0.7"
+    "@types/lodash.merge": "npm:^4.6.9"
+    "@types/lodash.omit": "npm:^4.5.9"
+    "@types/lodash.omitby": "npm:^4.6.9"
+    "@types/lodash.snakecase": "npm:^4.1.7"
+    "@types/lodash.uniq": "npm:^4.5.9"
+    "@types/lodash.uniqby": "npm:^4.7.9"
+    "@types/lodash.upperfirst": "npm:^4.3.7"
+    "@types/mailparser": "npm:^3.4.6"
+    "@types/ms": "npm:^0.7.31"
+    "@types/node": "npm:^24.0.0"
+    "@types/nodemailer": "npm:^7.0.3"
+    "@types/openid-client": "npm:^3.7.0"
+    "@types/passport-google-oauth20": "npm:^2.0.11"
+    "@types/passport-jwt": "npm:^3.0.8"
+    "@types/passport-microsoft": "npm:^2.1.0"
+    "@types/pluralize": "npm:^0.0.33"
+    "@types/psl": "npm:^1.1.3"
+    "@types/react": "npm:^18.2.39"
+    "@types/unzipper": "npm:^0"
+    "@yarnpkg/types": "npm:^4.0.0"
+    addressparser: "npm:1.0.1"
+    ai: "npm:5.0.52"
+    apollo-server-core: "npm:3.13.0"
+    archiver: "npm:7.0.1"
+    arjuna-emails: "workspace:*"
+    arjuna-shared: "workspace:*"
+    axios: "npm:1.12.2"
+    babel-plugin-module-resolver: "npm:5.0.2"
+    bcrypt: "npm:5.1.1"
+    bullmq: "npm:5.40.0"
+    bytes: "npm:3.1.2"
+    cache-manager: "npm:^5.4.0"
+    cache-manager-redis-yet: "npm:^4.1.2"
+    chalk: "npm:4.1.2"
+    class-transformer: "npm:0.5.1"
+    class-validator: "npm:0.14.0"
+    class-validator-jsonschema: "npm:^5.0.2"
+    cloudflare: "npm:^4.5.0"
+    connect-redis: "npm:^7.1.1"
+    cron-parser: "npm:5.1.1"
+    dataloader: "npm:2.2.2"
+    date-fns: "npm:2.30.0"
+    deep-equal: "npm:2.2.3"
+    dompurify: "npm:3.2.6"
+    dotenv: "npm:16.4.5"
+    express: "npm:4.21.2"
+    express-session: "npm:^1.18.2"
+    file-type: "npm:16.5.4"
+    gaxios: "npm:5.1.3"
+    google-auth-library: "npm:8.9.0"
+    googleapis: "npm:105.0.0"
+    graphql: "npm:16.8.1"
+    graphql-fields: "npm:2.0.3"
+    graphql-middleware: "npm:^6.1.35"
+    graphql-rate-limit: "npm:3.3.0"
+    graphql-redis-subscriptions: "npm:2.7.0"
+    graphql-scalars: "npm:1.23.0"
+    graphql-subscriptions: "npm:2.0.0"
+    graphql-tag: "npm:2.12.6"
+    graphql-type-json: "npm:0.3.2"
+    graphql-upload: "npm:16.0.2"
+    graphql-yoga: "npm:4.0.5"
+    html-to-text: "npm:^9.0.5"
+    imapflow: "npm:1.1.0"
+    ioredis: "npm:5.6.0"
+    jsdom: "npm:^26.1.0"
+    json-schema: "npm:0.4.0"
+    jsonc-eslint-parser: "npm:2.4.0"
+    jsonwebtoken: "npm:9.0.2"
+    libphonenumber-js: "npm:1.11.5"
+    lodash.camelcase: "npm:4.3.0"
+    lodash.chunk: "npm:4.2.0"
+    lodash.compact: "npm:3.0.1"
+    lodash.differencewith: "npm:^4.5.0"
+    lodash.groupby: "npm:4.6.0"
+    lodash.isempty: "npm:4.4.0"
+    lodash.isequal: "npm:4.5.0"
+    lodash.isobject: "npm:3.0.2"
+    lodash.kebabcase: "npm:4.1.1"
+    lodash.merge: "npm:^4.6.2"
+    lodash.omit: "npm:4.5.0"
+    lodash.omitby: "npm:^4.6.0"
+    lodash.snakecase: "npm:4.1.1"
+    lodash.uniq: "npm:^4.5.0"
+    lodash.uniqby: "npm:^4.7.0"
+    lodash.upperfirst: "npm:4.3.1"
+    mailparser: "npm:3.7.5"
+    microdiff: "npm:1.4.0"
+    ms: "npm:2.1.3"
+    nest-commander: "npm:^3.19.1"
+    node-ical: "npm:^0.20.1"
+    nodemailer: "npm:^7.0.10"
+    openapi-types: "npm:12.1.3"
+    openid-client: "npm:^5.7.0"
+    otplib: "npm:^12.0.1"
+    passport: "npm:^0.7.0"
+    passport-google-oauth20: "npm:2.0.0"
+    passport-jwt: "npm:4.0.1"
+    passport-microsoft: "npm:2.1.0"
+    path-to-regexp: "npm:^8.2.0"
+    pg: "npm:8.12.0"
+    planer: "npm:1.2.0"
+    pluralize: "npm:8.0.0"
+    postal-mime: "npm:^2.6.1"
+    psl: "npm:^1.9.0"
+    react: "npm:18.3.1"
+    react-dom: "npm:18.3.1"
+    redis: "npm:^4.7.0"
+    reflect-metadata: "npm:0.2.2"
+    rimraf: "npm:^5.0.5"
+    rxjs: "npm:7.8.1"
+    semver: "npm:7.6.3"
+    sharp: "npm:0.32.6"
+    stripe: "npm:17.3.1"
+    transliteration: "npm:2.3.5"
+    tsconfig-paths: "npm:^4.2.0"
+    tsdav: "npm:^2.1.5"
+    tslib: "npm:2.8.1"
+    type-fest: "npm:4.10.1"
+    typeorm: "patch:typeorm@0.3.20#./patches/typeorm+0.3.20.patch"
+    unzipper: "npm:^0.12.3"
+    uuid: "npm:9.0.1"
+    vite-tsconfig-paths: "npm:4.3.2"
+    zod: "npm:^4.1.11"
+  languageName: unknown
+  linkType: soft
+
+"arjuna-shared@workspace:*, arjuna-shared@workspace:packages/arjuna-shared":
+  version: 0.0.0-use.local
+  resolution: "arjuna-shared@workspace:packages/arjuna-shared"
+  dependencies:
+    "@babel/preset-env": "npm:^7.26.9"
+    "@lingui/core": "npm:^5.5.1"
+    "@prettier/sync": "npm:^0.5.2"
+    "@sniptt/guards": "npm:^0.2.0"
+    "@types/babel__preset-env": "npm:^7"
+    "@types/handlebars": "npm:^4.1.0"
+    babel-plugin-module-resolver: "npm:^5.0.2"
+    class-validator: "npm:^0.14.0"
+    glob: "npm:^11.1.0"
+    handlebars: "npm:^4.7.8"
+    libphonenumber-js: "npm:^1.10.26"
+    lodash.camelcase: "npm:^4.3.0"
+    qs: "npm:^6.11.2"
+    react-router-dom: "npm:^6.4.4"
+    transliteration: "npm:^2.3.5"
+    tsx: "npm:^4.19.3"
+    vite: "npm:^7.0.0"
+    vite-plugin-dts: "npm:3.8.1"
+    vite-tsconfig-paths: "npm:^4.2.1"
+    zod: "npm:^4.1.11"
+  languageName: unknown
+  linkType: soft
+
+"arjuna-ui@workspace:*, arjuna-ui@workspace:packages/arjuna-ui":
+  version: 0.0.0-use.local
+  resolution: "arjuna-ui@workspace:packages/arjuna-ui"
+  dependencies:
+    "@babel/preset-env": "npm:^7.26.9"
+    "@babel/preset-react": "npm:^7.26.3"
+    "@emotion/is-prop-valid": "npm:^1.3.0"
+    "@emotion/react": "npm:^11.11.1"
+    "@emotion/styled": "npm:^11.11.0"
+    "@linaria/react": "npm:^6.2.1"
+    "@monaco-editor/react": "npm:^4.6.0"
+    "@prettier/sync": "npm:^0.5.2"
+    "@sniptt/guards": "npm:^0.2.0"
+    "@swc/plugin-emotion": "npm:10.0.4"
+    "@tabler/icons-react": "npm:^3.31.0"
+    "@types/babel__preset-env": "npm:^7"
+    "@types/react": "npm:^18.2.39"
+    "@types/react-dom": "npm:^18.2.15"
+    "@wyw-in-js/babel-preset": "npm:^0.6.0"
+    arjuna-shared: "workspace:*"
+    babel-plugin-inline-import: "npm:^3.0.0"
+    babel-plugin-inline-react-svg: "npm:^2.0.2"
+    babel-plugin-module-resolver: "npm:^5.0.2"
+    date-fns: "npm:^2.30.0"
+    framer-motion: "npm:^11.18.0"
+    glob: "npm:^11.1.0"
+    hex-rgb: "npm:^5.0.0"
+    react: "npm:^18.2.0"
+    react-dom: "npm:^18.2.0"
+    react-responsive: "npm:^9.0.2"
+    react-router-dom: "npm:^6.4.4"
+    react-tooltip: "npm:^5.13.1"
+    recoil: "npm:^0.7.7"
+    tsx: "npm:^4.19.3"
+    vite-plugin-checker: "npm:^0.10.2"
+    vite-plugin-dts: "npm:3.8.1"
+    vite-plugin-svgr: "npm:^4.3.0"
+    zod: "npm:^4.1.11"
+  languageName: unknown
+  linkType: soft
+
+"arjuna-utils@workspace:packages/arjuna-utils":
+  version: 0.0.0-use.local
+  resolution: "arjuna-utils@workspace:packages/arjuna-utils"
+  languageName: unknown
+  linkType: soft
+
+"arjuna-website@workspace:packages/arjuna-website":
+  version: 0.0.0-use.local
+  resolution: "arjuna-website@workspace:packages/arjuna-website"
+  dependencies:
+    "@codesandbox/sandpack-react": "npm:^2.13.5"
+    "@docsearch/react": "npm:^3.6.2"
+    "@keystatic/core": "npm:^0.5.45"
+    "@keystatic/next": "npm:^5.0.3"
+    "@markdoc/markdoc": "npm:^0.5.1"
+    "@next/eslint-plugin-next": "npm:^14.2.0"
+    "@nivo/calendar": "npm:^0.99.0"
+    "@types/facepaint": "npm:^1.2.5"
+    arjuna-ui: "workspace:*"
+    date-fns: "npm:^2.30.0"
+    drizzle-kit: "npm:^0.31.5"
+    drizzle-orm: "npm:^0.44.7"
+    eslint-config-next: "npm:^14.2.0"
+    facepaint: "npm:^1.2.1"
+    gray-matter: "npm:^4.0.3"
+    next: "npm:^14.2.25"
+    next-mdx-remote: "npm:^4.4.1"
+    next-runtime-env: "npm:^3.3.0"
+    postgres: "npm:^3.4.3"
+    react-tooltip: "npm:^5.13.1"
+  languageName: unknown
+  linkType: soft
+
+"arjuna-zapier@workspace:packages/arjuna-zapier":
+  version: 0.0.0-use.local
+  resolution: "arjuna-zapier@workspace:packages/arjuna-zapier"
+  dependencies:
+    "@sniptt/guards": "npm:^0.2.0"
+    dotenv: "npm:^16.4.5"
+    jest: "npm:29.7.0"
+    libphonenumber-js: "npm:^1.10.26"
+    rimraf: "npm:^3.0.2"
+    zapier-platform-cli: "npm:^15.4.1"
+    zapier-platform-core: "npm:15.5.1"
+    zod: "npm:^4.1.11"
+  languageName: unknown
+  linkType: soft
+
+"arjuna@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "arjuna@workspace:."
+  dependencies:
+    "@apollo/client": "npm:^3.7.17"
+    "@babel/core": "npm:^7.14.5"
+    "@babel/preset-react": "npm:^7.14.5"
+    "@babel/preset-typescript": "npm:^7.24.6"
+    "@chromatic-com/storybook": "npm:^3"
+    "@date-fns/tz": "npm:^1.4.1"
+    "@emotion/react": "npm:^11.11.1"
+    "@emotion/styled": "npm:^11.11.0"
+    "@floating-ui/react": "npm:^0.24.3"
+    "@graphql-codegen/cli": "npm:^3.3.1"
+    "@graphql-codegen/client-preset": "npm:^4.1.0"
+    "@graphql-codegen/typescript": "npm:^3.0.4"
+    "@graphql-codegen/typescript-operations": "npm:^3.0.4"
+    "@graphql-codegen/typescript-react-apollo": "npm:^3.3.7"
+    "@linaria/core": "npm:^6.2.0"
+    "@linaria/react": "npm:^6.2.1"
+    "@nx/eslint": "npm:22.0.3"
+    "@nx/eslint-plugin": "npm:22.0.3"
+    "@nx/jest": "npm:22.0.3"
+    "@nx/js": "npm:22.0.3"
+    "@nx/react": "npm:22.0.3"
+    "@nx/storybook": "npm:22.0.3"
+    "@nx/vite": "npm:22.0.3"
+    "@nx/web": "npm:22.0.3"
+    "@radix-ui/colors": "npm:^3.0.0"
+    "@sentry/types": "npm:^8"
+    "@sniptt/guards": "npm:^0.2.0"
+    "@storybook/addon-actions": "npm:8.6.14"
+    "@storybook/addon-coverage": "npm:^1.0.0"
+    "@storybook/addon-essentials": "npm:8.6.14"
+    "@storybook/addon-interactions": "npm:8.6.14"
+    "@storybook/addon-links": "npm:8.6.14"
+    "@storybook/blocks": "npm:8.6.14"
+    "@storybook/core-server": "npm:8.6.14"
+    "@storybook/icons": "npm:^1.2.9"
+    "@storybook/preview-api": "npm:8.6.14"
+    "@storybook/react": "npm:8.6.14"
+    "@storybook/react-vite": "npm:8.6.14"
+    "@storybook/test": "npm:8.6.14"
+    "@storybook/test-runner": "npm:^0.23.0"
+    "@storybook/types": "npm:8.6.14"
+    "@stylistic/eslint-plugin": "npm:^1.5.0"
+    "@swc-node/register": "npm:1.8.0"
+    "@swc/cli": "npm:^0.3.12"
+    "@swc/core": "npm:1.13.3"
+    "@swc/helpers": "npm:~0.5.2"
+    "@swc/jest": "npm:^0.2.39"
+    "@tabler/icons-react": "npm:^3.31.0"
+    "@testing-library/jest-dom": "npm:^6.6.3"
+    "@testing-library/react": "npm:^16.3.0"
+    "@types/addressparser": "npm:^1.0.3"
+    "@types/bcrypt": "npm:^5.0.0"
+    "@types/bytes": "npm:^3.1.1"
+    "@types/chrome": "npm:^0.0.267"
+    "@types/deep-equal": "npm:^1.0.1"
+    "@types/express": "npm:^4.17.13"
+    "@types/fs-extra": "npm:^11.0.4"
+    "@types/graphql-fields": "npm:^1.3.6"
+    "@types/inquirer": "npm:^9.0.9"
+    "@types/jest": "npm:^30.0.0"
+    "@types/lodash.camelcase": "npm:^4.3.7"
+    "@types/lodash.compact": "npm:^3.0.9"
+    "@types/lodash.escaperegexp": "npm:^4.1.9"
+    "@types/lodash.groupby": "npm:^4.6.9"
+    "@types/lodash.identity": "npm:^3.0.9"
+    "@types/lodash.isempty": "npm:^4.4.7"
+    "@types/lodash.isequal": "npm:^4.5.7"
+    "@types/lodash.isobject": "npm:^3.0.7"
+    "@types/lodash.kebabcase": "npm:^4.1.7"
+    "@types/lodash.mapvalues": "npm:^4.6.9"
+    "@types/lodash.omit": "npm:^4.5.9"
+    "@types/lodash.pickby": "npm:^4.6.9"
+    "@types/lodash.snakecase": "npm:^4.1.7"
+    "@types/lodash.upperfirst": "npm:^4.3.7"
+    "@types/ms": "npm:^0.7.31"
+    "@types/node": "npm:^24.0.0"
+    "@types/passport-google-oauth20": "npm:^2.0.11"
+    "@types/passport-jwt": "npm:^3.0.8"
+    "@types/passport-microsoft": "npm:^2.1.0"
+    "@types/pluralize": "npm:^0.0.33"
+    "@types/react": "npm:^18.2.39"
+    "@types/react-datepicker": "npm:^6.2.0"
+    "@types/react-dom": "npm:^18.2.15"
+    "@types/supertest": "npm:^2.0.11"
+    "@types/uuid": "npm:^9.0.2"
+    "@typescript-eslint/eslint-plugin": "npm:^8.39.0"
+    "@typescript-eslint/parser": "npm:^8.39.0"
+    "@typescript-eslint/utils": "npm:^8.39.0"
+    "@vitejs/plugin-react-swc": "npm:3.11.0"
+    "@wyw-in-js/vite": "npm:^0.7.0"
+    archiver: "npm:^7.0.1"
+    chromatic: "npm:^6.18.0"
+    concurrently: "npm:^8.2.2"
+    danger: "npm:^13.0.4"
+    danger-plugin-todos: "npm:^1.3.1"
+    date-fns: "npm:^2.30.0"
+    date-fns-tz: "npm:^2.0.0"
+    deep-equal: "npm:^2.2.2"
+    dotenv-cli: "npm:^7.4.4"
+    esbuild: "npm:^0.25.10"
+    eslint: "npm:^9.32.0"
+    eslint-config-prettier: "npm:^9.1.0"
+    eslint-plugin-import: "npm:^2.31.0"
+    eslint-plugin-jsx-a11y: "npm:^6.10.2"
+    eslint-plugin-lingui: "npm:^0.9.0"
+    eslint-plugin-mdx: "npm:^3.6.2"
+    eslint-plugin-prefer-arrow: "npm:^1.2.3"
+    eslint-plugin-prettier: "npm:^5.1.2"
+    eslint-plugin-project-structure: "npm:^3.9.1"
+    eslint-plugin-react: "npm:^7.37.2"
+    eslint-plugin-react-hooks: "npm:^5.0.0"
+    eslint-plugin-react-refresh: "npm:^0.4.4"
+    eslint-plugin-simple-import-sort: "npm:^10.0.0"
+    eslint-plugin-storybook: "npm:^0.9.0"
+    eslint-plugin-unicorn: "npm:^56.0.1"
+    eslint-plugin-unused-imports: "npm:^3.0.0"
+    file-type: "npm:16.5.4"
+    framer-motion: "npm:^11.18.0"
+    fuse.js: "npm:^7.1.0"
+    googleapis: "npm:105"
+    hex-rgb: "npm:^5.0.0"
+    http-server: "npm:^14.1.1"
+    immer: "npm:^10.1.1"
+    jest: "npm:29.7.0"
+    jest-environment-jsdom: "npm:30.0.0-beta.3"
+    jest-environment-node: "npm:^29.4.1"
+    jest-fetch-mock: "npm:^3.0.3"
+    jsdom: "npm:~22.1.0"
+    libphonenumber-js: "npm:^1.10.26"
+    lodash.camelcase: "npm:^4.3.0"
+    lodash.chunk: "npm:^4.2.0"
+    lodash.compact: "npm:^3.0.1"
+    lodash.escaperegexp: "npm:^4.1.2"
+    lodash.groupby: "npm:^4.6.0"
+    lodash.identity: "npm:^3.0.0"
+    lodash.isempty: "npm:^4.4.0"
+    lodash.isequal: "npm:^4.5.0"
+    lodash.isobject: "npm:^3.0.2"
+    lodash.kebabcase: "npm:^4.1.1"
+    lodash.mapvalues: "npm:^4.6.0"
+    lodash.merge: "npm:^4.6.2"
+    lodash.omit: "npm:^4.5.0"
+    lodash.pickby: "npm:^4.6.0"
+    lodash.snakecase: "npm:^4.1.1"
+    lodash.upperfirst: "npm:^4.3.1"
+    microdiff: "npm:^1.3.2"
+    msw: "npm:^2.0.11"
+    msw-storybook-addon: "npm:^2.0.5"
+    nx: "npm:22.0.3"
+    planer: "npm:^1.2.0"
+    pluralize: "npm:^8.0.0"
+    prettier: "npm:^3.1.1"
+    raw-loader: "npm:^4.0.2"
+    react: "npm:^18.2.0"
+    react-dom: "npm:^18.2.0"
+    react-responsive: "npm:^9.0.2"
+    react-router-dom: "npm:^6.4.4"
+    react-tooltip: "npm:^5.13.1"
+    recoil: "npm:^0.7.7"
+    remark-gfm: "npm:^3.0.1"
+    rimraf: "npm:^5.0.5"
+    rxjs: "npm:^7.2.0"
+    semver: "npm:^7.5.4"
+    slash: "npm:^5.1.0"
+    source-map-support: "npm:^0.5.20"
+    storybook: "npm:8.6.14"
+    storybook-addon-cookie: "npm:^3.2.0"
+    storybook-addon-mock-date: "npm:^0.6.0"
+    storybook-addon-pseudo-states: "npm:^2.1.2"
+    supertest: "npm:^6.1.3"
+    ts-jest: "npm:^29.1.1"
+    ts-key-enum: "npm:^2.0.12"
+    ts-loader: "npm:^9.2.3"
+    ts-node: "npm:10.9.1"
+    tsconfig-paths: "npm:^4.2.0"
+    tslib: "npm:^2.8.1"
+    tsx: "npm:^4.17.0"
+    type-fest: "npm:4.10.1"
+    typescript: "npm:5.9.2"
+    uuid: "npm:^9.0.0"
+    vite: "npm:^7.0.0"
+    vite-tsconfig-paths: "npm:^4.2.1"
+    xlsx-ugnis: "npm:^0.19.3"
+    zod: "npm:^4.1.11"
+  languageName: unknown
+  linkType: soft
+
 "arktype@npm:^2.1.20":
   version: 2.1.23
   resolution: "arktype@npm:2.1.23"
@@ -31088,6 +31817,33 @@ __metadata:
   languageName: node
   linkType: hard
 
+"create-arjuna-app@workspace:packages/create-arjuna-app":
+  version: 0.0.0-use.local
+  resolution: "create-arjuna-app@workspace:packages/create-arjuna-app"
+  dependencies:
+    "@genql/cli": "npm:^3.0.3"
+    "@types/fs-extra": "npm:^11.0.0"
+    "@types/inquirer": "npm:^9.0.0"
+    "@types/lodash.camelcase": "npm:^4.3.7"
+    "@types/lodash.kebabcase": "npm:^4.1.7"
+    "@types/lodash.startcase": "npm:^4"
+    "@types/node": "npm:^20.0.0"
+    chalk: "npm:^5.3.0"
+    commander: "npm:^12.0.0"
+    fs-extra: "npm:^11.2.0"
+    inquirer: "npm:^10.0.0"
+    lodash.camelcase: "npm:^4.3.0"
+    lodash.kebabcase: "npm:^4.1.1"
+    lodash.startcase: "npm:^4.4.0"
+    uuid: "npm:^13.0.0"
+    vite: "npm:^7.0.0"
+    vite-plugin-dts: "npm:^4.5.4"
+    vite-tsconfig-paths: "npm:^4.2.1"
+  bin:
+    create-arjuna-app: dist/cli.cjs
+  languageName: unknown
+  linkType: soft
+
 "create-ecdh@npm:^4.0.0":
   version: 4.0.4
   resolution: "create-ecdh@npm:4.0.4"
@@ -31148,33 +31904,6 @@ __metadata:
   checksum: 10c0/157cbc59b2430ae9a90034a5f3a1b398b6738bf510f713edc4d4e45e169bc514d3d99dd34d8d01ca7ae7830b5b8b537e46ae8f3c8f932371b0875c0151d7ec91
   languageName: node
   linkType: hard
-
-"create-twenty-app@workspace:packages/create-twenty-app":
-  version: 0.0.0-use.local
-  resolution: "create-twenty-app@workspace:packages/create-twenty-app"
-  dependencies:
-    "@genql/cli": "npm:^3.0.3"
-    "@types/fs-extra": "npm:^11.0.0"
-    "@types/inquirer": "npm:^9.0.0"
-    "@types/lodash.camelcase": "npm:^4.3.7"
-    "@types/lodash.kebabcase": "npm:^4.1.7"
-    "@types/lodash.startcase": "npm:^4"
-    "@types/node": "npm:^20.0.0"
-    chalk: "npm:^5.3.0"
-    commander: "npm:^12.0.0"
-    fs-extra: "npm:^11.2.0"
-    inquirer: "npm:^10.0.0"
-    lodash.camelcase: "npm:^4.3.0"
-    lodash.kebabcase: "npm:^4.1.1"
-    lodash.startcase: "npm:^4.4.0"
-    uuid: "npm:^13.0.0"
-    vite: "npm:^7.0.0"
-    vite-plugin-dts: "npm:^4.5.4"
-    vite-tsconfig-paths: "npm:^4.2.1"
-  bin:
-    create-twenty-app: dist/cli.cjs
-  languageName: unknown
-  linkType: soft
 
 "crelt@npm:^1.0.0, crelt@npm:^1.0.5":
   version: 1.0.6
@@ -37431,6 +38160,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"graphql@npm:*, graphql@npm:14 - 16, graphql@npm:^16.3.0, graphql@npm:^16.6.0, graphql@npm:^16.8.1":
+  version: 16.12.0
+  resolution: "graphql@npm:16.12.0"
+  checksum: 10c0/b6fffa4e8a4e4a9933ebe85e7470b346dbf49050c1a482fac5e03e4a1a7bed2ecd3a4c97e29f04457af929464bc5e4f2aac991090c2f320111eef26e902a5c75
+  languageName: node
+  linkType: hard
+
 "graphql@npm:16.8.1":
   version: 16.8.1
   resolution: "graphql@npm:16.8.1"
@@ -39219,7 +39955,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ioredis@npm:5.6.0, ioredis@npm:^5.4.1, ioredis@npm:^5.6.0":
+"ioredis@npm:5.6.0, ioredis@npm:^5.4.1":
   version: 5.6.0
   resolution: "ioredis@npm:5.6.0"
   dependencies:
@@ -39233,6 +39969,23 @@ __metadata:
     redis-parser: "npm:^3.0.0"
     standard-as-callback: "npm:^2.1.0"
   checksum: 10c0/a885e5146640fc448706871290ef424ffa39af561f7ee3cf1590085209a509f85e99082bdaaf3cd32fa66758aea3fc2055d1109648ddca96fac4944bf2092c30
+  languageName: node
+  linkType: hard
+
+"ioredis@npm:^5.3.2":
+  version: 5.9.3
+  resolution: "ioredis@npm:5.9.3"
+  dependencies:
+    "@ioredis/commands": "npm:1.5.0"
+    cluster-key-slot: "npm:^1.1.0"
+    debug: "npm:^4.3.4"
+    denque: "npm:^2.1.0"
+    lodash.defaults: "npm:^4.2.0"
+    lodash.isarguments: "npm:^3.1.0"
+    redis-errors: "npm:^1.2.0"
+    redis-parser: "npm:^3.0.0"
+    standard-as-callback: "npm:^2.1.0"
+  checksum: 10c0/f3d5c811bc1f320236f488ee6bd8a4857c7c0e8e5de1154b064afc03eb35aafbf24156e430025061b6939c58a5a6b424d86814d726439f5811b2e9c56c710dd4
   languageName: node
   linkType: hard
 
@@ -49622,23 +50375,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prosemirror-transform@npm:1.10.4":
-  version: 1.10.4
-  resolution: "prosemirror-transform@npm:1.10.4"
+"prosemirror-transform@npm:^1.0.0, prosemirror-transform@npm:^1.1.0, prosemirror-transform@npm:^1.10.2, prosemirror-transform@npm:^1.10.3, prosemirror-transform@npm:^1.10.4, prosemirror-transform@npm:^1.7.1, prosemirror-transform@npm:^1.7.3":
+  version: 1.11.0
+  resolution: "prosemirror-transform@npm:1.11.0"
   dependencies:
     prosemirror-model: "npm:^1.21.0"
-  checksum: 10c0/01a7b79d8e2bf61b3414f60f8790a19f2cebb85a2050f64594cbff54f62d5c5f56160a66bbfa089462239189b4667952ede738e68b9e154a3505845720230a1c
+  checksum: 10c0/07f5b4ff6c0e05f7f68fbb067d0f4a2030242c4d2312b0b979bb7553059d80c13b3e86e8f4ba71a5a7352fa8c4c4a1fd4ba3dfbf73efed94631b5a53915fbe89
   languageName: node
   linkType: hard
 
-"prosemirror-view@npm:1.40.0":
-  version: 1.40.0
-  resolution: "prosemirror-view@npm:1.40.0"
+"prosemirror-view@npm:^1.0.0, prosemirror-view@npm:^1.1.0, prosemirror-view@npm:^1.27.0, prosemirror-view@npm:^1.30.2, prosemirror-view@npm:^1.31.0, prosemirror-view@npm:^1.37.0, prosemirror-view@npm:^1.38.1, prosemirror-view@npm:^1.39.1":
+  version: 1.41.6
+  resolution: "prosemirror-view@npm:1.41.6"
   dependencies:
     prosemirror-model: "npm:^1.20.0"
     prosemirror-state: "npm:^1.0.0"
     prosemirror-transform: "npm:^1.1.0"
-  checksum: 10c0/9fde9b415b9beeeda823acc170871f420f8e8646be83d9af5b9b5c124419d9a4b5c1293d9536dd06910b6154a001401d79cdc57a902fb7a0ea19501966f8dfdd
+  checksum: 10c0/a0dd304cabf11deb5b396c3568cf0ea39dcddc71b1834924a9a08bca73ce148779a8d66859f90acdeb8d5e68b3aaf1c0adbbc343af80840683c27f43596bdade
   languageName: node
   linkType: hard
 
@@ -50431,9 +51184,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-phone-number-input@patch:react-phone-number-input@npm%3A3.4.5#../../.yarn/patches/react-phone-number-input-npm-3.4.5-dc2895c306.patch::locator=twenty-front%40workspace%3Apackages%2Ftwenty-front":
+"react-phone-number-input@patch:react-phone-number-input@npm%3A3.4.5#../../.yarn/patches/react-phone-number-input-npm-3.4.5-dc2895c306.patch::locator=arjuna-front%40workspace%3Apackages%2Farjuna-front":
   version: 3.4.5
-  resolution: "react-phone-number-input@patch:react-phone-number-input@npm%3A3.4.5#../../.yarn/patches/react-phone-number-input-npm-3.4.5-dc2895c306.patch::version=3.4.5&hash=4d6a74&locator=twenty-front%40workspace%3Apackages%2Ftwenty-front"
+  resolution: "react-phone-number-input@patch:react-phone-number-input@npm%3A3.4.5#../../.yarn/patches/react-phone-number-input-npm-3.4.5-dc2895c306.patch::version=3.4.5&hash=4d6a74&locator=arjuna-front%40workspace%3Apackages%2Farjuna-front"
   dependencies:
     classnames: "npm:^2.5.1"
     country-flag-icons: "npm:^1.5.11"
@@ -55921,729 +56674,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"twenty-cli@workspace:packages/twenty-cli":
-  version: 0.0.0-use.local
-  resolution: "twenty-cli@workspace:packages/twenty-cli"
-  languageName: unknown
-  linkType: soft
-
-"twenty-docs@workspace:packages/twenty-docs":
-  version: 0.0.0-use.local
-  resolution: "twenty-docs@workspace:packages/twenty-docs"
-  dependencies:
-    mintlify: "npm:latest"
-  languageName: unknown
-  linkType: soft
-
-"twenty-e2e-testing@workspace:packages/twenty-e2e-testing":
-  version: 0.0.0-use.local
-  resolution: "twenty-e2e-testing@workspace:packages/twenty-e2e-testing"
-  dependencies:
-    "@playwright/test": "npm:^1.56.1"
-    playwright: "npm:^1.56.1"
-  languageName: unknown
-  linkType: soft
-
-"twenty-emails@workspace:*, twenty-emails@workspace:packages/twenty-emails":
-  version: 0.0.0-use.local
-  resolution: "twenty-emails@workspace:packages/twenty-emails"
-  dependencies:
-    "@lingui/cli": "npm:^5.1.2"
-    "@lingui/core": "npm:^5.1.2"
-    "@lingui/react": "npm:^5.1.2"
-    "@lingui/swc-plugin": "npm:^5.6.0"
-    "@lingui/vite-plugin": "npm:^5.1.2"
-    "@tiptap/core": "npm:^3.4.2"
-    "@types/react": "npm:^19"
-    "@types/react-dom": "npm:^19"
-    react-email: "npm:4.0.6"
-    twenty-shared: "workspace:*"
-    vite-plugin-dts: "npm:3.8.1"
-  peerDependencies:
-    react: ^18.2.0 || ^19.0.0
-    react-dom: ^18.2.0 || ^19.0.0
-  languageName: unknown
-  linkType: soft
-
-"twenty-front@workspace:packages/twenty-front":
-  version: 0.0.0-use.local
-  resolution: "twenty-front@workspace:packages/twenty-front"
-  dependencies:
-    "@ai-sdk/react": "npm:2.0.52"
-    "@apollo/client": "npm:^3.7.17"
-    "@blocknote/mantine": "npm:^0.31.1"
-    "@blocknote/react": "npm:^0.31.1"
-    "@blocknote/xl-docx-exporter": "npm:^0.31.1"
-    "@blocknote/xl-pdf-exporter": "npm:^0.31.1"
-    "@calcom/embed-react": "npm:^1.5.3"
-    "@cyntler/react-doc-viewer": "npm:^1.17.0"
-    "@dagrejs/dagre": "npm:^1.1.2"
-    "@floating-ui/react": "npm:^0.24.3"
-    "@graphiql/plugin-explorer": "npm:^1.0.2"
-    "@graphiql/react": "npm:^0.23.0"
-    "@hello-pangea/dnd": "npm:^16.2.0"
-    "@hookform/resolvers": "npm:^5.2.2"
-    "@lingui/cli": "npm:^5.1.2"
-    "@lingui/core": "npm:^5.1.2"
-    "@lingui/detect-locale": "npm:^5.2.0"
-    "@lingui/react": "npm:^5.1.2"
-    "@lingui/swc-plugin": "npm:^5.6.0"
-    "@lingui/vite-plugin": "npm:^5.1.2"
-    "@monaco-editor/react": "npm:^4.6.0"
-    "@nivo/bar": "npm:^0.99.0"
-    "@nivo/core": "npm:^0.99.0"
-    "@nivo/line": "npm:^0.99.0"
-    "@nivo/pie": "npm:^0.99.0"
-    "@nivo/radial-bar": "npm:^0.99.0"
-    "@playwright/test": "npm:^1.56.1"
-    "@react-email/components": "npm:^0.5.3"
-    "@react-pdf/renderer": "npm:^4.1.6"
-    "@scalar/api-reference-react": "npm:^0.4.36"
-    "@sentry/react": "npm:^10.27.0"
-    "@tiptap/core": "npm:^3.4.2"
-    "@tiptap/extension-bold": "npm:^3.4.2"
-    "@tiptap/extension-document": "npm:^3.4.2"
-    "@tiptap/extension-hard-break": "npm:^3.4.2"
-    "@tiptap/extension-heading": "npm:^3.4.2"
-    "@tiptap/extension-image": "npm:^3.4.4"
-    "@tiptap/extension-italic": "npm:^3.4.2"
-    "@tiptap/extension-link": "npm:^3.4.2"
-    "@tiptap/extension-list": "npm:3.4.2"
-    "@tiptap/extension-paragraph": "npm:^3.4.2"
-    "@tiptap/extension-strike": "npm:^3.4.2"
-    "@tiptap/extension-text": "npm:^3.4.2"
-    "@tiptap/extension-underline": "npm:^3.4.2"
-    "@tiptap/extensions": "npm:^3.4.2"
-    "@tiptap/react": "npm:^3.4.2"
-    "@tiptap/suggestion": "npm:^3.4.2"
-    "@types/apollo-upload-client": "npm:^17.0.2"
-    "@types/file-saver": "npm:^2.0.7"
-    "@types/js-cookie": "npm:^3.0.3"
-    "@types/json-logic-js": "npm:^2"
-    "@types/react-grid-layout": "npm:^1"
-    "@typescript-eslint/eslint-plugin": "npm:^8.39.0"
-    "@typescript-eslint/parser": "npm:^8.39.0"
-    "@typescript-eslint/utils": "npm:^8.39.0"
-    "@xyflow/react": "npm:^12.4.2"
-    ai: "npm:5.0.52"
-    apollo-link-rest: "npm:^0.9.0"
-    apollo-upload-client: "npm:^17.0.0"
-    buffer: "npm:^6.0.3"
-    cron-parser: "npm:5.1.1"
-    date-fns: "npm:^2.30.0"
-    docx: "npm:^9.1.0"
-    eslint: "npm:^9.32.0"
-    eslint-config-prettier: "npm:^9.1.0"
-    eslint-plugin-import: "npm:^2.31.0"
-    eslint-plugin-jsx-a11y: "npm:^6.10.2"
-    eslint-plugin-lingui: "npm:^0.9.0"
-    eslint-plugin-prefer-arrow: "npm:^1.2.3"
-    eslint-plugin-prettier: "npm:^5.1.2"
-    eslint-plugin-project-structure: "npm:^3.9.1"
-    eslint-plugin-react: "npm:^7.37.2"
-    eslint-plugin-react-hooks: "npm:^5.0.0"
-    eslint-plugin-react-refresh: "npm:^0.4.4"
-    eslint-plugin-simple-import-sort: "npm:^10.0.0"
-    eslint-plugin-storybook: "npm:^0.9.0"
-    eslint-plugin-unicorn: "npm:^56.0.1"
-    eslint-plugin-unused-imports: "npm:^3.0.0"
-    file-saver: "npm:^2.0.5"
-    graphiql: "npm:^3.1.1"
-    graphql: "npm:16.8.1"
-    graphql-sse: "npm:^2.5.4"
-    input-otp: "npm:^1.4.2"
-    js-cookie: "npm:^3.0.5"
-    json-2-csv: "npm:^5.4.0"
-    json-logic-js: "npm:^2.0.5"
-    jwt-decode: "npm:^4.0.0"
-    monaco-editor: "npm:^0.51.0"
-    monaco-editor-auto-typings: "npm:^0.4.5"
-    optionator: "npm:^0.9.1"
-    playwright: "npm:^1.56.1"
-    qs: "npm:^6.11.2"
-    react-data-grid: "npm:7.0.0-beta.13"
-    react-datepicker: "npm:^6.7.1"
-    react-dropzone: "npm:^14.2.3"
-    react-error-boundary: "npm:^4.0.11"
-    react-grid-layout: "npm:^1.5.2"
-    react-helmet-async: "npm:^1.3.0"
-    react-hook-form: "npm:^7.45.1"
-    react-hotkeys-hook: "npm:^4.4.4"
-    react-imask: "npm:^7.6.0"
-    react-intersection-observer: "npm:^9.15.1"
-    react-loading-skeleton: "npm:^3.3.1"
-    react-markdown: "npm:^10.1.0"
-    react-phone-number-input: "patch:react-phone-number-input@npm%3A3.4.5#../../.yarn/patches/react-phone-number-input-npm-3.4.5-dc2895c306.patch"
-    react-qr-code: "npm:^2.0.18"
-    react-responsive: "npm:^9.0.2"
-    react-router-dom: "npm:^6.4.4"
-    react-textarea-autosize: "npm:^8.4.1"
-    recoil: "npm:^0.7.7"
-    remark-gfm: "npm:^4.0.1"
-    rollup-plugin-visualizer: "npm:^5.14.0"
-    transliteration: "npm:^2.3.5"
-    twenty-shared: "workspace:*"
-    twenty-ui: "workspace:*"
-    use-debounce: "npm:^10.0.0"
-    vite-plugin-checker: "npm:^0.10.2"
-    vite-plugin-svgr: "npm:^4.3.0"
-    vite-tsconfig-paths: "npm:^4.2.1"
-  languageName: unknown
-  linkType: soft
-
-"twenty-sdk@workspace:packages/twenty-sdk":
-  version: 0.0.0-use.local
-  resolution: "twenty-sdk@workspace:packages/twenty-sdk"
-  dependencies:
-    "@genql/cli": "npm:^3.0.3"
-    "@types/fs-extra": "npm:^11.0.0"
-    "@types/inquirer": "npm:^9.0.0"
-    "@types/jest": "npm:^29.5.0"
-    "@types/lodash.camelcase": "npm:^4.3.7"
-    "@types/lodash.capitalize": "npm:^4"
-    "@types/lodash.kebabcase": "npm:^4.1.7"
-    "@types/lodash.startcase": "npm:^4"
-    "@types/node": "npm:^24.0.0"
-    axios: "npm:^1.6.0"
-    chalk: "npm:^5.3.0"
-    chokidar: "npm:^4.0.0"
-    commander: "npm:^12.0.0"
-    dotenv: "npm:^16.4.0"
-    fs-extra: "npm:^11.2.0"
-    graphql: "npm:^16.8.1"
-    graphql-sse: "npm:^2.5.4"
-    inquirer: "npm:^10.0.0"
-    jest: "npm:^29.5.0"
-    jsonc-parser: "npm:^3.2.0"
-    lodash.camelcase: "npm:^4.3.0"
-    lodash.capitalize: "npm:^4.2.1"
-    lodash.kebabcase: "npm:^4.1.1"
-    lodash.startcase: "npm:^4.4.0"
-    tsx: "npm:^4.7.0"
-    typescript: "npm:^5.9.2"
-    uuid: "npm:^13.0.0"
-    vite: "npm:^7.0.0"
-    vite-plugin-dts: "npm:^4.5.4"
-    vite-tsconfig-paths: "npm:^4.2.1"
-    wait-on: "npm:^7.2.0"
-  bin:
-    twenty: dist/cli.cjs
-  languageName: unknown
-  linkType: soft
-
-"twenty-server@workspace:packages/twenty-server":
-  version: 0.0.0-use.local
-  resolution: "twenty-server@workspace:packages/twenty-server"
-  dependencies:
-    "@ai-sdk/anthropic": "npm:^2.0.17"
-    "@ai-sdk/openai": "npm:^2.0.30"
-    "@ai-sdk/provider-utils": "npm:^3.0.9"
-    "@ai-sdk/xai": "npm:^2.0.19"
-    "@aws-sdk/client-lambda": "npm:3.825.0"
-    "@aws-sdk/client-s3": "npm:3.825.0"
-    "@aws-sdk/client-sesv2": "npm:^3.888.0"
-    "@aws-sdk/client-sts": "npm:3.825.0"
-    "@aws-sdk/credential-providers": "npm:3.825.0"
-    "@babel/preset-env": "npm:7.26.9"
-    "@blocknote/server-util": "npm:^0.31.1"
-    "@clickhouse/client": "npm:^1.11.0"
-    "@dagrejs/dagre": "npm:^1.1.2"
-    "@envelop/core": "npm:4.0.3"
-    "@envelop/on-resolve": "npm:4.1.0"
-    "@esbuild-plugins/node-modules-polyfill": "npm:^0.2.2"
-    "@eslint/js": "npm:9.32.0"
-    "@faker-js/faker": "npm:^9.8.0"
-    "@graphql-tools/schema": "npm:10.0.4"
-    "@graphql-tools/utils": "npm:9.2.1"
-    "@graphql-yoga/nestjs": "patch:@graphql-yoga/nestjs@2.1.0#./patches/@graphql-yoga+nestjs+2.1.0.patch"
-    "@lingui/cli": "npm:^5.1.2"
-    "@lingui/conf": "npm:5.1.2"
-    "@lingui/core": "npm:^5.1.2"
-    "@lingui/format-po": "npm:5.1.2"
-    "@lingui/react": "npm:5.1.2"
-    "@lingui/vite-plugin": "npm:5.1.2"
-    "@microsoft/microsoft-graph-client": "npm:3.0.7"
-    "@microsoft/microsoft-graph-types": "npm:^2.40.0"
-    "@nestjs/axios": "npm:3.1.2"
-    "@nestjs/cache-manager": "npm:^2.3.0"
-    "@nestjs/cli": "npm:11.0.10"
-    "@nestjs/common": "npm:11.1.9"
-    "@nestjs/config": "npm:3.3.0"
-    "@nestjs/core": "npm:11.1.9"
-    "@nestjs/devtools-integration": "npm:^0.2.1"
-    "@nestjs/event-emitter": "npm:2.1.0"
-    "@nestjs/graphql": "patch:@nestjs/graphql@12.1.1#./patches/@nestjs+graphql+12.1.1.patch"
-    "@nestjs/jwt": "npm:11.0.1"
-    "@nestjs/passport": "npm:11.0.5"
-    "@nestjs/platform-express": "npm:11.1.9"
-    "@nestjs/schedule": "npm:^6.0.1"
-    "@nestjs/schematics": "npm:^11.0.9"
-    "@nestjs/serve-static": "npm:5.0.4"
-    "@nestjs/terminus": "npm:11.0.0"
-    "@nestjs/testing": "npm:^11.1.9"
-    "@nestjs/typeorm": "npm:11.0.0"
-    "@node-saml/node-saml": "npm:5.1.0"
-    "@node-saml/passport-saml": "npm:^5.1.0"
-    "@opentelemetry/api": "npm:^1.9.0"
-    "@opentelemetry/auto-instrumentations-node": "npm:^0.60.0"
-    "@opentelemetry/exporter-metrics-otlp-http": "npm:^0.200.0"
-    "@opentelemetry/sdk-metrics": "npm:^2.0.0"
-    "@opentelemetry/sdk-node": "npm:^0.202.0"
-    "@ptc-org/nestjs-query-core": "npm:4.4.0"
-    "@ptc-org/nestjs-query-graphql": "patch:@ptc-org/nestjs-query-graphql@4.2.0#./patches/@ptc-org+nestjs-query-graphql+4.2.0.patch"
-    "@ptc-org/nestjs-query-typeorm": "npm:4.2.1-alpha.2"
-    "@react-email/render": "npm:^1.2.3"
-    "@sentry/nestjs": "npm:^10.27.0"
-    "@sentry/node": "npm:^10.27.0"
-    "@sentry/profiling-node": "npm:^10.27.0"
-    "@sniptt/guards": "npm:0.2.0"
-    "@types/babel__preset-env": "npm:7.10.0"
-    "@types/bytes": "npm:^3.1.1"
-    "@types/dompurify": "npm:^3.0.5"
-    "@types/express": "npm:^4.17.13"
-    "@types/express-session": "npm:^1.18.0"
-    "@types/graphql-upload": "npm:^16.0.7"
-    "@types/html-to-text": "npm:^9.0.4"
-    "@types/lodash.chunk": "npm:^4.2.9"
-    "@types/lodash.differencewith": "npm:^4.5.9"
-    "@types/lodash.isempty": "npm:^4.4.7"
-    "@types/lodash.isequal": "npm:^4.5.8"
-    "@types/lodash.isobject": "npm:^3.0.7"
-    "@types/lodash.merge": "npm:^4.6.9"
-    "@types/lodash.omit": "npm:^4.5.9"
-    "@types/lodash.omitby": "npm:^4.6.9"
-    "@types/lodash.snakecase": "npm:^4.1.7"
-    "@types/lodash.uniq": "npm:^4.5.9"
-    "@types/lodash.uniqby": "npm:^4.7.9"
-    "@types/lodash.upperfirst": "npm:^4.3.7"
-    "@types/mailparser": "npm:^3.4.6"
-    "@types/ms": "npm:^0.7.31"
-    "@types/node": "npm:^24.0.0"
-    "@types/nodemailer": "npm:^7.0.3"
-    "@types/openid-client": "npm:^3.7.0"
-    "@types/passport-google-oauth20": "npm:^2.0.11"
-    "@types/passport-jwt": "npm:^3.0.8"
-    "@types/passport-microsoft": "npm:^2.1.0"
-    "@types/pluralize": "npm:^0.0.33"
-    "@types/psl": "npm:^1.1.3"
-    "@types/react": "npm:^18.2.39"
-    "@types/unzipper": "npm:^0"
-    "@yarnpkg/types": "npm:^4.0.0"
-    addressparser: "npm:1.0.1"
-    ai: "npm:5.0.52"
-    apollo-server-core: "npm:3.13.0"
-    archiver: "npm:7.0.1"
-    axios: "npm:1.12.2"
-    babel-plugin-module-resolver: "npm:5.0.2"
-    bcrypt: "npm:5.1.1"
-    bullmq: "npm:5.40.0"
-    bytes: "npm:3.1.2"
-    cache-manager: "npm:^5.4.0"
-    cache-manager-redis-yet: "npm:^4.1.2"
-    chalk: "npm:4.1.2"
-    class-transformer: "npm:0.5.1"
-    class-validator: "npm:0.14.0"
-    class-validator-jsonschema: "npm:^5.0.2"
-    cloudflare: "npm:^4.5.0"
-    connect-redis: "npm:^7.1.1"
-    cron-parser: "npm:5.1.1"
-    dataloader: "npm:2.2.2"
-    date-fns: "npm:2.30.0"
-    deep-equal: "npm:2.2.3"
-    dompurify: "npm:3.2.6"
-    dotenv: "npm:16.4.5"
-    express: "npm:4.21.2"
-    express-session: "npm:^1.18.2"
-    file-type: "npm:16.5.4"
-    gaxios: "npm:5.1.3"
-    google-auth-library: "npm:8.9.0"
-    googleapis: "npm:105.0.0"
-    graphql: "npm:16.8.1"
-    graphql-fields: "npm:2.0.3"
-    graphql-middleware: "npm:^6.1.35"
-    graphql-rate-limit: "npm:3.3.0"
-    graphql-redis-subscriptions: "npm:2.7.0"
-    graphql-scalars: "npm:1.23.0"
-    graphql-subscriptions: "npm:2.0.0"
-    graphql-tag: "npm:2.12.6"
-    graphql-type-json: "npm:0.3.2"
-    graphql-upload: "npm:16.0.2"
-    graphql-yoga: "npm:4.0.5"
-    html-to-text: "npm:^9.0.5"
-    imapflow: "npm:1.1.0"
-    ioredis: "npm:5.6.0"
-    jsdom: "npm:^26.1.0"
-    json-schema: "npm:0.4.0"
-    jsonc-eslint-parser: "npm:2.4.0"
-    jsonwebtoken: "npm:9.0.2"
-    libphonenumber-js: "npm:1.11.5"
-    lodash.camelcase: "npm:4.3.0"
-    lodash.chunk: "npm:4.2.0"
-    lodash.compact: "npm:3.0.1"
-    lodash.differencewith: "npm:^4.5.0"
-    lodash.groupby: "npm:4.6.0"
-    lodash.isempty: "npm:4.4.0"
-    lodash.isequal: "npm:4.5.0"
-    lodash.isobject: "npm:3.0.2"
-    lodash.kebabcase: "npm:4.1.1"
-    lodash.merge: "npm:^4.6.2"
-    lodash.omit: "npm:4.5.0"
-    lodash.omitby: "npm:^4.6.0"
-    lodash.snakecase: "npm:4.1.1"
-    lodash.uniq: "npm:^4.5.0"
-    lodash.uniqby: "npm:^4.7.0"
-    lodash.upperfirst: "npm:4.3.1"
-    mailparser: "npm:3.7.5"
-    microdiff: "npm:1.4.0"
-    ms: "npm:2.1.3"
-    nest-commander: "npm:^3.19.1"
-    node-ical: "npm:^0.20.1"
-    nodemailer: "npm:^7.0.10"
-    openapi-types: "npm:12.1.3"
-    openid-client: "npm:^5.7.0"
-    otplib: "npm:^12.0.1"
-    passport: "npm:^0.7.0"
-    passport-google-oauth20: "npm:2.0.0"
-    passport-jwt: "npm:4.0.1"
-    passport-microsoft: "npm:2.1.0"
-    path-to-regexp: "npm:^8.2.0"
-    pg: "npm:8.12.0"
-    planer: "npm:1.2.0"
-    pluralize: "npm:8.0.0"
-    postal-mime: "npm:^2.6.1"
-    psl: "npm:^1.9.0"
-    react: "npm:18.3.1"
-    react-dom: "npm:18.3.1"
-    redis: "npm:^4.7.0"
-    reflect-metadata: "npm:0.2.2"
-    rimraf: "npm:^5.0.5"
-    rxjs: "npm:7.8.1"
-    semver: "npm:7.6.3"
-    sharp: "npm:0.32.6"
-    stripe: "npm:17.3.1"
-    transliteration: "npm:2.3.5"
-    tsconfig-paths: "npm:^4.2.0"
-    tsdav: "npm:^2.1.5"
-    tslib: "npm:2.8.1"
-    twenty-emails: "workspace:*"
-    twenty-shared: "workspace:*"
-    type-fest: "npm:4.10.1"
-    typeorm: "patch:typeorm@0.3.20#./patches/typeorm+0.3.20.patch"
-    unzipper: "npm:^0.12.3"
-    uuid: "npm:9.0.1"
-    vite-tsconfig-paths: "npm:4.3.2"
-    zod: "npm:^4.1.11"
-  languageName: unknown
-  linkType: soft
-
-"twenty-shared@workspace:*, twenty-shared@workspace:packages/twenty-shared":
-  version: 0.0.0-use.local
-  resolution: "twenty-shared@workspace:packages/twenty-shared"
-  dependencies:
-    "@babel/preset-env": "npm:^7.26.9"
-    "@lingui/core": "npm:^5.5.1"
-    "@prettier/sync": "npm:^0.5.2"
-    "@sniptt/guards": "npm:^0.2.0"
-    "@types/babel__preset-env": "npm:^7"
-    "@types/handlebars": "npm:^4.1.0"
-    babel-plugin-module-resolver: "npm:^5.0.2"
-    class-validator: "npm:^0.14.0"
-    glob: "npm:^11.1.0"
-    handlebars: "npm:^4.7.8"
-    libphonenumber-js: "npm:^1.10.26"
-    lodash.camelcase: "npm:^4.3.0"
-    qs: "npm:^6.11.2"
-    react-router-dom: "npm:^6.4.4"
-    transliteration: "npm:^2.3.5"
-    tsx: "npm:^4.19.3"
-    vite: "npm:^7.0.0"
-    vite-plugin-dts: "npm:3.8.1"
-    vite-tsconfig-paths: "npm:^4.2.1"
-    zod: "npm:^4.1.11"
-  languageName: unknown
-  linkType: soft
-
-"twenty-ui@workspace:*, twenty-ui@workspace:packages/twenty-ui":
-  version: 0.0.0-use.local
-  resolution: "twenty-ui@workspace:packages/twenty-ui"
-  dependencies:
-    "@babel/preset-env": "npm:^7.26.9"
-    "@babel/preset-react": "npm:^7.26.3"
-    "@emotion/is-prop-valid": "npm:^1.3.0"
-    "@emotion/react": "npm:^11.11.1"
-    "@emotion/styled": "npm:^11.11.0"
-    "@linaria/react": "npm:^6.2.1"
-    "@monaco-editor/react": "npm:^4.6.0"
-    "@prettier/sync": "npm:^0.5.2"
-    "@sniptt/guards": "npm:^0.2.0"
-    "@swc/plugin-emotion": "npm:10.0.4"
-    "@tabler/icons-react": "npm:^3.31.0"
-    "@types/babel__preset-env": "npm:^7"
-    "@types/react": "npm:^18.2.39"
-    "@types/react-dom": "npm:^18.2.15"
-    "@wyw-in-js/babel-preset": "npm:^0.6.0"
-    babel-plugin-inline-import: "npm:^3.0.0"
-    babel-plugin-inline-react-svg: "npm:^2.0.2"
-    babel-plugin-module-resolver: "npm:^5.0.2"
-    date-fns: "npm:^2.30.0"
-    framer-motion: "npm:^11.18.0"
-    glob: "npm:^11.1.0"
-    hex-rgb: "npm:^5.0.0"
-    react: "npm:^18.2.0"
-    react-dom: "npm:^18.2.0"
-    react-responsive: "npm:^9.0.2"
-    react-router-dom: "npm:^6.4.4"
-    react-tooltip: "npm:^5.13.1"
-    recoil: "npm:^0.7.7"
-    tsx: "npm:^4.19.3"
-    twenty-shared: "workspace:*"
-    vite-plugin-checker: "npm:^0.10.2"
-    vite-plugin-dts: "npm:3.8.1"
-    vite-plugin-svgr: "npm:^4.3.0"
-    zod: "npm:^4.1.11"
-  languageName: unknown
-  linkType: soft
-
-"twenty-utils@workspace:packages/twenty-utils":
-  version: 0.0.0-use.local
-  resolution: "twenty-utils@workspace:packages/twenty-utils"
-  languageName: unknown
-  linkType: soft
-
-"twenty-website@workspace:packages/twenty-website":
-  version: 0.0.0-use.local
-  resolution: "twenty-website@workspace:packages/twenty-website"
-  dependencies:
-    "@codesandbox/sandpack-react": "npm:^2.13.5"
-    "@docsearch/react": "npm:^3.6.2"
-    "@keystatic/core": "npm:^0.5.45"
-    "@keystatic/next": "npm:^5.0.3"
-    "@markdoc/markdoc": "npm:^0.5.1"
-    "@next/eslint-plugin-next": "npm:^14.2.0"
-    "@nivo/calendar": "npm:^0.99.0"
-    "@types/facepaint": "npm:^1.2.5"
-    date-fns: "npm:^2.30.0"
-    drizzle-kit: "npm:^0.31.5"
-    drizzle-orm: "npm:^0.44.7"
-    eslint-config-next: "npm:^14.2.0"
-    facepaint: "npm:^1.2.1"
-    gray-matter: "npm:^4.0.3"
-    next: "npm:^14.2.25"
-    next-mdx-remote: "npm:^4.4.1"
-    next-runtime-env: "npm:^3.3.0"
-    postgres: "npm:^3.4.3"
-    react-tooltip: "npm:^5.13.1"
-    twenty-ui: "workspace:*"
-  languageName: unknown
-  linkType: soft
-
-"twenty-zapier@workspace:packages/twenty-zapier":
-  version: 0.0.0-use.local
-  resolution: "twenty-zapier@workspace:packages/twenty-zapier"
-  dependencies:
-    "@sniptt/guards": "npm:^0.2.0"
-    dotenv: "npm:^16.4.5"
-    jest: "npm:29.7.0"
-    libphonenumber-js: "npm:^1.10.26"
-    rimraf: "npm:^3.0.2"
-    zapier-platform-cli: "npm:^15.4.1"
-    zapier-platform-core: "npm:15.5.1"
-    zod: "npm:^4.1.11"
-  languageName: unknown
-  linkType: soft
-
-"twenty@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "twenty@workspace:."
-  dependencies:
-    "@apollo/client": "npm:^3.7.17"
-    "@babel/core": "npm:^7.14.5"
-    "@babel/preset-react": "npm:^7.14.5"
-    "@babel/preset-typescript": "npm:^7.24.6"
-    "@chromatic-com/storybook": "npm:^3"
-    "@date-fns/tz": "npm:^1.4.1"
-    "@emotion/react": "npm:^11.11.1"
-    "@emotion/styled": "npm:^11.11.0"
-    "@floating-ui/react": "npm:^0.24.3"
-    "@graphql-codegen/cli": "npm:^3.3.1"
-    "@graphql-codegen/client-preset": "npm:^4.1.0"
-    "@graphql-codegen/typescript": "npm:^3.0.4"
-    "@graphql-codegen/typescript-operations": "npm:^3.0.4"
-    "@graphql-codegen/typescript-react-apollo": "npm:^3.3.7"
-    "@linaria/core": "npm:^6.2.0"
-    "@linaria/react": "npm:^6.2.1"
-    "@nx/eslint": "npm:22.0.3"
-    "@nx/eslint-plugin": "npm:22.0.3"
-    "@nx/jest": "npm:22.0.3"
-    "@nx/js": "npm:22.0.3"
-    "@nx/react": "npm:22.0.3"
-    "@nx/storybook": "npm:22.0.3"
-    "@nx/vite": "npm:22.0.3"
-    "@nx/web": "npm:22.0.3"
-    "@radix-ui/colors": "npm:^3.0.0"
-    "@sentry/types": "npm:^8"
-    "@sniptt/guards": "npm:^0.2.0"
-    "@storybook/addon-actions": "npm:8.6.14"
-    "@storybook/addon-coverage": "npm:^1.0.0"
-    "@storybook/addon-essentials": "npm:8.6.14"
-    "@storybook/addon-interactions": "npm:8.6.14"
-    "@storybook/addon-links": "npm:8.6.14"
-    "@storybook/blocks": "npm:8.6.14"
-    "@storybook/core-server": "npm:8.6.14"
-    "@storybook/icons": "npm:^1.2.9"
-    "@storybook/preview-api": "npm:8.6.14"
-    "@storybook/react": "npm:8.6.14"
-    "@storybook/react-vite": "npm:8.6.14"
-    "@storybook/test": "npm:8.6.14"
-    "@storybook/test-runner": "npm:^0.23.0"
-    "@storybook/types": "npm:8.6.14"
-    "@stylistic/eslint-plugin": "npm:^1.5.0"
-    "@swc-node/register": "npm:1.8.0"
-    "@swc/cli": "npm:^0.3.12"
-    "@swc/core": "npm:1.13.3"
-    "@swc/helpers": "npm:~0.5.2"
-    "@swc/jest": "npm:^0.2.39"
-    "@tabler/icons-react": "npm:^3.31.0"
-    "@testing-library/jest-dom": "npm:^6.6.3"
-    "@testing-library/react": "npm:^16.3.0"
-    "@types/addressparser": "npm:^1.0.3"
-    "@types/bcrypt": "npm:^5.0.0"
-    "@types/bytes": "npm:^3.1.1"
-    "@types/chrome": "npm:^0.0.267"
-    "@types/deep-equal": "npm:^1.0.1"
-    "@types/express": "npm:^4.17.13"
-    "@types/fs-extra": "npm:^11.0.4"
-    "@types/graphql-fields": "npm:^1.3.6"
-    "@types/inquirer": "npm:^9.0.9"
-    "@types/jest": "npm:^30.0.0"
-    "@types/lodash.camelcase": "npm:^4.3.7"
-    "@types/lodash.compact": "npm:^3.0.9"
-    "@types/lodash.escaperegexp": "npm:^4.1.9"
-    "@types/lodash.groupby": "npm:^4.6.9"
-    "@types/lodash.identity": "npm:^3.0.9"
-    "@types/lodash.isempty": "npm:^4.4.7"
-    "@types/lodash.isequal": "npm:^4.5.7"
-    "@types/lodash.isobject": "npm:^3.0.7"
-    "@types/lodash.kebabcase": "npm:^4.1.7"
-    "@types/lodash.mapvalues": "npm:^4.6.9"
-    "@types/lodash.omit": "npm:^4.5.9"
-    "@types/lodash.pickby": "npm:^4.6.9"
-    "@types/lodash.snakecase": "npm:^4.1.7"
-    "@types/lodash.upperfirst": "npm:^4.3.7"
-    "@types/ms": "npm:^0.7.31"
-    "@types/node": "npm:^24.0.0"
-    "@types/passport-google-oauth20": "npm:^2.0.11"
-    "@types/passport-jwt": "npm:^3.0.8"
-    "@types/passport-microsoft": "npm:^2.1.0"
-    "@types/pluralize": "npm:^0.0.33"
-    "@types/react": "npm:^18.2.39"
-    "@types/react-datepicker": "npm:^6.2.0"
-    "@types/react-dom": "npm:^18.2.15"
-    "@types/supertest": "npm:^2.0.11"
-    "@types/uuid": "npm:^9.0.2"
-    "@typescript-eslint/eslint-plugin": "npm:^8.39.0"
-    "@typescript-eslint/parser": "npm:^8.39.0"
-    "@typescript-eslint/utils": "npm:^8.39.0"
-    "@vitejs/plugin-react-swc": "npm:3.11.0"
-    "@wyw-in-js/vite": "npm:^0.7.0"
-    "@yarnpkg/types": "npm:^4.0.0"
-    archiver: "npm:^7.0.1"
-    chromatic: "npm:^6.18.0"
-    concurrently: "npm:^8.2.2"
-    danger: "npm:^13.0.4"
-    danger-plugin-todos: "npm:^1.3.1"
-    date-fns: "npm:^2.30.0"
-    date-fns-tz: "npm:^2.0.0"
-    deep-equal: "npm:^2.2.2"
-    dotenv-cli: "npm:^7.4.4"
-    esbuild: "npm:^0.25.10"
-    eslint: "npm:^9.32.0"
-    eslint-config-prettier: "npm:^9.1.0"
-    eslint-plugin-import: "npm:^2.31.0"
-    eslint-plugin-jsx-a11y: "npm:^6.10.2"
-    eslint-plugin-lingui: "npm:^0.9.0"
-    eslint-plugin-mdx: "npm:^3.6.2"
-    eslint-plugin-prefer-arrow: "npm:^1.2.3"
-    eslint-plugin-prettier: "npm:^5.1.2"
-    eslint-plugin-project-structure: "npm:^3.9.1"
-    eslint-plugin-react: "npm:^7.37.2"
-    eslint-plugin-react-hooks: "npm:^5.0.0"
-    eslint-plugin-react-refresh: "npm:^0.4.4"
-    eslint-plugin-simple-import-sort: "npm:^10.0.0"
-    eslint-plugin-storybook: "npm:^0.9.0"
-    eslint-plugin-unicorn: "npm:^56.0.1"
-    eslint-plugin-unused-imports: "npm:^3.0.0"
-    file-type: "npm:16.5.4"
-    framer-motion: "npm:^11.18.0"
-    fuse.js: "npm:^7.1.0"
-    googleapis: "npm:105"
-    hex-rgb: "npm:^5.0.0"
-    http-server: "npm:^14.1.1"
-    immer: "npm:^10.1.1"
-    jest: "npm:29.7.0"
-    jest-environment-jsdom: "npm:30.0.0-beta.3"
-    jest-environment-node: "npm:^29.4.1"
-    jest-fetch-mock: "npm:^3.0.3"
-    jsdom: "npm:~22.1.0"
-    libphonenumber-js: "npm:^1.10.26"
-    lodash.camelcase: "npm:^4.3.0"
-    lodash.chunk: "npm:^4.2.0"
-    lodash.compact: "npm:^3.0.1"
-    lodash.escaperegexp: "npm:^4.1.2"
-    lodash.groupby: "npm:^4.6.0"
-    lodash.identity: "npm:^3.0.0"
-    lodash.isempty: "npm:^4.4.0"
-    lodash.isequal: "npm:^4.5.0"
-    lodash.isobject: "npm:^3.0.2"
-    lodash.kebabcase: "npm:^4.1.1"
-    lodash.mapvalues: "npm:^4.6.0"
-    lodash.merge: "npm:^4.6.2"
-    lodash.omit: "npm:^4.5.0"
-    lodash.pickby: "npm:^4.6.0"
-    lodash.snakecase: "npm:^4.1.1"
-    lodash.upperfirst: "npm:^4.3.1"
-    microdiff: "npm:^1.3.2"
-    msw: "npm:^2.0.11"
-    msw-storybook-addon: "npm:^2.0.5"
-    nx: "npm:22.0.3"
-    planer: "npm:^1.2.0"
-    pluralize: "npm:^8.0.0"
-    prettier: "npm:^3.1.1"
-    raw-loader: "npm:^4.0.2"
-    react: "npm:^18.2.0"
-    react-dom: "npm:^18.2.0"
-    react-responsive: "npm:^9.0.2"
-    react-router-dom: "npm:^6.4.4"
-    react-tooltip: "npm:^5.13.1"
-    recoil: "npm:^0.7.7"
-    remark-gfm: "npm:^3.0.1"
-    rimraf: "npm:^5.0.5"
-    rxjs: "npm:^7.2.0"
-    semver: "npm:^7.5.4"
-    slash: "npm:^5.1.0"
-    source-map-support: "npm:^0.5.20"
-    storybook: "npm:8.6.14"
-    storybook-addon-cookie: "npm:^3.2.0"
-    storybook-addon-mock-date: "npm:^0.6.0"
-    storybook-addon-pseudo-states: "npm:^2.1.2"
-    supertest: "npm:^6.1.3"
-    ts-jest: "npm:^29.1.1"
-    ts-key-enum: "npm:^2.0.12"
-    ts-loader: "npm:^9.2.3"
-    ts-node: "npm:10.9.1"
-    tsconfig-paths: "npm:^4.2.0"
-    tslib: "npm:^2.8.1"
-    tsx: "npm:^4.17.0"
-    type-fest: "npm:4.10.1"
-    typescript: "npm:5.9.2"
-    uuid: "npm:^9.0.0"
-    vite: "npm:^7.0.0"
-    vite-tsconfig-paths: "npm:^4.2.1"
-    xlsx-ugnis: "npm:^0.19.3"
-    zod: "npm:^4.1.11"
-  languageName: unknown
-  linkType: soft
-
 "twoslash-protocol@npm:0.3.4":
   version: 0.3.4
   resolution: "twoslash-protocol@npm:0.3.4"
@@ -56683,6 +56713,48 @@ __metadata:
   version: 4.10.1
   resolution: "type-fest@npm:4.10.1"
   checksum: 10c0/0523bc1a407cdc03fe20ee78698646e36fd40c99cb2c5b115e72d5a7e4d236f1e7fbf15b3b7b8e703f9108467a8e69aa2df268feefa65847bf37a89555703352
+  languageName: node
+  linkType: hard
+
+"type-fest@npm:^0.20.2":
+  version: 0.20.2
+  resolution: "type-fest@npm:0.20.2"
+  checksum: 10c0/dea9df45ea1f0aaa4e2d3bed3f9a0bfe9e5b2592bddb92eb1bf06e50bcf98dbb78189668cd8bc31a0511d3fc25539b4cd5c704497e53e93e2d40ca764b10bfc3
+  languageName: node
+  linkType: hard
+
+"type-fest@npm:^0.21.3":
+  version: 0.21.3
+  resolution: "type-fest@npm:0.21.3"
+  checksum: 10c0/902bd57bfa30d51d4779b641c2bc403cdf1371fb9c91d3c058b0133694fcfdb817aef07a47f40faf79039eecbaa39ee9d3c532deff244f3a19ce68cea71a61e8
+  languageName: node
+  linkType: hard
+
+"type-fest@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "type-fest@npm:0.6.0"
+  checksum: 10c0/0c585c26416fce9ecb5691873a1301b5aff54673c7999b6f925691ed01f5b9232db408cdbb0bd003d19f5ae284322523f44092d1f81ca0a48f11f7cf0be8cd38
+  languageName: node
+  linkType: hard
+
+"type-fest@npm:^0.8.0, type-fest@npm:^0.8.1":
+  version: 0.8.1
+  resolution: "type-fest@npm:0.8.1"
+  checksum: 10c0/dffbb99329da2aa840f506d376c863bd55f5636f4741ad6e65e82f5ce47e6914108f44f340a0b74009b0cb5d09d6752ae83203e53e98b1192cf80ecee5651636
+  languageName: node
+  linkType: hard
+
+"type-fest@npm:^3.8.0":
+  version: 3.13.1
+  resolution: "type-fest@npm:3.13.1"
+  checksum: 10c0/547d22186f73a8c04590b70dcf63baff390078c75ea8acd366bbd510fd0646e348bd1970e47ecf795b7cff0b41d26e9c475c1fedd6ef5c45c82075fbf916b629
+  languageName: node
+  linkType: hard
+
+"type-fest@npm:^4.12.0, type-fest@npm:^4.27.0, type-fest@npm:^4.31.0, type-fest@npm:^4.9.0":
+  version: 4.41.0
+  resolution: "type-fest@npm:4.41.0"
+  checksum: 10c0/f5ca697797ed5e88d33ac8f1fec21921839871f808dc59345c9cf67345bfb958ce41bd821165dbf3ae591cedec2bf6fe8882098dfdd8dc54320b859711a2c1e4
   languageName: node
   linkType: hard
 
@@ -56863,9 +56935,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typeorm@patch:typeorm@0.3.20#./patches/typeorm+0.3.20.patch::locator=twenty-server%40workspace%3Apackages%2Ftwenty-server":
+"typeorm@patch:typeorm@0.3.20#./patches/typeorm+0.3.20.patch::locator=arjuna-server%40workspace%3Apackages%2Farjuna-server":
   version: 0.3.20
-  resolution: "typeorm@patch:typeorm@npm%3A0.3.20#./patches/typeorm+0.3.20.patch::version=0.3.20&hash=e61204&locator=twenty-server%40workspace%3Apackages%2Ftwenty-server"
+  resolution: "typeorm@patch:typeorm@npm%3A0.3.20#./patches/typeorm+0.3.20.patch::version=0.3.20&hash=e61204&locator=arjuna-server%40workspace%3Apackages%2Farjuna-server"
   dependencies:
     "@sqltools/formatter": "npm:^1.2.5"
     app-root-path: "npm:^3.1.0"
@@ -56943,6 +57015,36 @@ __metadata:
   languageName: node
   linkType: hard
 
+"typescript@npm:5.4.2":
+  version: 5.4.2
+  resolution: "typescript@npm:5.4.2"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 10c0/583ff68cafb0c076695f72d61df6feee71689568179fb0d3a4834dac343df6b6ed7cf7b6f6c801fa52d43cd1d324e2f2d8ae4497b09f9e6cfe3d80a6d6c9ca52
+  languageName: node
+  linkType: hard
+
+"typescript@npm:5.8.2":
+  version: 5.8.2
+  resolution: "typescript@npm:5.8.2"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 10c0/5c4f6fbf1c6389b6928fe7b8fcd5dc73bb2d58cd4e3883f1d774ed5bd83b151cbac6b7ecf11723de56d4676daeba8713894b1e9af56174f2f9780ae7848ec3c6
+  languageName: node
+  linkType: hard
+
+"typescript@npm:5.8.3":
+  version: 5.8.3
+  resolution: "typescript@npm:5.8.3"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 10c0/5f8bb01196e542e64d44db3d16ee0e4063ce4f3e3966df6005f2588e86d91c03e1fb131c2581baf0fb65ee79669eea6e161cd448178986587e9f6844446dbb48
+  languageName: node
+  linkType: hard
+
 "typescript@npm:5.9.2":
   version: 5.9.2
   resolution: "typescript@npm:5.9.2"
@@ -56953,6 +57055,46 @@ __metadata:
   languageName: node
   linkType: hard
 
+"typescript@npm:^5.9.2, typescript@npm:~5.9.2":
+  version: 5.9.3
+  resolution: "typescript@npm:5.9.3"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 10c0/6bd7552ce39f97e711db5aa048f6f9995b53f1c52f7d8667c1abdc1700c68a76a308f579cd309ce6b53646deb4e9a1be7c813a93baaf0a28ccd536a30270e1c5
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@npm%3A5.4.2#optional!builtin<compat/typescript>":
+  version: 5.4.2
+  resolution: "typescript@patch:typescript@npm%3A5.4.2#optional!builtin<compat/typescript>::version=5.4.2&hash=5adc0c"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 10c0/fcf6658073d07283910d9a0e04b1d5d0ebc822c04dbb7abdd74c3151c7aa92fcddbac7d799404e358197222006ccdc4c0db219d223d2ee4ccd9e2b01333b49be
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@npm%3A5.8.2#optional!builtin<compat/typescript>":
+  version: 5.8.2
+  resolution: "typescript@patch:typescript@npm%3A5.8.2#optional!builtin<compat/typescript>::version=5.8.2&hash=5786d5"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 10c0/5448a08e595cc558ab321e49d4cac64fb43d1fa106584f6ff9a8d8e592111b373a995a1d5c7f3046211c8a37201eb6d0f1566f15cdb7a62a5e3be01d087848e2
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@npm%3A5.8.3#optional!builtin<compat/typescript>":
+  version: 5.8.3
+  resolution: "typescript@patch:typescript@npm%3A5.8.3#optional!builtin<compat/typescript>::version=5.8.3&hash=5786d5"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 10c0/39117e346ff8ebd87ae1510b3a77d5d92dae5a89bde588c747d25da5c146603a99c8ee588c7ef80faaf123d89ed46f6dbd918d534d641083177d5fac38b8a1cb
+  languageName: node
+  linkType: hard
+
 "typescript@patch:typescript@npm%3A5.9.2#optional!builtin<compat/typescript>":
   version: 5.9.2
   resolution: "typescript@patch:typescript@npm%3A5.9.2#optional!builtin<compat/typescript>::version=5.9.2&hash=5786d5"
@@ -56960,6 +57102,16 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 10c0/34d2a8e23eb8e0d1875072064d5e1d9c102e0bdce56a10a25c0b917b8aa9001a9cf5c225df12497e99da107dc379360bc138163c66b55b95f5b105b50578067e
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@npm%3A^5.9.2#optional!builtin<compat/typescript>, typescript@patch:typescript@npm%3A~5.9.2#optional!builtin<compat/typescript>":
+  version: 5.9.3
+  resolution: "typescript@patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 10c0/ad09fdf7a756814dce65bc60c1657b40d44451346858eea230e10f2e95a289d9183b6e32e5c11e95acc0ccc214b4f36289dcad4bf1886b0adb84d711d336a430
   languageName: node
   linkType: hard
 
