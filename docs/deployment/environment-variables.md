@@ -12,6 +12,7 @@ This document lists all environment variables used across ArjunaCRM services.
 | `NODE_PORT` | No | `3000` | Port for the Node.js server |
 | `SERVER_URL` | Yes | - | Base URL for the server (e.g., https://api.arjunacrm.com) |
 | `PUBLIC_DOMAIN_URL` | No | - | Public domain URL |
+| `CORS_ALLOWED_ORIGINS` | No | - | Comma-separated list of extra allowed CORS origins |
 | `APP_SECRET` | Yes | - | Secret key for the application (generate random string) |
 
 ### Database Configuration

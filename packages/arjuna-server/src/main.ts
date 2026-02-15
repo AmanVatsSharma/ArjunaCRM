@@ -21,9 +21,63 @@ import './instrument';
 import { settings } from './engine/constants/settings';
 import { generateFrontConfig } from './utils/generate-front-config';
 
+const normalizeOrigin = (origin: string): string => {
+  try {
+    const parsedOrigin = new URL(origin);
+
+    return `${parsedOrigin.protocol}//${parsedOrigin.host}`;
+  } catch {
+    return origin.replace(/\/+$/, '');
+  }
+};
+
+const parseCorsOrigins = (configValue?: string): string[] => {
+  if (!configValue) {
+    return [];
+  }
+
+  return configValue
+    .split(',')
+    .map((origin) => origin.trim())
+    .filter((origin) => origin.length > 0)
+    .map(normalizeOrigin);
+};
+
+const buildCorsAllowList = (
+  arjunaConfigService: ArjunaCRMConfigService,
+): string[] => {
+  const nodeEnvironment = arjunaConfigService.get('NODE_ENV');
+  const configuredOrigins = parseCorsOrigins(
+    arjunaConfigService.get('CORS_ALLOWED_ORIGINS'),
+  );
+  const knownOrigins = [
+    arjunaConfigService.get('FRONTEND_URL'),
+    arjunaConfigService.get('PUBLIC_DOMAIN_URL'),
+    arjunaConfigService.get('SERVER_URL'),
+  ]
+    .filter((origin): origin is string => Boolean(origin))
+    .map(normalizeOrigin);
+
+  const localDevelopmentOrigins =
+    nodeEnvironment === NodeEnvironment.DEVELOPMENT
+      ? [
+          'http://localhost:3000',
+          'http://localhost:3001',
+          'http://localhost:3003',
+          'http://127.0.0.1:3000',
+          'http://127.0.0.1:3001',
+          'http://127.0.0.1:3003',
+        ]
+      : [];
+
+  return Array.from(
+    new Set([...knownOrigins, ...configuredOrigins, ...localDevelopmentOrigins]),
+  );
+};
+
 const bootstrap = async () => {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
-    cors: true,
+    cors: false,
     bufferLogs: process.env.LOGGER_IS_BUFFER_ENABLED === 'true',
     rawBody: true,
     snapshot: process.env.NODE_ENV === NodeEnvironment.DEVELOPMENT,
@@ -38,6 +92,27 @@ const bootstrap = async () => {
   });
   const logger = app.get(LoggerService);
   const arjunaConfigService = app.get(ArjunaCRMConfigService);
+  const corsAllowList = buildCorsAllowList(arjunaConfigService);
+
+  app.enableCors({
+    origin: (origin, callback) => {
+      if (!origin) {
+        callback(null, true);
+
+        return;
+      }
+
+      if (corsAllowList.includes(normalizeOrigin(origin))) {
+        callback(null, true);
+
+        return;
+      }
+
+      logger.warn(`Blocked CORS request from origin: ${origin}`);
+      callback(new Error('Origin not allowed by CORS'), false);
+    },
+    credentials: true,
+  });
 
   app.use(session(getSessionStorageOptions(arjunaConfigService)));
 
